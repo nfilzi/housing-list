@@ -1,0 +1,2 @@
+module HousingList
+end

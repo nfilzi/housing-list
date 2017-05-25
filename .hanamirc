@@ -1,0 +1,4 @@
+project=housing_list
+architecture=container
+test=minitest
+template=erb
