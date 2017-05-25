@@ -1,6 +1,7 @@
 .housing-card {
   display: flex;
   height: 230px;
+  margin-bottom: 1em;
 
   .title {
     margin-top: 0;
@@ -17,6 +18,10 @@
     margin: 2em;
   }
 
+  .description {
+    margin-bottom: 1em;
+  }
+
   .picture {
     img { height: 230px; }
   }
@@ -24,20 +29,24 @@
   .price {
     align-self: flex-start;
     margin-top: 2em;
-    padding: 0.5em 1em;
+    min-width: 170px;
 
-    &:hover {
-      text-decoration: none;
-    }
+    a {
+      padding: 0.5em 1em;
 
-    &-airbnb {
-      color: $white;
-      background-color: $airbnb-color;
-    }
+      &:hover {
+        text-decoration: none;
+      }
 
-    &-booking {
-      color: $white;
-      background-color: $booking-color;
+      &.price-airbnb {
+        color: $white;
+        background-color: $airbnb-color;
+      }
+
+      &.price-booking {
+        color: $white;
+        background-color: $booking-color;
+      }
     }
   }
 
