@@ -4,7 +4,7 @@ Hanami::Model.migration do
       primary_key :id
 
       foreign_key :trip_id, :trips, null: false, on_delete: :cascade
-      foreign_key :user_id, :users, null: false, on_delete: :set_null
+      foreign_key :user_id, :users, on_delete: :set_null
 
       column :title,       String
       column :description, String
@@ -16,7 +16,7 @@ Hanami::Model.migration do
       column :updated_at, DateTime, null: false
 
       index :trip_id
-      index :user_id 
+      index :user_id
     end
   end
 end
