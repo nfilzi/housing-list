@@ -1,3 +1,15 @@
+GIT
+  remote: git://github.com/hanami/model.git
+  revision: e4bbc0d19c76f8b7e43ac93ecdbc9d8b7571f95e
+  branch: develop
+  specs:
+    hanami-model (1.0.0)
+      concurrent-ruby (~> 1.0)
+      dry-types (~> 0.10)
+      hanami-utils (~> 1.0)
+      rom-repository (~> 1.3)
+      rom-sql (~> 1.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -72,12 +84,6 @@ GEM
       hanami-utils (~> 1.0)
       mail (~> 2.5)
       tilt (~> 2.0, >= 2.0.1)
-    hanami-model (1.0.0)
-      concurrent-ruby (~> 1.0)
-      dry-types (~> 0.9)
-      hanami-utils (~> 1.0)
-      rom-repository (~> 1.3)
-      rom-sql (~> 1.2)
     hanami-router (1.0.0)
       hanami-utils (~> 1.0)
       http_router (= 0.11.2)
@@ -146,7 +152,7 @@ GEM
     transproc (1.0.2)
     url_mount (0.2.1)
       rack
-    xpath (2.0.0)
+    xpath (2.1.0)
       nokogiri (~> 1.3)
 
 PLATFORMS
@@ -156,7 +162,7 @@ DEPENDENCIES
   capybara
   dotenv (~> 2.0)
   hanami (~> 1.0)
-  hanami-model (~> 1.0)
+  hanami-model (~> 1.0)!
   minitest
   pg
   pry
@@ -165,4 +171,4 @@ DEPENDENCIES
   shotgun
 
 BUNDLED WITH
-   1.15.0
+   1.14.6
