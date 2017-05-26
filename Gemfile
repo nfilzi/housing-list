@@ -6,6 +6,9 @@ gem 'hanami-model', '~> 1.0'
 
 gem 'pg'
 
+# assets
+gem 'sass'
+
 group :development do
   # Code reloading
   # See: http://hanamirb.org/guides/projects/code-reloading
