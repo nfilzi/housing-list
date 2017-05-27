@@ -1,0 +1,25 @@
+/* -------------------------------------
+ * Bootstrap sass variable
+ * See http://getbootstrap.com/customize/#less-variables
+ * ------------------------------------- */
+
+// Bootstrap configuration
+$icon-font-path: 'bootstrap-sass/assets/fonts/bootstrap/';
+
+// General style
+$font-family-sans-serif:  $base-font;
+$body-bg:                 $white;
+$font-size-base:          $base-size;
+$line-height-base:        $base-height;
+$headings-font-family:    $header-font;
+$headings-font-weight:    $header-font-weight;
+
+// Semantic color scheme
+// See http://getbootstrap.com/customize/#colors
+$brand-primary: $green;
+$text-color: $black;
+
+// Buttons
+$btn-border-radius-base: 0;
+$btn-border-radius-large: 0;
+$btn-border-radius-small: 0;

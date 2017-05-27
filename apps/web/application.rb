@@ -156,7 +156,8 @@ module Web
         # Specify sources for assets
         #
         sources << [
-          'assets'
+          'assets',
+          'vendor/assets'
         ]
       end
 
@@ -241,14 +242,15 @@ module Web
         script-src 'self';
         connect-src 'self';
         img-src 'self' https: data:;
-        style-src 'self' 'unsafe-inline' https:;
-        font-src 'self';
+        style-src 'self' 'unsafe-inline' https: https://fonts.googleapis.com;
+        font-src 'self' https://fonts.gstatic.com;
         object-src 'none';
         plugin-types application/pdf;
         child-src 'self';
-        frame-src 'self';
         media-src 'self'
       }
+
+
 
       ##
       # FRAMEWORKS
