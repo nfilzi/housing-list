@@ -20,15 +20,18 @@
   }
 
   .details-container {
+    position: relative;
     padding: 2em 0;
-    background: linear-gradient(
-      to right,
-      transparent 0%,
-      transparent calc(50% - 0.25px),
-      $white calc(50% - 0.25px),
-      $white calc(50% + 0.25px),
-      transparent calc(50% + 0.25px),
-      transparent 100%);
+    &:after {
+      content:"";
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      border-left: 1px solid $white;
+      transform: translate(-50%);
+    }
   }
 
   .details {
