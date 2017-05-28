@@ -1,4 +1,19 @@
-// TODO: find out a structure for our stylesheets
+// Settings
 @import 'settings/colors';
+@import 'settings/variables';
+@import 'vendor-settings/bootstrap';
 
-body { color: $black; }
+// Vendor
+@import 'bootstrap-sass/assets/stylesheets/bootstrap';
+
+// Base
+// TODO
+
+// Components
+@import 'components/labels';
+
+// Layout
+// TODO
+
+// Pages
+@import 'pages/styleguide';

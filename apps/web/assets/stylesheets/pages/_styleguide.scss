@@ -1,0 +1,26 @@
+.style-guide--subentry {
+  background-color: #FAFAFA; // custom color only for this page
+                             // that's why it's not in variables.scss
+  padding: 1.5em;
+  margin: 1em 0;
+}
+
+.style-guide--colors {
+  .caption { min-height: 5em; }
+  .color { height: 5em; }
+
+  .black { background-color: $black; }
+  .blue { background-color: $blue; }
+  .green { background-color: $green; }
+  .white { background-color: $white; }
+
+  // providers
+  .airbnb-color { background-color: $airbnb-color; }
+  .booking-color { background-color: $booking-color; }
+}
+
+.style-guide--sidebar {
+  a {
+    color: $black;
+  }
+}
