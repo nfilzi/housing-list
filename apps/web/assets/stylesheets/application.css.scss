@@ -2,15 +2,18 @@
 @import 'settings/colors';
 @import 'settings/variables';
 @import 'vendor-settings/bootstrap';
+@import 'vendor-settings/font-awesome';
 
 // Vendor
 @import 'bootstrap-sass/assets/stylesheets/bootstrap';
+@import 'font-awesome/scss/font-awesome';
 
 // Base
 // TODO
 
 // Components
 @import 'components/labels';
+@import 'components/housing-card';
 
 // Layout
 // TODO
