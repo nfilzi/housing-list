@@ -10,12 +10,28 @@ module Web::Views::Trips
       format_date(date, format: '%b %e', ordinal_indicators: true)
     end
 
+    def housings_count
+      housing_stats.housings_count
+    end
+
     def housing_total_price_per_person(housing)
       (housing.total_price / trip.travelers_count).to_i
     end
 
     def trip_not_started?
       Date.today < trip.starting_on
+    end
+
+    def total_price_avg
+      housing_stats.total_price_avg
+    end
+
+    def total_price_min
+      housing_stats.total_price_min
+    end
+
+    def total_price_max
+      housing_stats.total_price_max
     end
 
     # ##################################################
