@@ -21,7 +21,7 @@
         <li>
           <strong>Components</strong>
           <ul class="list-unstyled">
-            <li><strong>>> TODO <<</strong></li>
+            <li><%= link_to "Housing Card", "#housing-card" %></li>
           </ul>
         </li>
       </ul>
@@ -220,10 +220,33 @@
       </div>
       <div id="components" class="style-guide--entry">
         <h2>Components</h2>
-        <div id="component_name" class="style-guide--subentry">
-          <h3>New component</h3>
-          <div class="style-guide--badges">
-            <strong>>> TODO <<</strong>
+        <div id="housing-card" class="style-guide--subentry">
+          <h3>Housing Card</h3>
+          <div class="style-guide--housing-card">
+            <div class="housing-card">
+              <div class="picture">
+                <%= image 'housing-picture.jpg' %>
+              </div>
+              <div class="details">
+                <div class="description">
+                  <h2 class="title">Ground floor with garden, calm.</h2>
+                  <p>Nice view over the lake, 55 sqm flat with garden.</p>
+                </div>
+                <div class="proposer">
+                  <%= image 'housing-proposer.jpg', class: 'proposer-picture' %>
+                  <div class="proposer-details">
+                    <span class='proposer-name'>nfilzi</span>
+                    <span class='proposal-date'>on 05/11/2017</span>
+                  </div>
+                </div>
+              </div>
+              <%=
+                link_to '#', class: 'price price-airbnb' do
+                  i(class: "fa fa-user", 'aria-hidden' => "true") +
+                  '156 €'
+                end
+              %>
+            </div>
           </div>
         </div>
       </div>

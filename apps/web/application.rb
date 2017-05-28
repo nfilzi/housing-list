@@ -242,8 +242,8 @@ module Web
         script-src 'self';
         connect-src 'self';
         img-src 'self' https: data:;
-        style-src 'self' 'unsafe-inline' https: https://fonts.googleapis.com;
-        font-src 'self' https://fonts.gstatic.com;
+        style-src 'self' 'unsafe-inline' https: https://fonts.googleapis.com https://maxcdn.bootstrapcdn.com;
+        font-src 'self' https://fonts.gstatic.com https://maxcdn.bootstrapcdn.com;
         object-src 'none';
         plugin-types application/pdf;
         child-src 'self';
