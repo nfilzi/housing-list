@@ -1,1 +1,60 @@
-<h1>Welcomu to Housing List</h1>
+<html>
+  <head>
+    <%= render partial: "layouts/head" %>
+  </head>
+  <body>
+    <div class="home-banner">
+      <nav class="navbar navbar-default navbar-home">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <%= link_to 'HOUSINGLIST', routes.root_path, class: "navbar-brand" %>
+          </div>
+        </div>
+      </nav>
+
+      <div class="home-banner-body">
+        
+        <h1 class="title">Looking for a place to stay at with friends for holidays?</h1>
+        <div class="explanation">
+          <p class="subtitle">
+            Finding the perfect housing is always a pain in the ass.
+          </p>
+          
+          <p>Switching between Airbnb, Booking.com and so many other services.</p>
+          <p>Keeping track of all the data and getting everyone up to speed.</p>
+          <p class="prompt">Guess what? We have THE solution! 🤓</p>
+        </div>
+        <%= link_to "Start planning! 🙌", routes.root_path, class: "btn cta home-banner-cta" %>
+        <div class="home-banner-footer">
+          <%= image "trip-screenshot.jpg", class: "trip-screenshot"%>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="home-stats">
+      <p><strong><%= total_trips_count %> trips</strong> got organized thanks to <strong>HOUSINGLIST</strong> 💪</p>
+    </div>
+
+    <div class="home-featurettes">
+      <ul class="list-unstyled featurettes-list">
+        <li class="featurette">
+          <p class="featurette-icon">🔎</p>
+          <h4 class="featurette-title">Find housings together</h4>
+          <p class="featurette-description">Insofar reason ocean ultimate grandeur gains dead revaluation right revaluation. Mountains enlightenment strong pinnacle noble passion aversion gains moral noble.</p>
+        </li>
+        <li class="featurette">
+          <p class="featurette-icon">📊</p>
+          <h4 class="featurette-title">Keep track of everything</h4>
+          <p class="featurette-description">Insofar reason ocean ultimate grandeur gains dead revaluation right revaluation. Mountains enlightenment strong pinnacle noble passion aversion gains moral noble.</p>
+        </li>
+        <li class="featurette">
+          <p class="featurette-icon">📢</p>
+          <h4 class="featurette-title">Share your booking progress</h4>
+          <p class="featurette-description">Insofar reason ocean ultimate grandeur gains dead revaluation right revaluation. Mountains enlightenment strong pinnacle noble passion aversion gains moral noble.</p>
+        </li>
+      </ul>
+    </div>
+    <%= render partial: "layouts/footer" %>
+  </body>
+</html>

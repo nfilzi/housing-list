@@ -7,4 +7,8 @@ class TripRepository < Hanami::Repository
   def find_with_housings(id)
     aggregate(:housings).where(id: id).as(Trip).one
   end
+
+  def count
+    trips.count
+  end
 end
