@@ -1,0 +1,57 @@
+.trip {
+  margin-bottom: 2em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  }
+
+  .title {
+    margin: 2.5em 0 1.5em 0;
+    color: $white;
+    font-size: 23px;
+    font-weight: $base-font-weight;
+  }
+
+  .details-container {
+    padding: 2em 0;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      transparent calc(50% - 0.25px),
+      $white calc(50% - 0.25px),
+      $white calc(50% + 0.25px),
+      transparent calc(50% + 0.25px),
+      transparent 100%);
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 2em 2.5em;
+
+    min-width: 750px;
+    background-color: $white;
+  }
+
+  .overview {
+    margin-bottom: 0;
+
+    li:not(:last-child) {
+      margin-bottom: 0.5em;
+    }
+  }
+}
+
+.trip-status {
+  margin: 1em 0 2em 0;
+  text-align: center;
+  font-size: 23px;
+}

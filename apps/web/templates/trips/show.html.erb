@@ -1,0 +1,59 @@
+<div class="trip" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+  <div class="content">
+    <h1 class="title">You and your friends are heading to <%= trip.destination %> 🌏 😱</h1>
+    <div class="details-container">
+      <div class="details">
+        <ul class="list-unstyled overview overview-housing">
+          <li><strong><%= housings_count %></strong> potential housing places</li>
+          <li>Between <strong><%= total_price_min %>€</strong> and <strong><%= total_price_max %>€</strong> per person</li>
+          <li><strong><%= total_price_avg %>€</strong> per person on average</li>
+        </ul>
+        <ul class="list-unstyled overview overview-trip">
+          <li>From <strong><%= format_trip_date(trip.starting_on) %></strong> to <strong><%= format_trip_date(trip.ending_on) %></strong></li>
+          <li>Near <strong><%= trip.destination %></strong></li>
+          <li>For <strong><%= trip.travelers_count %> people</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <% if trip_not_started? %>
+        <p class="trip-status">Only <strong><%= days_before_trip %> days left</strong> to find some place to stay at!</p>
+      <% end %>
+
+      <% housings.each do |housing| %>
+        <div class="style-guide--housing-card">
+          <div class="housing-card">
+            <div class="picture">
+              <%= image 'housing-picture.jpg' %>
+            </div>
+            <div class="details">
+              <div class="description">
+                <h2 class="title"><%= housing.title %></h2>
+                <p><%= truncate(housing.description, 130, separator: ' ') %></p>
+              </div>
+              <div class="proposer">
+                <%= image 'housing-proposer.jpg', class: 'proposer-picture' %>
+                <div class="proposer-details">
+                  <span class='proposer-name'><%= housing.user.first_name %></span>
+                  <span class='proposal-date'>on <%= format_date(housing.created_at.to_date) %></span>
+                </div>
+              </div>
+            </div>
+            <div class="price">
+              <%=
+                link_to housing.url, target: "_blank", class: "price-#{housing.provider}" do
+                  i(class: "fa fa-user", "aria-hidden" => "true") +
+                  "#{housing_total_price_per_person(housing)} €"
+                end
+              %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
