@@ -9,15 +9,18 @@
 @import 'font-awesome/scss/font-awesome';
 
 // Base
-// TODO
+@import 'base/typography';
 
 // Components
 @import 'components/labels';
 @import 'components/housing-card';
+@import 'components/buttons';
 
 // Layout
 @import 'layouts/navbar';
+@import 'layouts/footer';
 
 // Pages
 @import 'pages/styleguide';
 @import 'pages/trip';
+@import 'pages/homepage';

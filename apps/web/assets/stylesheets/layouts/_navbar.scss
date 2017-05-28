@@ -1,4 +1,13 @@
 .navbar-brand {
   font-family: $header-font;
   font-weight: $header-font-weight;
+  &:hover {
+    border-bottom: none;
+    padding-bottom: 0px;
+  }
+}
+
+.navbar-home {
+  border: none;
+  background-color: transparent;
 }
