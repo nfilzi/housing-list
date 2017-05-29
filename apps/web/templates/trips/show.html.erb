@@ -25,32 +25,29 @@
       <% end %>
 
       <% housings.each do |housing| %>
-        <div class="style-guide--housing-card">
-          <div class="housing-card">
-            <div class="picture">
-              <%= image 'housing-picture.jpg' %>
+        <div class="housing-card">
+          <div class="picture">
+            <%= image 'housing-picture.jpg' %>
+          </div>
+          <div class="details">
+            <div class="description">
+              <h2 class="title"><%= housing.title %></h2>
+              <p><%= truncate(housing.description, 130, separator: ' ') %></p>
+              <%= link_to "See on #{housing.provider.capitalize}", housing.url, target: "_blank" %>
             </div>
-            <div class="details">
-              <div class="description">
-                <h2 class="title"><%= housing.title %></h2>
-                <p><%= truncate(housing.description, 130, separator: ' ') %></p>
+            <div class="proposer">
+              <%= image 'housing-proposer.jpg', class: 'proposer-picture' %>
+              <div class="proposer-details">
+                <span class='proposer-name'><%= housing.user.first_name %></span>
+                <span class='proposal-date'>on <%= format_date(housing.created_at.to_date) %></span>
               </div>
-              <div class="proposer">
-                <%= image 'housing-proposer.jpg', class: 'proposer-picture' %>
-                <div class="proposer-details">
-                  <span class='proposer-name'><%= housing.user.first_name %></span>
-                  <span class='proposal-date'>on <%= format_date(housing.created_at.to_date) %></span>
-                </div>
-              </div>
             </div>
-            <div class="price">
-              <%=
-                link_to housing.url, target: "_blank", class: "price-#{housing.provider}" do
-                  i(class: "fa fa-user", "aria-hidden" => "true") +
-                  "#{housing_total_price_per_person(housing)} €"
-                end
-              %>
-            </div>
+          </div>
+          <div class="price">
+            <span>
+              <i class="fa fa-user" aria-hidden=true></i>
+              <%= housing_total_price_per_person(housing) %> €
+            </span>
           </div>
         </div>
       <% end %>
