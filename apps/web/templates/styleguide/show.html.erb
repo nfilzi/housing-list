@@ -150,6 +150,16 @@
             </div>
             <div class="col-sm-6 col-md-4">
               <div class="thumbnail">
+                <div class="color raspberry"></div>
+                <div class="caption">
+                  <ul class="list-unstyled">
+                    <li>$raspberry</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
                 <div class="color airbnb-color"></div>
                 <div class="caption">
                   <ul class="list-unstyled">
@@ -251,22 +261,21 @@
                 <div class="description">
                   <h2 class="title">Ground floor with garden, calm.</h2>
                   <p>Nice view over the lake, 55 sqm flat with garden.</p>
+                  <%= link_to "See on Airbnb", "#", target: "_blank" %>
                 </div>
                 <div class="proposer">
                   <%= image 'housing-proposer.jpg', class: 'proposer-picture' %>
                   <div class="proposer-details">
-                    <span class='proposer-name'>nfilzi</span>
-                    <span class='proposal-date'>on 05/11/2017</span>
+                    <span class='proposer-name'>Nicolas</span>
+                    <span class='proposal-date'>on <%= format_date(Date.today) %></span>
                   </div>
                 </div>
               </div>
               <div class="price">
-                <%=
-                  link_to '#', class: 'price-airbnb' do
-                    i(class: "fa fa-user", 'aria-hidden' => "true") +
-                    '156 €'
-                  end
-                %>
+                <span>
+                  <i class="fa fa-user" aria-hidden=true></i>
+                  156 €
+                </span>
               </div>
             </div>
           </div>
