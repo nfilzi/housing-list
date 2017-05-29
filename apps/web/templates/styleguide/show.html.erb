@@ -190,6 +190,16 @@
             </div>
             <div class="col-sm-6 col-md-4">
               <div class="thumbnail">
+                <div class="color gray"></div>
+                <div class="caption">
+                  <ul class="list-unstyled">
+                    <li>$gray</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
                 <div class="color gray-light"></div>
                 <div class="caption">
                   <ul class="list-unstyled">
@@ -253,6 +263,30 @@
         <div id="housing-card" class="style-guide--subentry">
           <h3>Housing Card</h3>
           <div class="style-guide--housing-card">
+            <div class="housing-card housing-card--pending">
+              <div class="picture">
+                <%= image 'housing-picture-placeholder.jpg' %>
+              </div>
+              <div class="details">
+                <div class="description">
+                  <p>We are currently fetching your new housing information!</p>
+                  <%= link_to "See on Airbnb", "#", target: "_blank" %>
+                </div>
+                <div class="proposer">
+                  <%= image 'housing-proposer.jpg', class: 'proposer-picture' %>
+                  <div class="proposer-details">
+                    <span class='proposer-name'>Cecile</span>
+                    <span class='proposal-date'>on <%= format_date(Date.today) %></span>
+                  </div>
+                </div>
+              </div>
+              <div class="price">
+                <span>
+                  <i class="fa fa-user" aria-hidden=true></i>
+                  --- €
+                </span>
+              </div>
+            </div>
             <div class="housing-card">
               <div class="picture">
                 <%= image 'housing-picture.jpg' %>
