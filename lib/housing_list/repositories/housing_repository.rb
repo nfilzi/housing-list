@@ -12,7 +12,7 @@ class HousingRepository < Hanami::Repository
     wrap_user.by_pk(id).as(Housing).one
   end
 
-  def total_price_stats_for_trip(trip_id)
+  def stats_for_trip(trip_id)
     relations[:housings].select {
         [
           :trip_id,
