@@ -8,7 +8,7 @@ module Web::Controllers::Trips
 
     def call(params)
       @trip          = TripRepository.new.find(params[:id])
-      @housings      = HousingRepository.new.all_by_trip_with_user(@trip.id)
+      @housings      = HousingRepository.new.for_trip_sorted_by_most_recent(@trip.id)
       @housing_stats = HousingRepository.new.stats_for_trip(@trip.id)
     end
   end
