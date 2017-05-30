@@ -74,10 +74,15 @@
       color: $gray;
     }
   }
+
   .price {
-      span {
-        letter-spacing: 0.13em;
-        background-color: $gray-light;
-      }
+    span {
+      letter-spacing: 0.13em;
+      background-color: $gray-light;
     }
+  }
+
+  .proposer-picture {
+    filter: grayscale(100%);
+  }
 }
