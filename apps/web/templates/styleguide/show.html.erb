@@ -287,31 +287,7 @@
                 </span>
               </div>
             </div>
-            <div class="housing-card">
-              <div class="picture">
-                <%= image 'housing-picture.jpg' %>
-              </div>
-              <div class="details">
-                <div class="description">
-                  <h2 class="title">Ground floor with garden, calm.</h2>
-                  <p>Nice view over the lake, 55 sqm flat with garden.</p>
-                  <%= link_to "See on Airbnb", "#", target: "_blank" %>
-                </div>
-                <div class="proposer">
-                  <%= image 'housing-proposer.jpg', class: 'proposer-picture' %>
-                  <div class="proposer-details">
-                    <span class='proposer-name'>Nicolas</span>
-                    <span class='proposal-date'>on <%= format_date(Date.today) %></span>
-                  </div>
-                </div>
-              </div>
-              <div class="price">
-                <span>
-                  <i class="fa fa-user" aria-hidden=true></i>
-                  156 €
-                </span>
-              </div>
-            </div>
+            <%= render partial: 'housings/housing_card', locals: { housing: housing, trip: trip } %>
           </div>
         </div>
       </div>
