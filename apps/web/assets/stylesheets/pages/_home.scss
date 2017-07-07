@@ -1,4 +1,4 @@
-.home-banner { 
+.home-banner {
   text-align: center;
   background-image: linear-gradient(141deg, $brand-primary 11%, #8EEDD9 75%, #C6FDF1 100%, $white 100%);
   color: $white;
@@ -9,18 +9,33 @@
     background-color: white;
     padding: 0.6em;
     margin-top: 1.3em;
+
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: 3em;
+    }
   }
 
   &-body {
     position: relative;
-    margin-top: 3em;
+
+    @media (min-width: $screen-sm-min) {
+      margin-top: 3em;
+    }
 
     .title {
       font-size: 2.1em;
+
+      @media (max-width: $screen-xs-max) {
+        padding: 0 1em;
+      }
     }
 
     .explanation {
       margin-top: 2em;
+
+      @media (max-width: $screen-xs-max) {
+        padding: 0 2em;
+      }
     }
 
     .subtitle {
@@ -36,25 +51,40 @@
   &-footer {
     display: flex;
     justify-content: center;
+    align-items: flex-start; // if not present, the height of the screenshot image is strechted
     min-height: 250px;
   }
 
   .trip-screenshot {
-    position: absolute;
-    bottom: -351.25px;
-    width: 720px;
-    height: 570px;
+    @media (max-width: $screen-xs-max) {
+      width: 100%;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+      bottom: -351.25px;
+      width: 720px;
+      height: 570px;
+    }
   }
 }
 
 .home-stats {
-  padding-top: 380px;
   padding-bottom: 20px;
   color: $black;
   background-color: $gray-lighter;
   display: flex;
   justify-content: center;
   font-family: $header-font;
+
+  @media (max-width: $screen-xs-max) {
+    padding-top: 2em;
+    text-align: center;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    padding-top: 380px;
+  }
 }
 
 .home-featurettes {
@@ -62,6 +92,11 @@
 
   .featurettes-list {
     display: flex;
+
+    @media (max-width: $screen-xs-max) {
+      flex-wrap: wrap;
+    }
+
     .featurette {
       padding: 1.5em;
       text-align: center;
