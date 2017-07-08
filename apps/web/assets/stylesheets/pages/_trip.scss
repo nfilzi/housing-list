@@ -13,39 +13,64 @@
   }
 
   .title {
-    margin: 2.5em 0 1.5em 0;
     color: $white;
     font-size: 23px;
     font-weight: $base-font-weight;
+
+    @media (max-width: $screen-xs-max) {
+      margin: 2.5em 1em 1em 1em;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      margin: 2.5em 0 1.5em 0;
+    }
   }
 
   .details-container {
     position: relative;
     padding: 2em 0;
-    &:after {
-      content:"";
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      border-left: 1px solid $white;
-      transform: translate(-50%);
+
+    @media (min-width: $screen-sm-min) {
+      &:after {
+        content:"";
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        border-left: 1px solid $white;
+        transform: translate(-50%);
+      }
     }
   }
 
   .details {
     display: flex;
-    justify-content: space-between;
-
-    padding: 2em 2.5em;
-
-    min-width: 750px;
     background-color: $white;
+
+    @media (max-width: $screen-xs-max) {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      justify-content: space-between;
+      min-width: 750px;
+      padding: 2em 2.5em;
+    }
   }
 
   .overview {
     margin-bottom: 0;
+    text-align: left;
+
+    @media (max-width: $screen-xs-max) {
+      padding: 1.5em;
+
+      &:first-child {
+        padding-bottom: 0.5em;
+      }
+    }
 
     li:not(:last-child) {
       margin-bottom: 0.5em;
