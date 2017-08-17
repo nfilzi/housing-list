@@ -26,6 +26,7 @@
 
     @media (min-width: $screen-sm-min) {
       margin-top: 3em;
+      padding-bottom: 250px;
     }
 
     .title, .explanation {
@@ -60,8 +61,14 @@
   &-footer {
     display: flex;
     justify-content: center;
-    align-items: flex-start; // if not present, the height of the screenshot image is strechted
-    min-height: 250px;
+    align-items: flex-start; // [chrome] if not present, the height of the screenshot image is strechted
+
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+      bottom: -351.25px;
+      left: 0;
+      right: 0;
+    }
   }
 
   .trip-screenshot {
@@ -70,8 +77,6 @@
     }
 
     @media (min-width: $screen-sm-min) {
-      position: absolute;
-      bottom: -351.25px;
       width: 720px;
       height: 570px;
     }
