@@ -20,18 +20,8 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 housing-cards">
-      <% if trip_not_started? %>
-        <p class="trip-status">Only <strong><%= days_before_trip %> days left</strong> to find some place to stay at!</p>
-      <% end %>
-
-      <% housings.each do |housing| %>
-        <%= render partial: 'housings/housing_card', locals: { housing: housing, trip: trip } %>
-      <% end %>
-      <% if housings.size.odd? %>
-        <div class="housing-card housing-card--empty">
-          <!-- empty one -->
-        </div>
-      <% end %>
+      <%= trip_status %>
+      <%= render partial: 'housings', locals: { housings: housings, trip: trip } %>
     </div>
   </div>
 </div>

@@ -13,7 +13,7 @@ class HousingRepository < Hanami::Repository
   end
 
   def stats_for_trip(trip_id)
-    relations[:housings].select {
+    stats = relations[:housings].select {
         [
           :trip_id,
           int::count(id).as(:housings_count),
@@ -27,6 +27,8 @@ class HousingRepository < Hanami::Repository
       order(:trip_id). # provided by Hanami/ROM by default :/
       as(TripHousingStats).
       one
+
+    stats || TripHousingStats.new(trip_id: trip_id)
   end
 
   private
