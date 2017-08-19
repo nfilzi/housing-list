@@ -7,6 +7,7 @@ module Web::Views::Trips
     include Web::Helpers::DateFormatter
     include Web::Helpers::TextFormatter
     include Web::Helpers::Housings
+    include Web::Helpers::TripStatusMessages
 
     def_delegators :housing_stats, :housings_count
     def_delegators :housing_stats, :total_price_avg
@@ -21,7 +22,23 @@ module Web::Views::Trips
       format_date(date, format: '%b %e', ordinal_indicator: true)
     end
 
-    def trip_not_started?
+    def trip_status
+      return unless trip_to_come?
+
+      if has_housings?
+        few_days_left_message(days_before_trip)
+      else
+        create_a_housing_message
+      end
+    end
+
+    private
+
+    def has_housings?
+      housings_count >= 1
+    end
+
+    def trip_to_come?
       Date.today < trip.starting_on
     end
   end
