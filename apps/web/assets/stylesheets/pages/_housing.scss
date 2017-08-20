@@ -1,0 +1,19 @@
+.housing-url-label {
+  color: $white;
+  background-color: $raspberry;
+  padding: 0.5em 1em;
+}
+
+#housing-url {
+  border: none;
+  text-align: center;
+  font-size: 1.2em;
+
+  @media (min-width: $screen-sm-min) {
+    width: 90%;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}

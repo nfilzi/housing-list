@@ -119,6 +119,10 @@
     }
   }
 
+  .error-message {
+    margin-bottom: 1.5em;
+  }
+
   .form-entry:not(:last-child) {
     margin-bottom: 1em;
   }
@@ -199,6 +203,45 @@
       @media (min-width: $screen-sm-min) {
         margin-left: 1em;
       }
+    }
+  }
+}
+
+// housing creation
+.trip.housing-creation {
+  position: relative;
+
+  .details-container {
+    margin-bottom: 23px; // [button-action] half of the height of the button
+  }
+
+  .details {
+    padding: 0;
+
+    @media (min-width: $screen-sm-min) {
+      min-width: 750px;
+    }
+  }
+
+  .error-message {
+    margin-top: 1em;
+  }
+
+  .form-entry {
+    padding: 2em;
+    text-align: center;
+  }
+
+  .housing-actions {
+    position: absolute;
+    bottom: -23px; // [button-action] half of the height of the button
+    width: 100%;
+    text-align: center;
+
+    button {
+      height: 46px; // be sure to change the properties tagged with [button-action]
+      padding-left: 3em;
+      padding-right: 3em;
     }
   }
 }
