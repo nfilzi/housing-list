@@ -3,5 +3,10 @@
     <div class="navbar-header">
       <%= link_to 'HOUSINGLIST', routes.root_path, class: "navbar-brand" %>
     </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'START PLANNING!', routes.new_trip_path, class: 'navbar-cta' %></li>
+      </ul>
+    </div>
   </div>
 </nav>
