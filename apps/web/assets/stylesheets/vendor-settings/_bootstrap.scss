@@ -1,6 +1,6 @@
 /* -------------------------------------
  * Bootstrap sass variables
- * See http://getbootstrap.com/customize/#less-variables
+ * See https://getbootstrap.com/docs/3.3/customize/#less-variables
  * ------------------------------------- */
 
 // Bootstrap configuration
@@ -20,9 +20,13 @@ $brand-primary: $green;
 $text-color: $black;
 
 // Buttons
+$btn-primary-bg: $raspberry;
 $btn-border-radius-base: 0;
 $btn-border-radius-large: 0;
 $btn-border-radius-small: 0;
+
+// Labels
+$label-primary-bg: $raspberry;
 
 // Navbar
 $navbar-border-radius: 0;
