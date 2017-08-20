@@ -1,35 +1,41 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h1>New Trip</h1>
-      <%=
-        form_for :trip, routes.trips_path do
-          div do
-            label 'From', for: 'trip-starting-on'
-            date_field :starting_on
-          end
+<div class="trip trip-creation" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+  <%=
+    form_for :trip, routes.trips_path, class: 'trip-creation-form' do
+      div class: 'content' do
+        h1 class: 'title' do
+          text 'Give us your future trip information! 😬'
+        end
 
-          div do
-            label 'To', for: 'trip-ending-on'
-            date_field :ending_on
-          end
+        div class: 'details-container' do
+          div class: 'details' do
+            div class: 'form-entry' do
+              label 'We are', for: 'trip-travelers-count'
+              number_field :travelers_count, placeholder: 'some'
+              text 'friends'
+            end
 
-          div do
-            label 'Near', for: 'trip-destination'
-            text_field :destination
-          end
+            div class: 'form-entry' do
+              label 'going to', for: 'trip-destination'
+              text_field :destination, placeholder: 'some place'
+            end
 
-          div do
-            label 'For', for: 'trip-travelers-count'
-            number_field :travelers_count
-            strong 'people'
-          end
-
-          div do
-            submit 'Create the trip', class: 'btn btn-primary'
+            div class: 'form-entry trip-dates' do
+              div class: 'trip-date' do
+                label 'for', for: 'trip-starting-on'
+                date_field :starting_on, placeholder: 'a date'
+              end
+              div class: 'trip-date' do
+                label 'to', for: 'trip-ending-on'
+                date_field :ending_on, placeholder: 'another date'
+              end
+            end
           end
         end
-      %>
-    </div>
-  </div>
+      end
+
+      div class: 'trip-actions' do
+        submit 'GO! 🦄', class: 'btn btn-primary'
+      end
+    end
+  %>
 </div>
