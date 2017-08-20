@@ -58,6 +58,12 @@
 
 // inherits from trip class
 .trip-show {
+  position: relative;
+
+  .details-container {
+    margin-bottom: 23px; // [button-action] half of the height of the button
+  }
+
   .details {
     display: flex;
 
@@ -85,6 +91,18 @@
 
     li:not(:last-child) {
       margin-bottom: 0.5em;
+    }
+  }
+
+  .trip-actions {
+    position: absolute;
+    bottom: -23px; // [button-action] half of the height of the button
+    width: 100%;
+    text-align: center;
+
+    a {
+      line-height: 46px; // be sure to change the properties tagged with [button-action]
+      padding: 0 3em;
     }
   }
 }
