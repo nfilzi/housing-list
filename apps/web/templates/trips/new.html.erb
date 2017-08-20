@@ -8,6 +8,12 @@
 
         div class: 'details-container' do
           div class: 'details' do
+            unless params.valid?
+              p class: 'error-message' do
+                text 'Please fill in all your trip information.'
+              end
+            end
+
             div class: 'form-entry' do
               label 'We are', for: 'trip-travelers-count'
               number_field :travelers_count, placeholder: 'some'
