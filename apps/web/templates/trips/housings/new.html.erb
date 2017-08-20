@@ -1,4 +1,4 @@
-<div class="trip housing-creation" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+<div class="banner housing-creation" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
   <%=
     form_for :housing, routes.trip_housings_path(trip.id) do
       div class: 'content' do
@@ -25,7 +25,7 @@
         end
       end
 
-      div class: 'housing-actions' do
+      div class: 'action-container' do
         submit 'GO! 👍', class: 'btn btn-primary'
       end
     end

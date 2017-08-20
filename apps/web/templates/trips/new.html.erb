@@ -1,4 +1,4 @@
-<div class="trip trip-creation" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+<div class="banner trip-creation" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
   <%=
     form_for :trip, routes.trips_path, class: 'trip-creation-form' do
       div class: 'content' do
@@ -39,7 +39,7 @@
         end
       end
 
-      div class: 'trip-actions' do
+      div class: 'action-container' do
         submit 'GO! 🦄', class: 'btn btn-primary'
       end
     end

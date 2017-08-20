@@ -1,19 +1,39 @@
-.housing-url-label {
-  color: $white;
-  background-color: $raspberry;
-  padding: 0.5em 1em;
-}
-
-#housing-url {
-  border: none;
-  text-align: center;
-  font-size: 1.2em;
-
-  @media (min-width: $screen-sm-min) {
-    width: 90%;
+.housing-creation {
+  .details {
+    padding: 0;
   }
 
-  &:focus {
-    outline: 0;
+  .error-message {
+    margin-top: 1em;
+  }
+
+  .form-entry {
+    padding: 2em;
+    text-align: center;
+  }
+
+  .housing-url-label {
+    color: $white;
+    background-color: $raspberry;
+    padding: 0.5em 1em;
+
+    label {
+      margin-bottom: 0;
+    }
+  }
+
+  #housing-url {
+    border: none;
+    text-align: center;
+    font-size: 1.2em;
+
+    @media (min-width: $screen-sm-min) {
+      width: 90%;
+    }
+
+    &:focus {
+      outline: 0;
+    }
   }
 }
+
