@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>New Trip</h1>
+      <%=
+        form_for :trip, routes.trips_path do
+          div do
+            label 'From', for: 'trip-starting-on'
+            date_field :starting_on
+          end
+
+          div do
+            label 'To', for: 'trip-ending-on'
+            date_field :ending_on
+          end
+
+          div do
+            label 'Near', for: 'trip-destination'
+            text_field :destination
+          end
+
+          div do
+            label 'For', for: 'trip-travelers-count'
+            number_field :travelers_count
+            strong 'people'
+          end
+
+          div do
+            submit 'Create the trip', class: 'btn btn-primary'
+          end
+        end
+      %>
+    </div>
+  </div>
+</div>
