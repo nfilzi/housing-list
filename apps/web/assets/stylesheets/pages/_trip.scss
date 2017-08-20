@@ -45,8 +45,21 @@
   }
 
   .details {
-    display: flex;
+    position: relative;
+    z-index: 10;
     background-color: $white;
+
+    @media (min-width: $screen-sm-min) {
+      justify-content: space-between;
+      padding: 2em 2.5em;
+    }
+  }
+}
+
+// inherits from trip class
+.trip-show {
+  .details {
+    display: flex;
 
     @media (max-width: $screen-xs-max) {
       flex-direction: column;
@@ -54,9 +67,7 @@
     }
 
     @media (min-width: $screen-sm-min) {
-      justify-content: space-between;
       min-width: 750px;
-      padding: 2em 2.5em;
     }
   }
 
@@ -87,5 +98,107 @@
     display: block;
     font-size: 1.5em;
     margin-bottom: 0.3em;
+  }
+}
+
+// inherits from trip class
+.trip-creation {
+  position: relative;
+
+  .details-container {
+    margin-bottom: 23px; // [button-action] half of the height of the button
+  }
+
+  .details {
+    @media (max-width: $screen-xs-max) {
+      padding: 2em;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      min-width: 475px;
+    }
+  }
+
+  .form-entry:not(:last-child) {
+    margin-bottom: 1em;
+  }
+
+  .trip-creation-form {
+    label {
+      font-weight: $base-font-weight;
+    }
+
+    input {
+      border: none;
+      font-weight: $header-font-weight;
+
+      &:focus {
+        outline: 0;
+      }
+
+      &::placeholder {
+        color: $raspberry;
+        font-weight: $base-font-weight;
+      }
+    }
+
+    .trip-actions {
+      position: absolute;
+      bottom: -23px; // [button-action] half of the height of the button
+      width: 100%;
+      text-align: center;
+
+      button {
+        height: 46px; // be sure to change the properties tagged with [button-action]
+        padding-left: 3em;
+        padding-right: 3em;
+      }
+    }
+
+    .trip-dates {
+      display: flex;
+
+      @media (max-width: $screen-xs-max) {
+        flex-direction: column;
+      }
+
+      .trip-date:not(:last-child) {
+        @media (max-width: $screen-xs-max) {
+          margin-bottom: 1em;
+        }
+      }
+    }
+
+    #trip-travelers-count {
+      -moz-appearance: textfield;
+      width: 6rem;
+      text-align: center;
+
+      &:focus {
+        -moz-appearance: number-input;
+      }
+    }
+
+    #trip-starting-on, #trip-ending-on {
+      width: 15.5rem;
+    }
+
+    #trip-starting-on {
+      text-align: center;
+
+      @media (max-width: $screen-xs-max) {
+        text-align: left;
+      }
+
+      @media (min-width: $screen-sm-min) {
+        margin-right: 0.5em;
+      }
+    }
+
+    #trip-ending-on {
+      @media (min-width: $screen-sm-min) {
+        margin-left: 1em;
+      }
+    }
   }
 }

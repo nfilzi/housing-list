@@ -1,6 +1,7 @@
 a.navbar-brand {
   font-family: $header-font;
   font-weight: $header-font-weight;
+
   &:hover {
     border-bottom: none;
     padding-bottom: 0px;
@@ -10,4 +11,23 @@ a.navbar-brand {
 .navbar-home {
   border: none;
   background-color: transparent;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  height: $navbar-height;
+}
+
+.navbar-default .navbar-nav > li > a.navbar-cta {
+  color: $white;
+  background-color: $raspberry;
+  font-weight: $header-font-weight;
+  padding: 0.5em 1.5em;
+  border-bottom: none;
+
+  &:hover {
+    text-decoration: none;
+    background-color: darken($raspberry, 5%)
+  }
 }

@@ -1,0 +1,47 @@
+<div class="trip trip-creation" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+  <%=
+    form_for :trip, routes.trips_path, class: 'trip-creation-form' do
+      div class: 'content' do
+        h1 class: 'title' do
+          text 'Give us your future trip information! 😬'
+        end
+
+        div class: 'details-container' do
+          div class: 'details' do
+            unless params.valid?
+              p class: 'error-message' do
+                text 'Please fill in all your trip information.'
+              end
+            end
+
+            div class: 'form-entry' do
+              label 'We are', for: 'trip-travelers-count'
+              number_field :travelers_count, placeholder: 'some'
+              text 'friends'
+            end
+
+            div class: 'form-entry' do
+              label 'going to', for: 'trip-destination'
+              text_field :destination, placeholder: 'some place'
+            end
+
+            div class: 'form-entry trip-dates' do
+              div class: 'trip-date' do
+                label 'for', for: 'trip-starting-on'
+                date_field :starting_on, placeholder: 'a date'
+              end
+              div class: 'trip-date' do
+                label 'to', for: 'trip-ending-on'
+                date_field :ending_on, placeholder: 'another date'
+              end
+            end
+          end
+        end
+      end
+
+      div class: 'trip-actions' do
+        submit 'GO! 🦄', class: 'btn btn-primary'
+      end
+    end
+  %>
+</div>
