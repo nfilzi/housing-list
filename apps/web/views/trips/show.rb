@@ -22,6 +22,15 @@ module Web::Views::Trips
       format_date(date, format: '%b %e', ordinal_indicator: true)
     end
 
+    def housing_card_partial(housing)
+      case
+      when housing_pending?(housing)
+        :housing_card_pending
+      else
+        :housing_card
+      end
+    end
+
     def trip_status
       return unless trip_to_come?
 
@@ -33,6 +42,10 @@ module Web::Views::Trips
     end
 
     private
+
+    def housing_pending?(housing)
+      housing.total_price == nil
+    end
 
     def has_housings?
       housings_count >= 1
