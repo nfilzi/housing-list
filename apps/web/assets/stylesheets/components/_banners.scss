@@ -1,0 +1,77 @@
+.banner {
+  position: relative;
+  margin-bottom: 2em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  }
+
+  .title {
+    color: $white;
+    font-size: 23px;
+    font-weight: $base-font-weight;
+
+    @media (max-width: $screen-xs-max) {
+      margin: 2.5em 1em 1em 1em;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      margin: 2.5em 0 1.5em 0;
+    }
+  }
+
+  .action-container {
+    position: absolute;
+    bottom: -23px; // [button-action] half of the height of the button
+    width: 100%;
+    text-align: center;
+
+    a {
+      line-height: 46px; // be sure to change the properties tagged with [button-action]
+      padding: 0 3em;
+    }
+
+    button {
+      height: 46px; // be sure to change the properties tagged with [button-action]
+      padding-left: 3em;
+      padding-right: 3em;
+    }
+  }
+
+  .details-container {
+    position: relative;
+    margin-bottom: 23px; // [button-action] half of the height of the button
+    padding: 2em 0;
+
+    @media (min-width: $screen-sm-min) {
+      &:after {
+        content:"";
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        border-left: 1px solid $white;
+        transform: translate(-50%);
+      }
+    }
+  }
+
+  .details {
+    position: relative;
+    z-index: 10;
+    background-color: $white;
+
+    @media (min-width: $screen-sm-min) {
+      padding: 2em 2.5em;
+      min-width: 750px;
+    }
+  }
+}
