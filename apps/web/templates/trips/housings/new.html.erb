@@ -1,0 +1,30 @@
+<div class="trip housing-creation" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+  <div class="content">
+    <h1 class="title">You and your friends are heading to <%= trip.destination %> 🌏 😱</h1>
+    <div class="details-container">
+      <div class="details">
+        <%=
+          form_for :housing, routes.trip_housings_path(trip.id) do
+            div do
+              label 'Add a new potential housing place', for: 'housing-url'
+            end
+
+            unless params.valid?
+              p class: 'error-message' do
+                text 'You forgot to provide the housing URL'
+              end
+            end
+
+            div do
+              text_field :url, placeholder: 'https://airbnb.com/rooms/589385'
+            end
+
+            div class: 'housing-actions' do
+              submit 'GO! 👍', class: 'btn btn-primary'
+            end
+          end
+        %>
+      </div>
+    </div>
+  </div>
+</div>
