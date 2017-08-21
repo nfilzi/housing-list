@@ -1,0 +1,33 @@
+<div class="banner housing-creation" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+  <%=
+    form_for :housing, routes.trip_housings_path(trip.id) do
+      div class: 'content' do
+        h1 class: 'title' do
+          text "You and your friends are heading to #{trip.destination} 🌏 😱"
+        end
+
+        div class: 'details-container' do
+          div class: 'details' do
+            div class: 'housing-url-label' do
+              label 'Add a new potential housing place', for: 'housing-url'
+            end
+
+            div class: 'form-entry' do
+              text_field :url, placeholder: 'https://airbnb.com/rooms/589385'
+
+              unless params.valid?
+                p class: 'error-message' do
+                  text 'You forgot to provide the housing URL'
+                end
+              end
+            end
+          end
+        end
+      end
+
+      div class: 'action-container' do
+        submit 'GO! 👍', class: 'btn btn-primary'
+      end
+    end
+  %>
+</div>

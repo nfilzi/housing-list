@@ -21,6 +21,7 @@
         <li>
           <strong>Components</strong>
           <ul class="list-unstyled">
+            <li><%= link_to "Banner", "#banner" %></li>
             <li><%= link_to "Housing Card", "#housing-card" %></li>
           </ul>
         </li>
@@ -274,33 +275,29 @@
       </div>
       <div id="components" class="style-guide--entry">
         <h2>Components</h2>
+        <div id="banner" class="style-guide--subentry">
+          <h3>Banner</h3>
+          <div class="style-guide--banner">
+            <div class="banner" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+              <div class="content">
+                <h1 class="title">Some title goes here</h1>
+                <div class="details-container">
+                  <div class="details">
+                    <p>Either some text, list or form, you choose</p>
+                    <p>With as many lines as you want</p>
+                  </div>
+                </div>
+                <div class="action-container">
+                  <a href="#" class="btn btn-primary">GO!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div id="housing-card" class="style-guide--subentry">
           <h3>Housing Card</h3>
           <div class="style-guide--housing-card">
-            <div class="housing-card housing-card--pending">
-              <div class="picture">
-                <%= image 'housing-picture-placeholder.jpg' %>
-              </div>
-              <div class="details">
-                <div class="description">
-                  <p>We are currently fetching your new housing information!</p>
-                  <%= link_to "See on Airbnb", "#", target: "_blank" %>
-                </div>
-                <div class="proposer">
-                  <%= image 'housing-proposer.jpg', class: 'proposer-picture' %>
-                  <div class="proposer-details">
-                    <span class='proposer-name'>Cecile</span>
-                    <span class='proposal-date'>on <%= format_date(Date.today) %></span>
-                  </div>
-                </div>
-              </div>
-              <div class="price">
-                <span>
-                  <i class="fa fa-user" aria-hidden=true></i>
-                  --- €
-                </span>
-              </div>
-            </div>
+            <%= render partial: 'housings/housing_card_pending', locals: { housing: housing, trip: trip } %>
             <%= render partial: 'housings/housing_card', locals: { housing: housing, trip: trip } %>
           </div>
         </div>

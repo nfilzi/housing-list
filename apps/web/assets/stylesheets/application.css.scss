@@ -12,6 +12,7 @@
 @import 'base/typography';
 
 // Components
+@import 'components/banners';
 @import 'components/buttons';
 @import 'components/error-messages';
 @import 'components/housing-card';
@@ -23,6 +24,7 @@
 
 // Pages
 @import 'pages/home';
+@import 'pages/housing';
 @import 'pages/styleguide';
 @import 'pages/trip';
 
