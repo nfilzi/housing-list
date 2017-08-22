@@ -13,6 +13,11 @@ gem 'hanami-model', '~> 1.0', github: 'hanami/model', branch: 'develop'
 gem 'bcrypt', '~> 3.1.11' # authentication
 gem 'pg'
 
+gem 'capybara'
+gem 'poltergeist'
+gem 'launchy'
+
+
 # assets
 gem 'sass'
 
@@ -29,7 +34,6 @@ end
 
 group :test do
   gem 'minitest'
-  gem 'capybara'
 end
 
 group :production do
