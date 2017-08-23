@@ -16,6 +16,7 @@ GEM
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     bcrypt (3.1.11)
+    byebug (9.0.6)
     capybara (2.14.0)
       addressable
       mime-types (>= 1.16)
@@ -123,6 +124,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.4.2)
+      byebug (~> 9.0)
+      pry (~> 0.10)
     public_suffix (2.0.5)
     rack (2.0.3)
     rack-test (0.6.3)
@@ -179,7 +183,7 @@ DEPENDENCIES
   minitest
   pg
   poltergeist
-  pry
+  pry-byebug
   rake
   sass
   shotgun
