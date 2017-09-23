@@ -1,0 +1,20 @@
+.user-authentication-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.user-authentication {
+  width: 100%;
+  padding-top: $navbar-height;
+
+  button[type="submit"] {
+    width: 100%;
+  }
+
+  .authentication-links {
+    text-align: right;
+    margin-top: 0.5em;
+  }
+}

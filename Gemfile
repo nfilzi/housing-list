@@ -10,6 +10,7 @@ gem 'hanami',       '~> 1.0'
 # gem 'hanami-model', '~> 1.0'
 gem 'hanami-model', '~> 1.0', github: 'hanami/model', branch: 'develop'
 
+gem 'bcrypt', '~> 3.1.11' # authentication
 gem 'pg'
 
 # assets

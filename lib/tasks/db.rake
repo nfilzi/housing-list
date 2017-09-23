@@ -4,20 +4,34 @@ namespace :db do
     puts 'Cleaning database...'
     UserRepository.new.clear
     TripRepository.new.clear
+    puts '---'
 
     puts 'Creating users...'
     user_repo = UserRepository.new
-    cecile  = user_repo.create(first_name: 'Cecile', last_name: 'Veneziani')
-    nicolas = user_repo.create(first_name: 'Nicolas', last_name: 'Filzi')
+    cecile  = user_repo.create(
+      first_name: 'Cecile',
+      last_name: 'Veneziani',
+      email: 'cecile@housing-list.com',
+      encrypted_password: BCrypt::Password.create('123456')
+    )
+    nicolas = user_repo.create(
+      first_name: 'Nicolas',
+      last_name: 'Filzi',
+      email: 'nico@housing-list.com',
+      encrypted_password: BCrypt::Password.create('123456')
+    )
+    puts '---'
 
     puts 'Creating trips...'
     trip_repo = TripRepository.new
     lake_geneva = trip_repo.create(destination: 'Lake Geneva', travelers_count: 5, starting_on: '2017-07-03', ending_on: '2017-07-07')
+    puts '---'
 
     puts 'Creating organizers...'
     organizer_repo = TripOrganizerRepository.new
     organizer_repo.create(trip_id: lake_geneva.id, organizer_id: cecile.id)
     organizer_repo.create(trip_id: lake_geneva.id, organizer_id: nicolas.id)
+    puts '---'
 
     puts 'Creating housings...'
     housing_repo = HousingRepository.new
@@ -50,6 +64,7 @@ namespace :db do
     }].each do |housing_attributes|
       housing_repo.create(housing_attributes)
     end
+    puts '---'
 
     puts 'Finished!'
   end
