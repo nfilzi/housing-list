@@ -3,7 +3,7 @@
   <head>
     <%= render partial: "layouts/head" %>
   </head>
-  <body>
+  <body class="<%= current_action %>">
     <%= render partial: 'layouts/navbar' %>
     <%= yield %>
   </body>
