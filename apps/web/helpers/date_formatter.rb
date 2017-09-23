@@ -1,7 +1,6 @@
 module Web
   module Helpers
     module DateFormatter
-      # Public: Duplicate some text an arbitrary number of times.
       # Public: Format given date.
       #
       # date  - The Date to be formatted.
