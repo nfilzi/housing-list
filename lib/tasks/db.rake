@@ -24,7 +24,13 @@ namespace :db do
 
     puts 'Creating trips...'
     trip_repo = TripRepository.new
-    lake_geneva = trip_repo.create(destination: 'Lake Geneva', travelers_count: 5, starting_on: '2017-07-03', ending_on: '2017-07-07')
+    lake_geneva = trip_repo.create(
+      destination: 'Lake Geneva',
+      travelers_count: 5,
+      starting_on: '2017-07-03',
+      ending_on: '2017-07-07',
+      invitation_token: 'QQJLXAMO'
+    )
     puts '---'
 
     puts 'Creating organizers...'

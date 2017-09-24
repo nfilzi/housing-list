@@ -14,6 +14,10 @@ module Web::Views::Trips
     def_delegators :housing_stats, :total_price_min
     def_delegators :housing_stats, :total_price_max
 
+    def after_js
+      javascript('copy-invitation-link', async: true)
+    end
+
     def days_before_trip
       (trip.starting_on - Date.today).to_i
     end
@@ -28,6 +32,22 @@ module Web::Views::Trips
         :housing_card_pending
       else
         :housing_card
+      end
+    end
+
+    def invitation_link
+      return unless trip_to_come?
+
+      html.div(class: 'trip-invitation') do
+        form_for :trip_invitation, '#', method: :get do
+          div do
+            text_field :link, value: routes.trip_by_token_url(trip.id, trip.invitation_token), readonly: '', id: 'trip-invitation-link'
+          end
+          div do
+            button 'Copy to invite friends', 'data-copytarget' => '#trip-invitation-link', class: 'btn btn-link copy-invitation-link'
+          end
+          span class: 'trip-invitation-notice'
+        end
       end
     end
 

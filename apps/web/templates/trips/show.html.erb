@@ -27,8 +27,13 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 housing-cards">
+    <div class="col-xs-12">
       <%= trip_status %>
+      <%= invitation_link %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 housing-cards">
       <%= render partial: 'housings', locals: { housings: housings, trip: trip } %>
     </div>
   </div>
