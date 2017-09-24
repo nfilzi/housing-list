@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default <%= 'navbar-sticky' if sticky_navbar %>">
   <div class="container-fluid">
     <div class="navbar-header">
       <%= link_to 'HOUSINGLIST', routes.root_path, class: "navbar-brand" %>
@@ -6,6 +6,17 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'START PLANNING!', routes.new_trip_path, class: 'navbar-cta' %></li>
+        <li>
+          <% if user_signed_in? %>
+            <%=
+              form_for :user, routes.user_sign_out_path, method: :delete do
+                submit 'Log out', class: 'btn btn-link'
+              end
+            %>
+          <% else %>
+            <%= link_to "Sign in", routes.user_sign_in_path %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>

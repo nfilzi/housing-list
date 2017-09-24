@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
-<!-- Active URL: http://db.lewagon.org/ -->
+<!-- Active URL: http://db.lewagon.com/ -->
 <sql>
 <datatypes db="mysql">
   <group label="Numeric" color="rgb(238,238,170)">
@@ -31,15 +31,21 @@
     <type label="Year" length="0" sql="YEAR" quote=""/>
     <type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
   </group>
-  
+
   <group label="Miscellaneous" color="rgb(200,200,255)">
     <type label="ENUM" length="1" sql="ENUM" quote=""/>
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="139" y="325" name="users">
+</datatypes><table x="334" y="246" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="email" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="encrypted_password" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="first_name" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
@@ -54,7 +60,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="687" y="320" name="housings">
+<table x="887" y="260" name="housings">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -88,7 +94,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="528" y="161" name="trips">
+<table x="723" y="82" name="trips">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -111,7 +117,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="280" y="200" name="trip_organizers">
+<table x="475" y="121" name="trip_organizers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>

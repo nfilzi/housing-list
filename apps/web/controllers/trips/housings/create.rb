@@ -28,7 +28,7 @@ module Web::Controllers::Trips
       def housing_params
         params[:housing].merge(
           trip_id:  params[:trip_id],
-          user_id:  UserRepository.new.all.first.id, # FIXME
+          user_id:  current_user.id,
           provider: extract_provider
         )
       end

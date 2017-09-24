@@ -8,6 +8,14 @@ a.navbar-brand {
   }
 }
 
+.navbar-sticky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
 .navbar-home {
   border: none;
   background-color: transparent;
@@ -17,6 +25,14 @@ a.navbar-brand {
   display: flex;
   align-items: center;
   height: $navbar-height;
+
+  a {
+    margin: 0 0.5em;
+  }
+
+  a:hover {
+    padding-top: 0;
+  }
 }
 
 .navbar-default .navbar-nav > li > a.navbar-cta {

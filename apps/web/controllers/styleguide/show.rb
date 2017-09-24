@@ -1,6 +1,7 @@
 module Web::Controllers::Styleguide
   class Show
     include Web::Action
+    include Web::Users::SkipAuthentication
 
     expose :base_font
     expose :header_font

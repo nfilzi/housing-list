@@ -75,3 +75,14 @@
     }
   }
 }
+
+.side-banner {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+
+  @media (max-width: $screen-xs-max) {
+    display: none;
+  }
+}

@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 side-banner" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+    </div>
+    <div class="col-xs-12 col-md-4 col-md-offset-1 user-authentication-container">
+      <div class="user-authentication">
+        <h1>Let's create an account</h1>
+        <%=
+          form_for :user, routes.user_sign_up_path do
+            if flash[:alert] || !params.valid?
+              p class: 'error-message' do
+                text(flash[:alert] || 'Please fill in email and password')
+              end
+            end
+
+            div class: 'form-group' do
+              label 'Email', for: 'user-email'
+              text_field :email, placeholder: 'Your email', class: 'form-control'
+            end
+
+            div class: 'form-group' do
+              label 'Password', for: 'user-password'
+              password_field :password, placeholder: 'Make it safe (min 6 chars.)', class: 'form-control'
+            end
+
+            div do
+              submit 'Sign up', class: 'btn btn-primary'
+            end
+          end
+        %>
+        <div class="authentication-links">
+          <%= link_to 'I already have an account', routes.user_sign_in_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
