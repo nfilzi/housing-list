@@ -82,7 +82,7 @@
   background-position: center;
   min-height: 100vh;
 
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: $screen-sm-max) {
     display: none;
   }
 }
