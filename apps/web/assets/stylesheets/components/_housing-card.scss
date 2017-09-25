@@ -5,6 +5,11 @@ $housing-card-image-width: 230px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 2em;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    margin-top: 4em;
   }
 }
 

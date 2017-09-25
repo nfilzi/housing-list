@@ -1,7 +1,12 @@
+require_relative 'authorization'
+
 module Web::Controllers::Trips
   module Housings
     class Create
       include Web::Action
+      include Web::Trips::Housings::Authorization
+
+      before :load_trip_and_authorize
 
       expose :trip
 
@@ -12,10 +17,9 @@ module Web::Controllers::Trips
       end
 
       def call(params)
-        @trip = TripRepository.new.find(params[:trip_id])
-
         if params.valid?
           housing = HousingRepository.new.create(housing_params)
+          set_user_as_organizer
 
           redirect_to routes.trip_path(@trip.id)
         else
@@ -25,6 +29,7 @@ module Web::Controllers::Trips
 
       private
 
+      # TODO: move in an interactor
       def housing_params
         params[:housing].merge(
           trip_id:  params[:trip_id],
@@ -39,6 +44,13 @@ module Web::Controllers::Trips
         match_data     = url.match(provider_regex)
 
         match_data ? match_data[:provider] : 'n/a'
+      end
+
+      def set_user_as_organizer
+        return if user_organizer?
+
+        TripOrganizerRepository.new.create(organizer_id: current_user.id, trip_id: @trip.id)
+        session[:invitation_token] = nil
       end
     end
   end

@@ -84,6 +84,25 @@
   }
 }
 
+.trip-invitation {
+  text-align: center;
+  padding-top: 1em;
+
+  #trip-invitation-link {
+    text-align: center;
+
+    @media (max-width: $screen-xs-max) {
+      width: 100%;
+      padding: 0.25em;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      border: none;
+      min-width: 450px;
+    }
+  }
+}
+
 .trip-show {
   .details {
     display: flex;
@@ -117,9 +136,13 @@
 }
 
 .trip-status {
-  margin: 1em 0 2em 0;
+  margin-top: 1em;
   text-align: center;
   font-size: 23px;
+
+  @media (min-width: $screen-sm-min) {
+    margin-top: 2em;
+  }
 
   .icon {
     display: block;

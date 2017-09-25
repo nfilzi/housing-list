@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module Web::Controllers::Trips
   class Create
     include Web::Action
@@ -13,12 +15,21 @@ module Web::Controllers::Trips
 
     def call(params)
       if params.valid?
-        trip = TripRepository.new.create(params[:trip])
+        trip = TripRepository.new.create_with_organizer(trip_params)
 
         redirect_to routes.trip_path(trip.id)
       else
         self.status = 422
       end
+    end
+
+    private
+
+    def trip_params
+      params[:trip].merge(
+        trip_organizers: [organizer_id: current_user.id],
+        invitation_token: SecureRandom.hex[0, 8].upcase
+      )
     end
   end
 end

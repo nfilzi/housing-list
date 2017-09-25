@@ -1,0 +1,15 @@
+<div class="trip-invitation">
+  <%=
+    form_for :trip_invitation, '#', method: :get do
+      div do
+        text_field :link, value: routes.trip_by_token_url(trip.id, trip.invitation_token), readonly: '', id: 'trip-invitation-link'
+      end
+      div do
+        button 'Copy to invite friends', 'data-copytarget' => '#trip-invitation-link', class: 'btn btn-link copy-invitation-link'
+      end
+    end
+  %>
+  <span class="trip-invitation-notice">
+    <%# used by js %>
+  </span>
+</div>

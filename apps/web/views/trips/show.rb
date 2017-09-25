@@ -14,6 +14,10 @@ module Web::Views::Trips
     def_delegators :housing_stats, :total_price_min
     def_delegators :housing_stats, :total_price_max
 
+    def after_js
+      javascript('copy-invitation-link', async: true)
+    end
+
     def days_before_trip
       (trip.starting_on - Date.today).to_i
     end
@@ -41,6 +45,10 @@ module Web::Views::Trips
       end
     end
 
+    def trip_to_come?
+      Date.today < trip.starting_on
+    end
+
     private
 
     def housing_pending?(housing)
@@ -49,10 +57,6 @@ module Web::Views::Trips
 
     def has_housings?
       housings_count >= 1
-    end
-
-    def trip_to_come?
-      Date.today < trip.starting_on
     end
   end
 end
