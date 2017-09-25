@@ -49,8 +49,7 @@ module Web
 
       # URI host used by the routing system to generate absolute URLs
       # Defaults to "localhost"
-      #
-      # host 'example.org'
+      host ENV.fetch('HOST')
 
       # URI port used by the routing system to generate absolute URLs
       # Argument: An object coercible to integer, defaults to 80 if the scheme
@@ -301,7 +300,7 @@ module Web
     configure :production do
       # scheme 'https'
       # host   'example.org'
-      # port   443
+      port   80
 
       assets do
         # Don't compile static assets in production mode (eg. Sass, ES6)
