@@ -16,6 +16,22 @@ module Web
           text    "to find some place to stay at!"
         end
       end
+
+      def running_trip_message
+        html.p(class: 'trip-status') do
+          text    'Time to'
+          strong  "enjoy"
+          text    "this trip!"
+        end
+      end
+
+      def finished_trip_message
+        html.p(class: 'trip-status') do
+          text    'Hope you'
+          strong  "enjoyed"
+          text    "this trip!"
+        end
+      end
     end
   end
 end
