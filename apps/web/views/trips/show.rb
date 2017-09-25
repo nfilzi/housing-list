@@ -36,9 +36,13 @@ module Web::Views::Trips
     end
 
     def trip_status
-      return unless trip_to_come?
-
-      if has_housings?
+      case
+      when running_trip?
+        running_trip_message
+      when trip_finished?
+        finished_trip_message
+      # otherwise trip to come
+      when has_housings?
         few_days_left_message(days_before_trip)
       else
         create_a_housing_message
@@ -57,6 +61,14 @@ module Web::Views::Trips
 
     def has_housings?
       housings_count >= 1
+    end
+
+    def running_trip?
+      Date.today >= trip.starting_on && Date.today <= trip.ending_on
+    end
+
+    def trip_finished?
+      Date.today > trip.ending_on
     end
   end
 end
