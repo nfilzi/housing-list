@@ -35,22 +35,6 @@ module Web::Views::Trips
       end
     end
 
-    def invitation_link
-      return unless trip_to_come?
-
-      html.div(class: 'trip-invitation') do
-        form_for :trip_invitation, '#', method: :get do
-          div do
-            text_field :link, value: routes.trip_by_token_url(trip.id, trip.invitation_token), readonly: '', id: 'trip-invitation-link'
-          end
-          div do
-            button 'Copy to invite friends', 'data-copytarget' => '#trip-invitation-link', class: 'btn btn-link copy-invitation-link'
-          end
-          span class: 'trip-invitation-notice'
-        end
-      end
-    end
-
     def trip_status
       return unless trip_to_come?
 
@@ -61,6 +45,10 @@ module Web::Views::Trips
       end
     end
 
+    def trip_to_come?
+      Date.today < trip.starting_on
+    end
+
     private
 
     def housing_pending?(housing)
@@ -69,10 +57,6 @@ module Web::Views::Trips
 
     def has_housings?
       housings_count >= 1
-    end
-
-    def trip_to_come?
-      Date.today < trip.starting_on
     end
   end
 end
