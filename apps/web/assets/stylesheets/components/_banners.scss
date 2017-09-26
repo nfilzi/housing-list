@@ -29,6 +29,8 @@
 
   .action-container {
     position: absolute;
+    left: 0;
+    right: 0;
     bottom: -23px; // [button-action] half of the height of the button
     width: 100%;
     text-align: center;
