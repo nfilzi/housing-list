@@ -9,6 +9,8 @@ namespace :users do
   post 'sign_up', to: 'users/registration#create'
 end
 
+resource :profile, only: [:edit, :update]
+
 get '/trips/:id/token/:token', to: 'trips#show', as: :trip_by_token
 
 resources :trips, only: [:show, :new, :create] do

@@ -6,6 +6,8 @@
   <body>
     <%= render partial: 'layouts/navbar' %>
     <%= yield %>
+    <%= javascript 'jquery-3.2.1.min' %>
+    <%= javascript 'bootstrap' %>
     <%= local :after_js %>
   </body>
 </html>
