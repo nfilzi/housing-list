@@ -127,12 +127,16 @@
         max-width: 30%;
       }
 
+      &-title {
+        margin: 1.2em 0;
+      }
       &-icon {
-        font-size: 2em;
+        font-size: 3em;
       }
 
       &-description {
         text-align: left;
+        line-height: 1.7em
       }
     }
   }
