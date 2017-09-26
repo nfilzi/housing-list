@@ -91,7 +91,7 @@
 }
 
 .home-stats {
-  padding-bottom: 20px;
+  padding: 0 0.7em 20px;
   color: $black;
   background-color: $gray-lighter;
   display: flex;
@@ -109,7 +109,13 @@
 }
 
 .home-featurettes {
-  padding: 3em;
+  @media (max-width: $screen-xs-max) {
+    padding: 1.5em;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    padding: 3em;
+  }
 
   .featurettes-list {
     display: flex;
@@ -123,16 +129,31 @@
       padding: 1.5em;
       text-align: center;
 
-      @media (min-width: $screen-sm-min) {
-        max-width: 30%;
-      }
-
-      &-icon {
-        font-size: 2em;
-      }
-
       &-description {
         text-align: left;
+        line-height: 1.7em;
+        max-width: 300px;
+      }
+
+      @media (max-width: $screen-xs-max) {
+        &-title {
+          margin: 0.7em 0;
+        }
+
+        &-icon {
+          font-size: 2.5m;
+        }
+      }
+
+      @media (min-width: $screen-sm-min) {
+        max-width: 30%;
+        &-title {
+          margin: 1em 0;
+        }
+
+        &-icon {
+          font-size: 3em;
+        }
       }
     }
   }
