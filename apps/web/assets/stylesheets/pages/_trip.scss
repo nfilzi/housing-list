@@ -9,33 +9,7 @@
     }
   }
 
-  .error-message {
-    margin-bottom: 1.5em;
-  }
-
-  .form-entry:not(:last-child) {
-    margin-bottom: 1em;
-  }
-
   .trip-creation-form {
-    label {
-      font-weight: $base-font-weight;
-    }
-
-    input {
-      border: none;
-      font-weight: $header-font-weight;
-
-      &:focus {
-        outline: 0;
-      }
-
-      &::placeholder {
-        color: $raspberry;
-        font-weight: $base-font-weight;
-      }
-    }
-
     .trip-dates {
       display: flex;
 
