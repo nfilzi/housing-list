@@ -1,0 +1,32 @@
+<div class="banner widescreen-banner profile-edition" style="background-image: url('<%= asset_path('profile-background.jpg') %>');">
+  <div class="content">
+    <h1 class="title">Here you can give us a bit more information about yourself!</h1>
+
+    <%=
+      form_for :profile, routes.profile_path, method: :patch, values: { profile: profile }, class: 'human-form' do
+        div class: 'details' do
+          unless params.valid?
+            p class: 'error-message' do
+              text 'Please fill in all your profile information'
+            end
+          end
+
+          div class: 'form-entry' do
+            label 'I am', for: 'profile-first-name'
+            text_field :first_name, placeholder: 'Bob'
+            text_field :last_name, placeholder: 'Dylan'
+          end
+
+          div class: 'form-entry profile-email-entry' do
+            label 'You can reach me at:', for: 'profile-email'
+            text_field :email, placeholder: 'bob@dylan.com'
+          end
+        end
+
+        div class: 'action-container' do
+          submit 'Save! 👍', class: 'btn btn-primary'
+        end
+      end
+    %>
+  </div>
+</div>
