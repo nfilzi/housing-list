@@ -29,6 +29,8 @@
 
   .action-container {
     position: absolute;
+    left: 0;
+    right: 0;
     bottom: -23px; // [button-action] half of the height of the button
     width: 100%;
     text-align: center;
@@ -85,4 +87,17 @@
   @media (max-width: $screen-sm-max) {
     display: none;
   }
+}
+
+.widescreen-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100vh;
+  padding-top: $navbar-height;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

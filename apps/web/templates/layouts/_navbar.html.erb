@@ -1,22 +1,57 @@
 <nav class="navbar navbar-default <%= 'navbar-sticky' if sticky_navbar %>">
   <div class="container-fluid">
     <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <%= link_to 'HOUSINGLIST', routes.root_path, class: "navbar-brand" %>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'START PLANNING!', routes.new_trip_path, class: 'navbar-cta' %></li>
-        <li>
-          <% if user_signed_in? %>
+
+        <% if user_signed_in? %>
+          <%# -- non mobile version -- %>
+          <li class="navbar-sm">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle navbar-link navbar-avatar" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <%= image 'avatar.jpg' %>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to 'Profile', routes.edit_profile_path %>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <%=
+                    form_for :user, routes.user_sign_out_path, method: :delete do
+                      submit 'Log out', class: 'btn btn-link navbar-logout-btn'
+                    end
+                  %>
+                </li>
+              </ul>
+            </li>
+          </li>
+
+          <%# -- mobile version --%>
+          <li class="navbar-xs">
+            <%= link_to 'Profile', routes.edit_profile_path %>
+          </li>
+          <li class="navbar-xs">
             <%=
               form_for :user, routes.user_sign_out_path, method: :delete do
-                submit 'Log out', class: 'btn btn-link'
+                submit 'Log out', class: 'btn btn-link navbar-logout-btn'
               end
             %>
-          <% else %>
-            <%= link_to "Sign in", routes.user_sign_in_path %>
-          <% end %>
-        </li>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Sign in", routes.user_sign_in_path, class: 'navbar-link' %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

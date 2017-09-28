@@ -1,0 +1,24 @@
+.human-form {
+  label {
+    font-weight: $base-font-weight;
+  }
+
+  input {
+    border: none;
+    font-weight: $header-font-weight;
+    border-bottom: 1px dashed $black;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: $raspberry;
+      font-weight: $base-font-weight;
+    }
+  }
+
+  .form-entry:not(:last-child) {
+    margin-bottom: 1em;
+  }
+}
