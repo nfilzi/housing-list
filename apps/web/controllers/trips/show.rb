@@ -11,7 +11,7 @@ module Web::Controllers::Trips
 
     def call(params)
       @housings      = HousingRepository.new.for_trip_sorted_by_most_recent(@trip.id)
-      @housing_stats = HousingRepository.new.stats_for_trip(@trip.id)
+      @housing_stats = TripRepository.new.stats_for_trip(@trip.id)
     end
 
     private
