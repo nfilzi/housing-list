@@ -4,6 +4,38 @@ class TripRepository < Hanami::Repository
     has_many :trip_organizers
   end
 
+  def all_for_organizer_by_status(organizer_id, status)
+    all_trips = relations[:trips].
+      join(:trip_organizers).
+      left_join(:housings).
+      select_append {
+        [
+          int::count(Sequel.qualify('housings', 'id')).as(:housings_count),
+          int::avg(Sequel.qualify('housings', 'total_price')).as(:total_price_avg)
+        ]
+      }.
+      where(organizer_id: organizer_id).
+      group(:id)
+
+    case status
+    when :future
+      all_trips = all_trips.
+        where { starting_on > Date.today }.
+        order(:starting_on)
+    when :ongoing
+      all_trips = all_trips.
+        where { starting_on <= Date.today }.
+        where { ending_on >= Date.today }.
+        order(:starting_on)
+    when :completed
+      all_trips = all_trips.
+        where { ending_on < Date.today }.
+        order(Sequel.desc(:ending_on))
+    end
+
+    return all_trips.as(TripWithStats).to_a
+  end
+
   def create_with_organizer(data)
     assoc(:trip_organizers).create(data)
   end
