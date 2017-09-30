@@ -9,11 +9,6 @@ module Web::Views::Trips
     include Web::Helpers::Housings
     include Web::Helpers::TripStatusMessages
 
-    def_delegators :housing_stats, :housings_count
-    def_delegators :housing_stats, :total_price_avg
-    def_delegators :housing_stats, :total_price_min
-    def_delegators :housing_stats, :total_price_max
-
     def after_js
       javascript('copy-invitation-link', async: true)
     end
@@ -60,7 +55,7 @@ module Web::Views::Trips
     end
 
     def has_housings?
-      housings_count >= 1
+      trip.housings_count >= 1
     end
 
     def running_trip?
