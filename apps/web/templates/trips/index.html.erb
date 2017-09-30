@@ -39,15 +39,15 @@
 
               <ul class="list-unstyled details">
                 <li>
-                  🗓 <strong><%= format_trip_date(trip.starting_on) %></strong>
-                   👉
-                  <strong><%= format_trip_date(trip.ending_on) %></strong>
+                  🗓 <%= format_trip_date(trip.starting_on) %>
+                  👉
+                  <%= format_trip_date(trip.ending_on) %>
                 </li>
                 <li>
                   🏡 <%= trip.housings_count %> potential housings
                 </li>
                 <li>
-                  💸 <strong><%= trip.total_price_avg_per_pers %> € total average</strong> per person
+                  💸 <%= trip.total_price_avg_per_pers %> € total average per person
                 </li>
               </ul>
             </div>
