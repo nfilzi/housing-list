@@ -50,7 +50,6 @@ a.navbar-brand {
 .navbar .dropdown-menu > li > a:hover,
 .navbar .dropdown-menu > li > a:focus {
   border-bottom-style: none;
-  text-decoration: underline;
   padding-bottom: 3px;
 }
 
@@ -84,6 +83,10 @@ a.navbar-brand {
   padding: 3px 20px;
   border: 0;
   width: 100%;
+
+  &:hover {
+    text-decoration: none;
+  }
 
   @media (min-width: $screen-sm-min) {
     color: $black;
