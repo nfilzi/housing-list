@@ -12,6 +12,8 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
+                <li><%= link_to 'Trips', routes.trips_path, class: 'navbar-link' %></li>
+
                 <%# -- non mobile version -- %>
                 <li class="navbar-sm">
                   <li class="dropdown">
