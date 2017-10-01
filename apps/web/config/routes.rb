@@ -11,14 +11,11 @@ end
 
 resource :profile, only: [:edit, :update]
 
-get '/trips/:id/token/:token', to: 'trips#show', as: :trip_by_token
+# custom trip routes
+get '/trips/:status',          to: 'trips#index', as: :trips_by_status, status: /(ongoing|completed)/
+get '/trips/:id/token/:token', to: 'trips#show',  as: :trip_by_token
 
 resources :trips, only: [:index, :show, :new, :create] do
-  collection do
-    get :ongoing
-    get :completed
-  end
-
   resources :housings, only: [:new, :create]
 end
 
