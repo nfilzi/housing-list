@@ -1,0 +1,9 @@
+<div class="no-trips-found">
+  <div class="globe">
+    🌏
+  </div>
+  <p class="message">
+    You have no <strong><%= trips_status %></strong> trips yet.
+  </p>
+  <%= link_to "Let's plan ONE! 🙌", routes.new_trip_path, class: 'btn btn-primary' %>
+</div>

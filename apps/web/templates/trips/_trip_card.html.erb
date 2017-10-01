@@ -1,0 +1,34 @@
+<div class="row trip-card">
+  <div class="col-xs-12 col-md-6 col-md-offset-1 content">
+    <a href="<%= routes.trip_path(trip.id) %>">
+      <h2 class="title"><%= trip.destination %></h2>
+    </a>
+    <p class="summary">
+      <small>
+        With <strong><%= trip.travelers_count %> friends</strong>
+        <% if trip.future? %>
+          in <strong><%= trip.days_before_beginning %> days</strong>
+        <% end %>
+      </small>
+    </p>
+
+    <ul class="list-unstyled details">
+      <li>
+        🗓 <%= trip.date(trip.starting_on) %>
+        👉
+        <%= trip.date(trip.ending_on) %>
+      </li>
+      <li>
+        🏡 <%= trip.housings_count %> potential housings
+      </li>
+      <li>
+        💸 <%= trip.total_price_avg_per_pers %> € total average per person
+      </li>
+    </ul>
+  </div>
+    <div class="col-xs-12 col-md-4 banner-picture" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+      <a href="<%= routes.trip_path(trip.id) %>" class="banner-picture-link">
+        <%# link on the whole div %>
+      </a>
+    </div>
+</div>
