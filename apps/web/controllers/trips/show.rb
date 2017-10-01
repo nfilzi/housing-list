@@ -10,19 +10,18 @@ module Web::Controllers::Trips
     expose :trip
 
     def call(params)
-      @housings      = HousingRepository.new.for_trip_sorted_by_most_recent(@trip.id)
-      @housing_stats = TripRepository.new.stats_for_trip(@trip.id)
+      @housings = HousingRepository.new.for_trip_sorted_by_most_recent(@trip.id)
     end
 
     private
 
     def load_trip_and_authorize
-      @trip = TripRepository.new.find_with_organizers(params[:id])
+      @trip = TripRepository.new.find_with_stats(params[:id])
       halt 404 unless @trip && ((user_signed_in? && user_organizer?) || visitor_authorized?)
     end
 
     def user_organizer?
-      @trip.trip_organizers.any? { |organizer| organizer.organizer_id == current_user.id }
+      TripOrganizerRepository.new.organizes_trip?(current_user.id, @trip.id)
     end
 
     def visitor_authorized?

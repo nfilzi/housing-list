@@ -4,9 +4,9 @@
     <div class="details-container">
       <div class="details">
         <ul class="list-unstyled overview overview-housing">
-          <li><strong><%= housings_count %></strong> potential housing places</li>
-          <li>Between <strong><%= total_price_min %>€</strong> and <strong><%= total_price_max %>€</strong> per person</li>
-          <li><strong><%= total_price_avg %>€</strong> per person on average</li>
+          <li><strong><%= trip.housings_count %></strong> potential housing places</li>
+          <li>Between <strong><%= trip.total_price_min_per_pers %>€</strong> and <strong><%= trip.total_price_max_per_pers %>€</strong> per person</li>
+          <li><strong><%= trip.total_price_avg_per_pers %>€</strong> per person on average</li>
         </ul>
         <ul class="list-unstyled overview overview-trip">
           <li>From <strong><%= format_trip_date(trip.starting_on) %></strong> to <strong><%= format_trip_date(trip.ending_on) %></strong></li>

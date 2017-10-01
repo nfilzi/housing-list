@@ -1,0 +1,64 @@
+<div class="trips">
+  <div class="trips-navbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 no-gutter">
+          <ul class="list-unstyled">
+            <li class="<%= 'active' if trip_status == :future %>">
+              <%= link_to 'Future trips', routes.trips_path %>
+            </li>
+            <li class="<%= 'active' if trip_status == :ongoing %>">
+              <%= link_to 'Ongoing trips', routes.ongoing_trips_path %>
+            </li>
+            <li class="<%= 'active' if trip_status == :completed %>">
+              <%= link_to 'Past trips', routes.completed_trips_path %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <% trips.each do |trip| %>
+          <div class="row trip-card">
+            <div class="col-xs-12 col-md-6 col-md-offset-1 content">
+              <a href="<%= routes.trip_path(trip.id) %>">
+                <h2 class="title"><%= trip.destination %></h2>
+              </a>
+              <p class="summary">
+                <small>
+                  With <strong><%= trip.travelers_count %> friends</strong>
+                  <% if days_before_trip(trip) > 0 %>
+                    in <strong><%= days_before_trip(trip) %> days</strong>
+                  <% end %>
+                </small>
+              </p>
+
+              <ul class="list-unstyled details">
+                <li>
+                  🗓 <%= format_trip_date(trip.starting_on) %>
+                  👉
+                  <%= format_trip_date(trip.ending_on) %>
+                </li>
+                <li>
+                  🏡 <%= trip.housings_count %> potential housings
+                </li>
+                <li>
+                  💸 <%= trip.total_price_avg_per_pers %> € total average per person
+                </li>
+              </ul>
+            </div>
+              <div class="col-xs-12 col-md-4 banner-picture" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+                <a href="<%= routes.trip_path(trip.id) %>" class="banner-picture-link">
+                  <%# link on the whole div %>
+                </a>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
