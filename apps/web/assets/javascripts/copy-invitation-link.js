@@ -3,7 +3,7 @@
   'use strict';
 
   // click event
-  var element = document.querySelector('.copy-invitation-link')
+  var element = document.querySelector('.copy-invitation-link');
   element.addEventListener('click', copyInvitationLink, true);
 
   // event handler
