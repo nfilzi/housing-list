@@ -9,7 +9,7 @@
           <li><strong><%= trip.total_price_avg_per_pers %>€</strong> per person on average</li>
         </ul>
         <ul class="list-unstyled overview overview-trip">
-          <li>From <strong><%= format_trip_date(trip.starting_on) %></strong> to <strong><%= format_trip_date(trip.ending_on) %></strong></li>
+          <li>From <strong><%= trip.date(trip.starting_on) %></strong> to <strong><%= trip.date(trip.ending_on) %></strong></li>
           <li>Near <strong><%= trip.destination %></strong></li>
           <li>For <strong><%= trip.travelers_count %> people</strong></li>
         </ul>
@@ -28,8 +28,8 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <%= trip_status %>
-      <%= render partial: 'invitation_link' if trip_to_come? %>
+      <%= trip_status_message %>
+      <%= render partial: 'invitation_link' if trip.future? %>
     </div>
   </div>
   <div class="row">

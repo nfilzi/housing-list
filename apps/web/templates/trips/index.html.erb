@@ -8,10 +8,10 @@
               <%= link_to 'Future trips', routes.trips_path %>
             </li>
             <li class="<%= 'active' if trip_status == :ongoing %>">
-              <%= link_to 'Ongoing trips', routes.ongoing_trips_path %>
+              <%= link_to 'Ongoing trips', routes.trips_by_status_path(:ongoing) %>
             </li>
             <li class="<%= 'active' if trip_status == :completed %>">
-              <%= link_to 'Past trips', routes.completed_trips_path %>
+              <%= link_to 'Past trips', routes.trips_by_status_path(:completed) %>
             </li>
           </ul>
         </div>
@@ -31,17 +31,17 @@
               <p class="summary">
                 <small>
                   With <strong><%= trip.travelers_count %> friends</strong>
-                  <% if days_before_trip(trip) > 0 %>
-                    in <strong><%= days_before_trip(trip) %> days</strong>
+                  <% if trip.future? %>
+                    in <strong><%= trip.days_before_beginning %> days</strong>
                   <% end %>
                 </small>
               </p>
 
               <ul class="list-unstyled details">
                 <li>
-                  🗓 <%= format_trip_date(trip.starting_on) %>
+                  🗓 <%= trip.date(trip.starting_on) %>
                   👉
-                  <%= format_trip_date(trip.ending_on) %>
+                  <%= trip.date(trip.ending_on) %>
                 </li>
                 <li>
                   🏡 <%= trip.housings_count %> potential housings
