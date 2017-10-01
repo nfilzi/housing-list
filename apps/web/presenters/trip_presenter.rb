@@ -1,5 +1,6 @@
 class TripPresenter
   include Hanami::Presenter
+  include Hanami::Helpers::EscapeHelper
   include Web::Helpers::DateFormatter
 
   def days_before_beginning
@@ -14,6 +15,8 @@ class TripPresenter
     housings_count >= 1
   end
 
+  # statuses
+
   def future?
     Date.today < starting_on
   end
@@ -24,5 +27,33 @@ class TripPresenter
 
   def completed?
     Date.today > ending_on
+  end
+
+  def status
+    case
+    when future?
+      :future
+    when ongoing?
+      :ongoing
+    when completed?
+      :completed
+    end
+  end
+
+  def status_message
+    message = case status
+      when :future
+        if has_housings?
+          "Only <strong>#{days_before_beginning} days left</strong> to find some place to stay at!"
+        else
+          "<span class='icon'>👆</span Let's create <strong>your first housing!</strong>"
+        end
+      when :ongoing
+        "Time to <strong>enjoy</strong> this trip!"
+      when :completed
+        "Hope you <strong>enjoyed</strong> this trip!"
+      end
+
+    raw message
   end
 end

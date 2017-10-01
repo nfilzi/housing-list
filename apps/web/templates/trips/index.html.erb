@@ -4,13 +4,13 @@
       <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 no-gutter">
           <ul class="list-unstyled">
-            <li class="<%= 'active' if trip_status == :future %>">
+            <li class="<%= 'active' if trips_status == :future %>">
               <%= link_to 'Future trips', routes.trips_path %>
             </li>
-            <li class="<%= 'active' if trip_status == :ongoing %>">
+            <li class="<%= 'active' if trips_status == :ongoing %>">
               <%= link_to 'Ongoing trips', routes.trips_by_status_path(:ongoing) %>
             </li>
-            <li class="<%= 'active' if trip_status == :completed %>">
+            <li class="<%= 'active' if trips_status == :completed %>">
               <%= link_to 'Past trips', routes.trips_by_status_path(:completed) %>
             </li>
           </ul>
