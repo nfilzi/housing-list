@@ -15,14 +15,16 @@
         </ul>
       </div>
     </div>
-    <div class="action-container">
-      <%=
-        link_to routes.new_trip_housing_path(trip.id), class: 'btn btn-primary' do
-          i(class: "fa fa-plus-circle", 'aria-hidden' => true)
-          text 'New place'
-        end
-      %>
-    </div>
+    <% if trip.future? %>
+      <div class="action-container">
+        <%=
+          link_to routes.new_trip_housing_path(trip.id), class: 'btn btn-primary' do
+            i(class: "fa fa-plus-circle", 'aria-hidden' => true)
+            text 'New place'
+          end
+        %>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="container">
