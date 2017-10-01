@@ -1,10 +1,10 @@
 require 'hanami/interactor'
 
 module Housings
-  module Airbnb
-    class Scraper
+  module Scrapers
+    class Airbnb
       include Hanami::Interactor
-      expose :data
+      expose :housing_attributes
 
       private
       attr_reader :url, :browser
@@ -12,19 +12,19 @@ module Housings
       public
       def initialize(url:)
         @url = url
-        init_capybara
-        @browser = Capybara.current_session
-        browser.visit(housing_url_with_currency)
       end
 
       def call
-        housing_full_airbnb_data = extract_housing_data_from_embedded_json
-        @data                    = extract_housing_data(housing_full_airbnb_data)
+        init_capybara
+        @browser = Capybara.current_session
+        browser.visit(url_with_currency)
+
+        @housing_attributes = build_housing_attributes
       end
 
       private
 
-      def housing_url_with_currency
+      def url_with_currency
         url + "&currency=#{find_currency}"
       end
 
@@ -35,20 +35,23 @@ module Housings
         "EUR"
       end
 
-      def extract_housing_data(data)
+      def build_housing_attributes
         sleep 1 # Keeps finding multiple elements with the below selector without this 😱
-        total_price = browser.find(".book-it__subtotal table tbody tr:last-child").text.gsub(/[^\d]/, "").to_i
+        data                  = extract_airbnb_housing_data
+        total_price_selector  = ".book-it__subtotal table tbody tr:last-child"
+        total_price           = browser.find(total_price_selector).text.gsub(/[^\d]/, "").to_i
+
         return {
-          title: data["name"],
-          description: data["description"],
-          total_price: total_price,
-          airbnb_id: data["id"],
-          picture_url: data["photos"].first["large"],
-          raw_data_blob: data
+          title:          data["name"],
+          description:    data["description"],
+          total_price:    total_price,
+          airbnb_id:      data["id"],
+          picture_url:    data["photos"].first["large"],
+          raw_data_blob:  data
         }
       end
 
-      def extract_housing_data_from_embedded_json
+      def extract_airbnb_housing_data
         raw_data = browser.all("body script", visible: false)[5].text(:all)
         JSON.parse(raw_data[4..-4])["bootstrapData"]["reduxData"]["marketplacePdp"]["listingInfo"]["listing"]
       end

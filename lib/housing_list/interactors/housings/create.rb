@@ -18,14 +18,14 @@ module Housings
     def call
       @housing = HousingRepository.new.create(housing_params)
       set_user_as_organizer
-      Housings::UpdateWithScrapedData.new(housing).call
+      Housings::FetchDetailsAndUpdate.new(housing).call
     end
 
     private
 
     def set_user_as_organizer
       return if user_organizer?
-      TripOrganizerRepository.new.create(organizer_id: user.id, trip_id: trip.id)
+      TripOrganizerRepository.organizes_trip?(user.id, trip.id)
     end
 
     def user_organizer?

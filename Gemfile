@@ -17,7 +17,6 @@ gem 'capybara'
 gem 'poltergeist'
 gem 'launchy'
 
-
 # assets
 gem 'sass'
 
