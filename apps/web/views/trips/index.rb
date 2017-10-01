@@ -1,14 +1,11 @@
+require_relative '../../presenters/trip_presenter'
+
 module Web::Views::Trips
   class Index
     include Web::View
-    include Web::Helpers::DateFormatter
 
-    def days_before_trip(trip)
-      (trip.starting_on - Date.today).to_i
-    end
-
-    def format_trip_date(date)
-      format_date(date, format: '%b %e', ordinal_indicator: true)
+    def trips
+      locals[:trips].map { |trip| TripPresenter.new(trip) }
     end
   end
 end

@@ -19,7 +19,7 @@
   <div class="price">
     <span>
       <i class="fa fa-user" aria-hidden=true></i>
-      <%= housing_total_price_per_person(trip, housing) %> €
+      <%= housing.total_price_per_person(trip.travelers_count) %> €
     </span>
   </div>
 </div>
