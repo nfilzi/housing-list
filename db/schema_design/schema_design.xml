@@ -90,6 +90,9 @@
 <row name="picture" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
+<row name="imported" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>false</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
