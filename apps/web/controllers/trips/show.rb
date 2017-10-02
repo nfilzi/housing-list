@@ -1,9 +1,13 @@
+require_relative 'authorization'
+
 module Web::Controllers::Trips
   class Show
     include Web::Action
     include Web::Users::SkipAuthentication
+    include Web::Trips::Authorization
 
-    before :load_trip_and_authorize
+    before :load_trip
+    before :authorize
 
     expose :housing_stats
     expose :housings
@@ -15,24 +19,8 @@ module Web::Controllers::Trips
 
     private
 
-    def load_trip_and_authorize
+    def load_trip
       @trip = TripRepository.new.find_with_stats(params[:id])
-      halt 404 unless @trip && ((user_signed_in? && user_organizer?) || visitor_authorized?)
-    end
-
-    def user_organizer?
-      TripOrganizerRepository.new.organizes_trip?(current_user.id, @trip.id)
-    end
-
-    def visitor_authorized?
-      token = params[:token].to_s
-
-      if !token.empty? && token == @trip.invitation_token
-        session[:invitation_token] = params[:token]
-        return true
-      else
-        return false
-      end
     end
   end
 end
