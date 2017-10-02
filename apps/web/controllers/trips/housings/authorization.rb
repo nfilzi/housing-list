@@ -7,7 +7,11 @@ module Web
 
         def load_trip_and_authorize
           @trip = TripRepository.new.find_with_organizers(params[:trip_id])
-          halt 401 unless @trip && (user_organizer? || user_authorized?)
+          halt 401 unless @trip && future_trip? && (user_organizer? || user_authorized?)
+        end
+
+        def future_trip?
+          @trip.starting_on >= Date.today
         end
 
         def user_organizer?
