@@ -3,6 +3,30 @@
     padding-left: 0;
     padding-right: 0;
   }
+
+  .no-trips-found {
+    text-align: center;
+    margin-bottom: 2.5em;
+
+    .globe {
+      font-size: 200px;
+      line-height: 1em;
+      filter: grayscale(100%);
+    }
+
+    .message {
+      font-size: 23px;
+      margin-bottom: 1em;
+
+      @media (max-width: $screen-xs-max) {
+        margin-top: 2em;
+      }
+
+      @media (min-width: $screen-sm-min) {
+        margin-top: 2.5em;
+      }
+    }
+  }
 }
 
 .trips-navbar {
