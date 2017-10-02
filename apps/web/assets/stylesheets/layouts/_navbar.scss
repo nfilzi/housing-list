@@ -53,16 +53,8 @@ a.navbar-brand {
   padding-bottom: 3px;
 }
 
-.navbar-default .navbar-avatar {
-  &:hover {
-    border-bottom-style: none;
-  }
-
-  img {
-    height: 45px;
-    width: 45px;
-    border-radius: 50%;
-  }
+.navbar-default .navbar-avatar:hover {
+  border-bottom-style: none;
 }
 
 .navbar-nav > li > .dropdown-menu {
