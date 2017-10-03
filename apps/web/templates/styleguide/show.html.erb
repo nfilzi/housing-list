@@ -21,6 +21,7 @@
         <li>
           <strong>Components</strong>
           <ul class="list-unstyled">
+            <li><%= link_to "Avatar", "#avatar" %></li>
             <li><%= link_to "Banner", "#banner" %></li>
             <li><%= link_to "Housing Card", "#housing-card" %></li>
           </ul>
@@ -275,6 +276,13 @@
       </div>
       <div id="components" class="style-guide--entry">
         <h2>Components</h2>
+        <div id="avatar" class="style-guide--subentry">
+          <h3>Avatar</h3>
+          <div class="style-guide--avatar">
+            <%= image 'avatar.jpg', class: "avatar" %>
+            <%= image 'housing-proposer.jpg', class: "avatar" %>
+          </div>
+        </div>
         <div id="banner" class="style-guide--subentry">
           <h3>Banner</h3>
           <div class="style-guide--banner">

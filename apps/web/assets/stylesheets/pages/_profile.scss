@@ -8,17 +8,28 @@
     padding: 2em 0;
   }
 
-  .details,
   .action-container {
     position: inherit;
   }
 
-  .details {
-    margin: 2em 0;
+  .avatar-container {
+    position: absolute;
+    top: -50px; // [avatar] half of the height of the avatar
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
 
-    @media (max-width: $screen-xs-max) {
-      padding: 2em;
-    }
+  .avatar {
+    width: 100px; // be sure to change the properties tagged with [avatar]
+    height: 100px; // be sure to change the properties tagged with [avatar]
+  }
+
+  .details {
+    position: relative;
+    margin-top: 5em;
+    margin-bottom: 2em;
+    padding: 5em 3em 3em 3.5em;
 
     @media (min-width: $screen-sm-min) {
       min-width: 500px;
