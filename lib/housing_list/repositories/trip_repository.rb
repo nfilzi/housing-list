@@ -22,7 +22,7 @@ class TripRepository < Hanami::Repository
     when :completed
       all_trips = all_trips.
         where { ending_on < Date.today }.
-        order(Sequel.desc(:ending_on))
+        order { ending_on.desc }
     end
 
     return all_trips.as(TripWithStats).to_a
@@ -55,13 +55,13 @@ class TripRepository < Hanami::Repository
 
   def trips_with_stats
     relations[:trips].
-      left_join(:housings).
+      left_join(relations[:housings]). # auto qualifies the columns
       select_append {
         [
-          int::count(Sequel.qualify(:housings, :id)).as(:housings_count),
-          int::avg(Sequel.qualify(:housings, :total_price)).as(:total_price_avg),
-          int::min(Sequel.qualify(:housings, :total_price)).as(:total_price_min),
-          int::max(Sequel.qualify(:housings, :total_price)).as(:total_price_max)
+          int::count('housings.id').as(:housings_count),
+          int::avg(:total_price).as(:total_price_avg),
+          int::min(:total_price).as(:total_price_min),
+          int::max(:total_price).as(:total_price_max)
         ]
       }.
       group(:id)
