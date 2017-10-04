@@ -9,7 +9,7 @@ class HousingRepository < Hanami::Repository
   end
 
   def for_trip_sorted_by_most_recent(trip_id)
-    wrap_user.where(trip_id: trip_id).order(Sequel.desc(:created_at)).as(Housing).to_a
+    wrap_user.where(trip_id: trip_id).order { created_at.desc }.as(Housing).to_a
   end
 
   private
