@@ -21,11 +21,6 @@ a.navbar-brand {
   }
 }
 
-.navbar-home {
-  border: none;
-  background-color: transparent;
-}
-
 .navbar-right {
   display: flex;
   align-items: center;
@@ -40,10 +35,6 @@ a.navbar-brand {
 
   .navbar-link {
     margin: 0 0.5em;
-
-    &:hover {
-      padding-top: 0;
-    }
   }
 }
 
@@ -72,35 +63,61 @@ a.navbar-brand {
 
 .navbar-default .navbar-logout-btn {
   text-align: left;
-  padding: 3px 20px;
   border: 0;
   width: 100%;
+  text-decoration: none;
 
-  &:hover {
-    text-decoration: none;
+  @media (max-width: $screen-xs-max) {
+    padding: 0 15px 2px 15px;
+
+    &:hover {
+      border-bottom: 1px solid;
+    }
   }
 
   @media (min-width: $screen-sm-min) {
     color: $black;
+    padding: 3px 20px;
 
     &:hover {
       color: $dropdown-link-hover-color;
       padding-bottom: 2px;
       background-color: $dropdown-link-hover-bg;
     }
+
+    &:focus {
+      color: $black;
+      outline: none;
+    }
+  }
+}
+
+.navbar-default .navbar-nav > li > a {
+  padding-top: 0;
+  padding-bottom: 2px;
+
+  @media (max-width: $screen-xs-max) {
+    margin-right: 0.5em;
+  }
+}
+
+.navbar-default .navbar-nav > li > form {
+  @media (max-width: $screen-xs-max) {
+    margin-right: 0.5em;
   }
 }
 
 .navbar-default .navbar-nav > li > a.navbar-cta {
   color: $white;
   font-weight: $header-font-weight;
-  margin-right: 1em;
   padding: 0.5em 1.5em;
-  border-bottom: none;
 
   @media (max-width: $screen-xs-max) {
     background-color: transparent;
-    padding-right: 15px;
+    padding-left: 12px;  // should be 15px but then it's not aligned \o/
+    padding-right: 12px; // should be 15px but then it's not aligned \o/
+    padding-bottom: 2px;
+    margin: 0.5em;
 
     &:hover {
       background-color: transparent;
@@ -108,7 +125,9 @@ a.navbar-brand {
   }
 
   @media (min-width: $screen-sm-min) {
+    margin-right: 1em;
     background-color: $raspberry;
+    border-bottom: none;
 
     &:hover {
       text-decoration: none;
