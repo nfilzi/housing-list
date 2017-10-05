@@ -42,12 +42,12 @@ module Housings
         total_price           = browser.find(total_price_selector).text.gsub(/[^\d]/, "").to_i
 
         return {
-          title:          data["name"],
-          description:    data["description"],
-          total_price:    total_price,
-          airbnb_id:      data["id"],
-          picture_url:    data["photos"].first["large"],
-          raw_data:  data
+          title:       data["name"],
+          description: data["description"],
+          total_price: total_price,
+          airbnb_id:   data["id"],
+          picture_url: data["photos"].first["large"],
+          raw_data:    data
         }
       end
 
@@ -59,7 +59,7 @@ module Housings
       def init_capybara
         require 'capybara/poltergeist'
         Capybara.register_driver :poltergeist do |app|
-          Capybara::Poltergeist::Driver.new(app, phantomjs: Phantomjs.path,js_errors: false)
+          Capybara::Poltergeist::Driver.new(app, phantomjs: Phantomjs.path, js_errors: false)
         end
 
         Capybara.default_driver = :poltergeist

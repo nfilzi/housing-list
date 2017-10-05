@@ -13,9 +13,10 @@ gem 'hanami-model', '~> 1.0', github: 'hanami/model', branch: 'develop'
 gem 'bcrypt', '~> 3.1.11' # authentication
 gem 'pg'
 
+# scraping
 gem 'capybara'
 gem 'poltergeist'
-gem 'phantomjs', :require => 'phantomjs/poltergeist'
+gem 'phantomjs', require: 'phantomjs/poltergeist'
 gem 'launchy'
 
 # assets
