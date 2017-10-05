@@ -61,7 +61,7 @@ namespace :db do
       imported: true,
       airbnb_id: 17526719,
       total_price: 2218,
-      picture_url: "https://a0.muscache.com/im/pictures/70d0b78e-f5ef-425d-82a5-aafa67f33594.jpg?aki_policy=xx_large",
+      picture_url: "https://a0.muscache.com/im/pictures/565a9b82-85cb-48b7-81cc-0b77b61d0d9a.jpg?aki_policy=xx_large",
       user_id: cecile.id,
       trip_id: lake_geneva.id
     },
@@ -72,7 +72,7 @@ namespace :db do
       provider: "booking",
       imported: true,
       total_price: 520,
-      picture_url: "https://a0.muscache.com/im/pictures/70d0b78e-f5ef-425d-82a5-aafa67f33592.jpg?aki_policy=xx_large",
+      picture_url: "https://t-ec.bstatic.com/images/hotel/max1280x900/477/47757828.jpg",
       user_id: nicolas.id,
       trip_id: lake_geneva.id
     }].each do |housing_attributes|

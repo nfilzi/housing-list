@@ -6,7 +6,7 @@ class HousingPresenter
   end
 
   def picture
-    'housing-picture-placeholder.jpg'
+    picture_url || 'housing-picture-placeholder.jpg'
   end
 
   def proposer_avatar
