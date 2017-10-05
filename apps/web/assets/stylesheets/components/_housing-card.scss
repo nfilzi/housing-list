@@ -70,6 +70,7 @@ $housing-card-image-width: 230px;
     min-width: $housing-card-image-width; // [ipad] if not present, the div width is smaller than the image it contains
 
     img {
+      object-fit: cover;
       width: $housing-card-image-width;
       height: $housing-card-image-width;
     }
