@@ -116,6 +116,7 @@ GEM
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     pg (0.20.0)
+    phantomjs (2.1.1.0)
     poltergeist (1.16.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -182,6 +183,7 @@ DEPENDENCIES
   launchy
   minitest
   pg
+  phantomjs
   poltergeist
   pry-byebug
   rake

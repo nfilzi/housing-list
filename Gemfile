@@ -15,6 +15,7 @@ gem 'pg'
 
 gem 'capybara'
 gem 'poltergeist'
+gem 'phantomjs', :require => 'phantomjs/poltergeist'
 gem 'launchy'
 
 # assets
