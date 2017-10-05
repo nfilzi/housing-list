@@ -47,7 +47,7 @@ module Housings
           total_price:    total_price,
           airbnb_id:      data["id"],
           picture_url:    data["photos"].first["large"],
-          raw_data_blob:  data
+          raw_data:  data
         }
       end
 
