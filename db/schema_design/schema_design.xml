@@ -60,7 +60,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="887" y="260" name="housings">
+<table x="879" y="261" name="housings">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -72,17 +72,23 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
 </row>
+<row name="url" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
 <row name="title" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="description" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="url" null="1" autoincrement="0">
+<row name="picture_url" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="provider" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="prodiver_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="total_price" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -93,6 +99,10 @@
 <row name="imported" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>false</default></row>
+<row name="raw_data" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default><comment>as json</comment>
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
