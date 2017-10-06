@@ -13,6 +13,8 @@ gem 'hanami-model', '~> 1.0', github: 'hanami/model', branch: 'develop'
 gem 'bcrypt', '~> 3.1.11' # authentication
 gem 'pg'
 
+gem 'sidekiq'
+
 # scraping
 gem 'capybara'
 gem 'poltergeist'

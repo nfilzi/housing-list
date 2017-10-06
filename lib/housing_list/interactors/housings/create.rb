@@ -18,7 +18,7 @@ module Housings
     def call
       @housing = HousingRepository.new.create(housing_params)
       set_user_as_organizer
-      Housings::FetchDetailsAndUpdate.new(housing).call
+      Housings::FetchDetailsAndUpdateWorker.perform_async(housing.id)
     end
 
     private
