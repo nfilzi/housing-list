@@ -1,2 +1,2 @@
 web: bundle exec hanami server
-worker: bundle exec sidekiq -r ./config/environment.rb
+worker: bundle exec sidekiq -r ./config/boot.rb
