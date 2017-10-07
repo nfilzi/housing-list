@@ -1,0 +1,3 @@
+:concurrency: 3
+:verbose: true
+:timeout: 60
