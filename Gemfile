@@ -21,6 +21,9 @@ gem 'poltergeist'
 gem 'phantomjs', require: 'phantomjs/poltergeist'
 gem 'launchy'
 
+# file upload
+gem 'uploadcare-ruby'
+
 # assets
 gem 'sass'
 

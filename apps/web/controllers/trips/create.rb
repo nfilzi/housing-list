@@ -14,9 +14,8 @@ module Web::Controllers::Trips
     end
 
     def call(params)
-      if params.valid?
-        trip = TripRepository.new.create_with_organizer(trip_params)
-
+      result = ::Trips::Create.new(current_user, params).call
+      if result.successful?
         redirect_to routes.trip_path(trip.id)
       else
         self.status = 422
