@@ -9,3 +9,7 @@ Sidekiq.configure_client do |config|
 end
 
 Sidekiq::Web.session_secret = ENV['WEB_SESSIONS_SECRET']
+
+Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
+  [user, password] == [ENV.fetch('SIDEKIQ_USERNAME'), ENV.fetch('SIDEKIQ_PASSWORD')]
+end
