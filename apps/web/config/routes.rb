@@ -1,6 +1,3 @@
-require "sidekiq/web"
-
-Sidekiq::Web.session_secret = ENV['WEB_SESSIONS_SECRET']
 mount Sidekiq::Web, at: '/sidekiq'
 
 root to: 'home#show'
