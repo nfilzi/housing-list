@@ -58,7 +58,7 @@ class TripRepository < Hanami::Repository
       left_join(relations[:housings]). # auto qualifies the columns
       select_append {
         [
-          int::count('housings.id').as(:housings_count),
+          int::count(Sequel.qualify(:housings, :id)).as(:housings_count),
           int::avg(:total_price).as(:total_price_avg),
           int::min(:total_price).as(:total_price_min),
           int::max(:total_price).as(:total_price_max)
