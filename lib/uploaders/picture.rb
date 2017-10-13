@@ -1,6 +1,6 @@
 require "uploadcare"
 module Uploaders
-  class BackgroundPicture
+  class Picture
     private
     attr_reader :filepath, :api_client
 

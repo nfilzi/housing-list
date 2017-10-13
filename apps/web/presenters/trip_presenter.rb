@@ -11,6 +11,12 @@ class TripPresenter
     (starting_on - Date.today).to_i
   end
 
+  def background_picture_url
+    # TODO
+    # Find a stock picture based on trip location?
+    "https://ucarecdn.com/#{picture_uuid}/" || ""
+  end
+
   def date(date)
     format_date(date, format: '%b %e %Y', ordinal_indicator: true)
   end

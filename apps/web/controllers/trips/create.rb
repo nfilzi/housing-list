@@ -10,25 +10,17 @@ module Web::Controllers::Trips
         required(:starting_on).filled(:date?)
         required(:ending_on).filled(:date?)
         required(:travelers_count).filled(:int?)
+        optional(:background_picture)
       end
     end
 
     def call(params)
       result = ::Trips::Create.new(current_user, params).call
       if result.successful?
-        redirect_to routes.trip_path(trip.id)
+        redirect_to routes.trip_path(result.trip.id)
       else
         self.status = 422
       end
-    end
-
-    private
-
-    def trip_params
-      params[:trip].merge(
-        trip_organizers: [organizer_id: current_user.id],
-        invitation_token: SecureRandom.hex[0, 8].upcase
-      )
     end
   end
 end
