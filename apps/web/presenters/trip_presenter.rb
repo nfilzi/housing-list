@@ -12,9 +12,8 @@ class TripPresenter
   end
 
   def background_picture_url
-    # TODO
-    # Find a stock picture based on trip location?
-    "https://ucarecdn.com/#{picture_uuid}/" || ""
+    # TODO: Find a stock picture based on trip location?
+    "https://ucarecdn.com/#{picture_uuid}/" || asset_path('lake-geneva.jpg')
   end
 
   def date(date)

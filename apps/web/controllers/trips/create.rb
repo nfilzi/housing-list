@@ -16,6 +16,7 @@ module Web::Controllers::Trips
 
     def call(params)
       result = ::Trips::Create.new(current_user, params).call
+
       if result.successful?
         redirect_to routes.trip_path(result.trip.id)
       else
