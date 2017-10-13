@@ -17,7 +17,7 @@ namespace :db do
     nicolas = user_repo.create(
       first_name: 'Nicolas',
       last_name: 'Filzi',
-      email: 'nico@housing-list.com',
+      email: 'nicolas@housing-list.com',
       encrypted_password: BCrypt::Password.create('123456')
     )
     puts '---'
