@@ -16,6 +16,7 @@ GEM
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     bcrypt (3.1.11)
+    bugsnag (5.4.1)
     byebug (9.0.6)
     capybara (2.14.0)
       addressable
@@ -185,6 +186,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.11)
+  bugsnag
   capybara
   dotenv (~> 2.0)
   hanami (~> 1.0)
