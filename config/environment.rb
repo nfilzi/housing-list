@@ -1,7 +1,7 @@
 require 'bundler/setup'
 require 'hanami/setup'
 require 'hanami/model'
-require_relative './sidekiq'
+
 require_relative '../lib/housing_list'
 require_relative '../apps/web/application'
 
