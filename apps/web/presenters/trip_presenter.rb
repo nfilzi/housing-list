@@ -3,6 +3,10 @@ class TripPresenter
   include Hanami::Helpers::EscapeHelper
   include Web::Helpers::DateFormatter
 
+  def duration
+    (ending_on - starting_on).to_i
+  end
+
   def days_before_beginning
     (starting_on - Date.today).to_i
   end

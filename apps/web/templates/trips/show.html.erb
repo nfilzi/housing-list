@@ -11,7 +11,10 @@
         <ul class="list-unstyled overview overview-trip">
           <li>From <strong><%= trip.date(trip.starting_on) %></strong> to <strong><%= trip.date(trip.ending_on) %></strong></li>
           <li>Near <strong><%= trip.destination %></strong></li>
-          <li>For <strong><%= trip.travelers_count %> people</strong></li>
+          <li>
+            For <strong><%= trip.duration %> days</strong>
+            with <strong><%= trip.travelers_count %> people</strong>
+          </li>
         </ul>
       </div>
     </div>
