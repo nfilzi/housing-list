@@ -4,22 +4,22 @@ class TripPresenter
   include Web::Assets::Helpers
   include Web::Helpers::DateFormatter
 
-  def duration
-    (ending_on - starting_on).to_i
+  def background_picture_url
+    # TODO: Find a stock picture based on trip location?
+    return asset_path('lake-geneva.jpg') unless picture_uuid
+    return "https://ucarecdn.com/#{picture_uuid}/"
   end
 
   def days_before_beginning
     (starting_on - Date.today).to_i
   end
 
-  def background_picture_url
-    # TODO: Find a stock picture based on trip location?
-    return asset_path('lake-geneva.png') unless picture_uuid
-    return "https://ucarecdn.com/#{picture_uuid}/"
-  end
-
   def date(date)
     format_date(date, format: '%b %e %Y', ordinal_indicator: true)
+  end
+
+  def duration
+    (ending_on - starting_on).to_i
   end
 
   def has_housings?

@@ -1,10 +1,8 @@
-require 'forwardable'
 require_relative '../../presenters/housing_presenter'
 require_relative '../../presenters/trip_presenter'
 
 module Web::Views::Trips
   class Show
-    extend Forwardable
     include Web::View
     include Web::Helpers::DateFormatter
     include Web::Helpers::TextFormatter

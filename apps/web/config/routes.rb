@@ -19,7 +19,7 @@ resource :profile, only: [:edit, :update]
 get '/trips/:status',          to: 'trips#index', as: :trips_by_status, status: /(ongoing|completed)/
 get '/trips/:id/token/:token', to: 'trips#show',  as: :trip_by_token
 
-resources :trips, only: [:index, :show, :new, :create] do
+resources :trips, only: [:index, :show, :new, :create, :edit, :update] do
   resources :housings, only: [:new, :create]
 end
 

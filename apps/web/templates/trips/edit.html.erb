@@ -1,6 +1,6 @@
-<div class="banner trip-creation" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+<div class="banner trip-creation" style="background-image: url('<%= trip.background_picture_url %>');">
   <%=
-    form_for :trip, routes.trips_path, class: 'human-form trip-creation-form' do
+    form_for :trip, routes.trip_path(trip.id), class: 'human-form trip-creation-form', enctype: 'multipart/form-data', method: :patch, values: { trip: trip } do
       div class: 'content' do
         h1 class: 'title' do
           text 'Give us your future trip information! 😬'
@@ -33,6 +33,13 @@
               div class: 'trip-date' do
                 label 'to', for: 'trip-ending-on'
                 date_field :ending_on, placeholder: 'another date'
+              end
+            end
+
+            div class: 'form-entry trip-background-picture' do
+              div class: 'text-center' do
+                label 'Our morning view will look like this:', for: 'trip-background-picture'
+                file_field :background_picture
               end
             end
           end
