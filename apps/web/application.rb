@@ -4,6 +4,7 @@ require 'hanami/assets'
 require_relative 'controllers/users/authentication'
 require_relative 'controllers/users/skip_authentication'
 
+require_relative 'views/meta_tags'
 require_relative 'views/present_current_user'
 
 module Web
@@ -278,6 +279,7 @@ module Web
       view.prepare do
         include Hanami::Helpers
         include Web::Assets::Helpers
+        include Web::Views::MetaTags
         include Web::Views::PresentCurrentUser
       end
     end
