@@ -90,6 +90,7 @@
 
   .content {
     align-self: center;
+    // position: relative;
 
     @media (max-width: $screen-xs-max) {
       padding: 0 1em;
@@ -127,7 +128,7 @@
   }
 }
 
-.trip-creation {
+.trip-creation, .trip-edition {
   .details {
     @media (max-width: $screen-xs-max) {
       padding: 2em;
@@ -208,6 +209,16 @@
 }
 
 .trip-show {
+  .content {
+    position: relative;
+
+    .edit-trip-link {
+      position: absolute;
+      top: 0.9em;
+      right: 0.9em;
+    }
+  }
+
   .details {
     display: flex;
 
@@ -236,6 +247,16 @@
     li:not(:last-child) {
       margin-bottom: 0.5em;
     }
+  }
+}
+
+.trip-edition {
+  #background-picture-label {
+    position: absolute;
+    top: 0.9em;
+    right: 0.9em;
+    font-size: 1.5em;
+    color: $gray;
   }
 }
 

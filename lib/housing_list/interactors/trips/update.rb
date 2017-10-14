@@ -31,7 +31,7 @@ module Trips
       return unless params[:trip][:background_picture]
 
       # TODO: enqueue async job instead
-      FileRemover.call(trip.picture_uuid)
+      FileRemover.call(trip.picture_uuid) if trip.picture_uuid
 
       filepath = params[:trip][:background_picture][:tempfile]
       uc_file  = FileUploader.call(filepath)

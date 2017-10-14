@@ -24,6 +24,7 @@ module Web::Controllers::Styleguide
         title: 'Ground floor with garden, calm.',
         description: 'Nice view over the lake, 55 sqm flat with garden.',
         url: '#',
+        picture_url: nil,
         provider: 'airbnb',
         total_price: 2900,
         created_at: Time.parse('2017-05-30 17:55:00'),
