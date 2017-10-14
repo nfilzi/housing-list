@@ -10,7 +10,8 @@ class TripPresenter
 
     size_operations = {
       thumbnail: "resize/400x",
-      banner: "preview"
+      banner: "preview",
+      meta: "crop/1200x630/center"
     }
 
     operations = [

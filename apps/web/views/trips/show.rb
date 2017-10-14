@@ -30,7 +30,9 @@ module Web::Views::Trips
     end
 
     def meta_tag_image
-      asset_url 'lake-geneva.jpg'
+      return asset_url('lake-geneva.jpg') unless trip.picture_uuid
+
+      trip.background_picture_url(version: :meta)
     end
   end
 end
