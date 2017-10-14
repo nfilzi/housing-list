@@ -10,7 +10,8 @@ module Web::Controllers::Trips
         required(:starting_on).filled(:date?)
         required(:ending_on).filled(:date?)
         required(:travelers_count).filled(:int?)
-        optional(:background_picture)
+
+        optional(:background_picture).maybe
       end
     end
 

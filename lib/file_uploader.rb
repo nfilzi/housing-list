@@ -26,6 +26,7 @@ class FileUploader
       public_key:   ENV.fetch('UPLOADCARE_PUBLIC_KEY'),
       private_key:  ENV.fetch('UPLOADCARE_PRIVATE_KEY')
     }
+
     @api_client = Uploadcare::Api.new(settings)
   end
 end

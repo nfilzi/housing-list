@@ -1,5 +1,7 @@
 require 'hanami/interactor'
 
+require_relative '../../../file_uploader'
+
 module Trips
   class Create
     include Hanami::Interactor
@@ -24,10 +26,11 @@ module Trips
     private
 
     def upload_picture_and_update_trip
-      # Can't access tempfile of filepath through params[:trip][:background_picture]
-      # Can't know why yet
-      filepath = params.env["rack.request.form_hash"]["trip"]["background_picture"][:tempfile].path
-      uc_file  = ::Uploaders::Picture.new(filepath).call
+      return unless params[:trip][:background_picture]
+
+      filepath = params[:trip][:background_picture][:tempfile]
+      uc_file  = FileUploader.call(filepath)
+
       TripRepository.new.update(@trip.id, picture_uuid: uc_file.uuid)
     end
 
