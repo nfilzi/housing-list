@@ -1,10 +1,26 @@
 class TripPresenter
   include Hanami::Presenter
   include Hanami::Helpers::EscapeHelper
+  include Web::Assets::Helpers
   include Web::Helpers::DateFormatter
 
-  def duration
-    (ending_on - starting_on).to_i
+  def background_picture_url(version:)
+    # TODO: Find a stock picture based on trip location?
+    return asset_path('lake-geneva.jpg') unless picture_uuid
+
+    size_operations = {
+      thumbnail: "resize/400x",
+      banner: "preview"
+    }
+
+    operations = [
+      size_operations[version],
+      "quality/lighter",
+      "progressive/yes",
+      "autorotate/yes",
+    ]
+
+    return "https://ucarecdn.com/#{picture_uuid}/-/#{operations.join("/-/")}/"
   end
 
   def days_before_beginning
@@ -13,6 +29,10 @@ class TripPresenter
 
   def date(date)
     format_date(date, format: '%b %e %Y', ordinal_indicator: true)
+  end
+
+  def duration
+    (ending_on - starting_on).to_i
   end
 
   def has_housings?

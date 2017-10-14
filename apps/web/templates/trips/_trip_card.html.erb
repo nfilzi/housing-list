@@ -26,7 +26,7 @@
       </li>
     </ul>
   </div>
-    <div class="col-xs-12 col-md-4 banner-picture" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+    <div class="col-xs-12 col-md-4 banner-picture" style="background-image: url('<%= trip.background_picture_url(version: :thumbnail) %>');">
       <a href="<%= routes.trip_path(trip.id) %>" class="banner-picture-link">
         <%# link on the whole div %>
       </a>

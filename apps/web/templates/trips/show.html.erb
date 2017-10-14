@@ -1,10 +1,18 @@
-<div class="banner trip-show" style="background-image: url('<%= asset_path('lake-geneva.jpg') %>');">
+<div class="banner trip-show" style="background-image: url(<%= trip.background_picture_url(version: :banner) %>);">
   <div class="content">
+    <% if trip.future? %>
+      <%=
+        link_to routes.edit_trip_path(trip.id), class: 'btn btn-default edit-trip-link' do
+          i(class: "fa fa-pencil", 'aria-hidden' => true)
+          text 'Edit'
+        end
+      %>
+    <% end %>
     <h1 class="title">You and your friends are heading to <%= trip.destination %> 🌏 😱</h1>
     <div class="details-container">
       <div class="details">
         <ul class="list-unstyled overview overview-housing">
-          <li><strong><%= trip.housings_count %></strong> potential housing places</li>
+          <li><strong><%= trip.housings_count %></strong> potential housings</li>
           <li>Between <strong><%= trip.total_price_min_per_pers %>€</strong> and <strong><%= trip.total_price_max_per_pers %>€</strong> per person</li>
           <li><strong><%= trip.total_price_avg_per_pers %>€</strong> per person on average</li>
         </ul>
@@ -23,7 +31,7 @@
         <%=
           link_to routes.new_trip_housing_path(trip.id), class: 'btn btn-primary' do
             i(class: "fa fa-plus-circle", 'aria-hidden' => true)
-            text 'New place'
+            text 'New housing'
           end
         %>
       </div>

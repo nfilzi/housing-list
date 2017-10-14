@@ -64,6 +64,10 @@ GEM
       dry-equalizer (~> 0.2)
       dry-logic (~> 0.4, >= 0.4.0)
       dry-types (~> 0.9, >= 0.9.0)
+    faraday (0.13.1)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.12.2)
+      faraday (>= 0.7.4, < 1.0)
     hanami (1.0.0)
       bundler (~> 1.13)
       concurrent-ruby (~> 1.0)
@@ -115,6 +119,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.2)
+    multipart-post (2.0.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     pg (0.20.0)
@@ -173,6 +178,11 @@ GEM
     thor (0.19.4)
     tilt (2.0.7)
     transproc (1.0.2)
+    uploadcare-ruby (2.0.0)
+      faraday (~> 0.8)
+      faraday_middleware (~> 0.9)
+      mime-types
+      multipart-post
     url_mount (0.2.1)
       rack
     websocket-driver (0.6.5)
@@ -201,6 +211,7 @@ DEPENDENCIES
   sass
   shotgun
   sidekiq
+  uploadcare-ruby
 
 RUBY VERSION
    ruby 2.4.2p198

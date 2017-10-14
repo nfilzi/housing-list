@@ -1,8 +1,14 @@
-require 'securerandom'
+require_relative 'authorization'
 
 module Web::Controllers::Trips
-  class Create
+  class Update
     include Web::Action
+    include Web::Trips::Authorization
+
+    before :load_trip
+    before :authorize
+
+    expose :trip
 
     params do
       required(:trip).schema do
@@ -10,11 +16,12 @@ module Web::Controllers::Trips
         required(:starting_on).filled(:date?)
         required(:ending_on).filled(:date?)
         required(:travelers_count).filled(:int?)
+        required(:background_picture).maybe
       end
     end
 
     def call(params)
-      result = ::Trips::Create.new(current_user, params).call
+      result = Trips::Update.new(@trip, params).call
 
       if result.successful?
         redirect_to routes.trip_path(result.trip.id)
@@ -22,5 +29,16 @@ module Web::Controllers::Trips
         self.status = 422
       end
     end
+
+    private
+
+    def load_trip
+      @trip = TripRepository.new.find(params[:id])
+    end
+
+    def authorize
+      halt 404 unless user_organizer?
+    end
   end
 end
+
