@@ -4,6 +4,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  // Used when background pic dynamically changed based on new background pic 
+  // file provided by user: display-background-picture-preview.js
+  transition: background 1s ease-in-out;
 
   .content {
     display: flex;

@@ -7,5 +7,9 @@ module Web::Views::Trips
     def trip
       TripPresenter.new(locals[:trip])
     end
+
+    def after_js
+      javascript('display-background-picture-preview', async: true)
+    end
   end
 end
