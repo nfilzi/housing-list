@@ -169,3 +169,25 @@
     }
   }
 }
+
+.home-supported-providers {
+  text-align: center;
+  padding: 0 0 3em;
+
+  @media (max-width: $screen-xs-max) {
+    padding: 0 0.9em 2em
+  }
+
+  h4 {
+    margin-bottom: 1.5em;
+  }
+
+  .supported-provider-picture {
+    width: 180px;
+    margin-bottom: 1.5em;
+
+    @media (max-width: $screen-xs-max) {
+      width: 100px;
+    }
+  }
+}
