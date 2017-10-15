@@ -10,7 +10,7 @@ class HousingPresenter
   end
 
   def proposer_avatar
-    UserPresenter.new(user).avatar_url(version: :default)
+    UserPresenter.new(user).avatar_url
   end
 
   def total_price_per_person(travelers_count)

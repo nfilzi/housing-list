@@ -2,12 +2,11 @@ class UserPresenter
   include Hanami::Presenter
   include Web::Assets::Helpers
 
-  def avatar_url(version:)
+  def avatar_url(version: :default)
     return asset_path('avatar.jpg') unless avatar_uuid
 
     size_operations = {
-      default:  "resize/50x/-/crop/50x50/center",
-      large:    "resize/110x/-/crop/110x110/center"
+      default:  "scale_crop/300x300/center"
     }
 
     operations = [

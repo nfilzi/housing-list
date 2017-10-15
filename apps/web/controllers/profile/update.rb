@@ -9,7 +9,7 @@ module Web::Controllers::Profile
         required(:first_name).filled(:str?)
         required(:last_name).filled(:str?)
         required(:email).filled(:str?, format?: /\A[^@\s]+@[^@\s]+\.[^@\s]+\z/)
-        required(:avatar_picture).maybe
+        optional(:avatar_picture).maybe
       end
     end
 

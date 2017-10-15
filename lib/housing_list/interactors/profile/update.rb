@@ -28,7 +28,7 @@ module Profile
     end
 
     def upload_new_avatar_and_delete_old_one
-      return unless params[:profile][:avatar_picture]
+      return profile.avatar_uuid unless params[:profile][:avatar_picture]
 
       # TODO: enqueue async job instead
       FileRemover.call(profile.avatar_uuid) if profile.avatar_uuid

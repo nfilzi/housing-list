@@ -28,7 +28,7 @@ module Trips
     end
 
     def upload_new_picture_and_delete_old_one
-      return unless params[:trip][:background_picture]
+      return trip.picture_uuid unless params[:trip][:background_picture]
 
       # TODO: enqueue async job instead
       FileRemover.call(trip.picture_uuid) if trip.picture_uuid
