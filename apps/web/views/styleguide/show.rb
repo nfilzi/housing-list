@@ -1,5 +1,3 @@
-require_relative '../../presenters/housing_presenter'
-
 module Web::Views::Styleguide
   class Show
     include Web::View

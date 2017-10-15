@@ -1,5 +1,3 @@
-require_relative '../../presenters/user_presenter'
-
 module Web::Views::Profile
   class Edit
     include Web::View
