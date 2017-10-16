@@ -1,7 +1,7 @@
 var pictureInput = document.querySelector(".js-picture-upload-input-with-preview");
-pictureInput.addEventListener("change", displayBackgroundPicturePreview, true);
+pictureInput.addEventListener("change", pictureUploadPreview, true);
 
-function displayBackgroundPicturePreview() {
+function pictureUploadPreview() {
   var fileList                    = this.files;
   var file                        = fileList[0];
 

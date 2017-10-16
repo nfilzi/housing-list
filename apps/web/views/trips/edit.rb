@@ -7,7 +7,7 @@ module Web::Views::Trips
     end
 
     def after_js
-      javascript('display-background-picture-preview', async: true)
+      javascript('picture-upload-preview', async: true)
     end
   end
 end

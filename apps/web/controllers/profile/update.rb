@@ -22,7 +22,6 @@ module Web::Controllers::Profile
       else
         self.status = 422
       end
-      # UserRepository.new.update(current_user.id, params[:profile])
     end
   end
 end
