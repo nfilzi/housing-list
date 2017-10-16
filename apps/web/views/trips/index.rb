@@ -1,5 +1,3 @@
-require_relative '../../presenters/trip_presenter'
-
 module Web::Views::Trips
   class Index
     include Web::View

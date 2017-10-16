@@ -1,4 +1,4 @@
-<div class="banner trip-edition" style="background-image: url('<%= trip.background_picture_url(version: :banner) %>');">
+<div class="banner js-banner-preview trip-edition" style="background-image: url('<%= trip.background_picture_url(version: :banner) %>');">
   <%=
     form_for :trip, routes.trip_path(trip.id), class: 'human-form trip-creation-form', enctype: 'multipart/form-data', method: :patch, values: { trip: trip } do
       div class: 'content' do
@@ -39,14 +39,13 @@
             label "background-picture", id: "background-picture-label" do
               i(class: "fa fa-picture-o", 'aria-hidden' => true)
             end
-            file_field :background_picture, class: "hidden"
-            # , onchange: "displayBackgroundPicturePreview(this.files)"
+            file_field :background_picture, class: "js-picture-upload-input-with-preview hidden", 'data-target': "js-banner-preview"
           end
         end
       end
 
       div class: 'action-container' do
-        submit 'GO! 🦄', class: 'btn btn-primary'
+        submit 'Save! 👍', class: 'btn btn-primary'
       end
     end
   %>

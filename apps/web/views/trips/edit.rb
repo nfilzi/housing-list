@@ -1,5 +1,3 @@
-require_relative '../../presenters/trip_presenter'
-
 module Web::Views::Trips
   class Edit
     include Web::View
@@ -9,7 +7,7 @@ module Web::Views::Trips
     end
 
     def after_js
-      javascript('display-background-picture-preview', async: true)
+      javascript('picture-upload-preview', async: true)
     end
   end
 end

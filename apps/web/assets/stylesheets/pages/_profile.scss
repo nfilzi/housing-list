@@ -23,7 +23,37 @@
   .avatar {
     width: 100px; // be sure to change the properties tagged with [avatar]
     height: 100px; // be sure to change the properties tagged with [avatar]
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: background 1s ease-in-out;
+
+    &:hover {
+      .avatar-picture-upload-overlay {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .avatar-picture-upload-overlay {
+      display: none;
+      width: inherit;
+      height: inherit;
+      border-radius: inherit;
+      margin: 0 auto;
+      background-color: rgba(0,0,0,0.3);
+
+      label i.fa {
+        color: $white;
+        font-size: 2em;
+        vertical-align: center;
+        cursor: pointer;
+      }
+    }
   }
+
 
   .details {
     position: relative;

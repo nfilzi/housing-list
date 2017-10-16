@@ -1,5 +1,3 @@
-require_relative '../../presenters/user_presenter'
-
 module Web::Views::Profile
   class Update
     include Web::View
@@ -11,6 +9,10 @@ module Web::Views::Profile
 
     def sticky_navbar
       true
+    end
+
+    def after_js
+      javascript('picture-upload-preview', async: true)
     end
   end
 end

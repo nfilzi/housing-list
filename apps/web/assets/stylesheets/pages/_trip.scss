@@ -256,6 +256,10 @@
     right: 0.9em;
     font-size: 1.5em;
     color: $gray;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
