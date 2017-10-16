@@ -47,6 +47,14 @@
         </li>
       </ul>
     </div>
+
+    <div class="home-supported-providers">
+      <h4>At the moment, we are supporting <%= supported_providers.count %> housing providers</h3>
+      <% supported_providers.each do |supported_provider| %>
+        <%= image("#{supported_provider}.svg", class: "supported-provider-picture") %>
+      <% end %>
+      <p><a href="mailto:hi@housing-list.com?subject=I'd love for a new provider to be supported by you guys at HousingList 😬">Shoot us an email</a> if you'd love for another one to be supported!</p>
+    </div>
     <%= render partial: "layouts/footer" %>
     <%= javascript 'jquery-3.2.1.min' %>
     <%= javascript 'bootstrap.min' %>

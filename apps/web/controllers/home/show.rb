@@ -3,10 +3,12 @@ module Web::Controllers::Home
     include Web::Action
     include Web::Users::SkipAuthentication
 
+    expose :supported_providers
     expose :total_trips_count
 
     def call(params)
-      @total_trips_count = TripRepository.new.count
+      @supported_providers  = Housing::SUPPORTED_PROVIDERS
+      @total_trips_count    = TripRepository.new.count
     end
   end
 end
