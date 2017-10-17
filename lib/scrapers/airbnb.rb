@@ -40,7 +40,7 @@ module Scrapers
         title:       data["name"],
         description: data["description"],
         total_price: total_price,
-        airbnb_id:   data["id"],
+        provider_id: data["id"],
         picture_url: data["photos"].first["large"],
         raw_data:    data
       }
