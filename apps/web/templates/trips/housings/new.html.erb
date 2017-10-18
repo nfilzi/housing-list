@@ -13,7 +13,7 @@
             end
 
             div class: 'form-entry' do
-              text_field :url, placeholder: 'https://airbnb.com/rooms/589385'
+              text_field :url, class: 'js-housing-url-input', placeholder: 'https://airbnb.com/rooms/589385'
 
               unless params.valid?
                 p class: 'error-message' do
