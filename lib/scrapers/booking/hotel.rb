@@ -7,7 +7,6 @@ module Scrapers
       public
 
       def initialize(url:)
-        # TO KEEP => Test url: "https://www.booking.com/hotel/jp/flexstayshirogane.html?aid=304142;label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaE2IAQGYATG4AQfIAQzYAQHoAQH4AQKSAgF5qAID;sid=0dcdfab44b9cce7749eaf5e3c6ec1d87;atlas_src=sr_iw_title;checkin=2017-12-06;checkout=2017-12-29;dist=0;group_adults=2;room1=A%2CA;sb_price_type=total;srepoch=1508275314;srpvid=20ab95ae89bb0081;type=total&"
         @url = url
       end
 
