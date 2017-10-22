@@ -46,7 +46,7 @@ module Housings
 
     def extract_provider
       url            = params.dig(:housing, :url)
-      provider_regex = /\Ahttps?:\/\/www\.(?<provider>airbnb|booking)\.[a-z]+/
+      provider_regex = /\Ahttps?:\/\/(www|secure)\.(?<provider>airbnb|booking)\.[a-z]+/
       match_data     = url.match(provider_regex)
 
       match_data ? match_data[:provider] : 'n/a'
