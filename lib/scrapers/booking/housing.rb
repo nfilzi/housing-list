@@ -2,52 +2,48 @@ module Scrapers
   module Booking
     class Housing
       private
-      attr_reader :url, :hotel_attributes
+      attr_reader :base_url, :hotel_url, :hotel_attributes
 
       public
 
       def initialize(url:)
-        @url = url
+        @base_url = url
       end
 
       def scrape
         if has_reservation_url?
-          build_reservation_attributes
-          housing_url = reservation_attributes[:housing][:url]
-          build_hotel_attributes(housing_url)
+          build_reservation_attributes(base_url)
+
+          @hotel_url = reservation_attributes[:hotel][:url]
         else
-          build_hotel_attributes(url)
+          @hotel_url = base_url
         end
 
+        build_hotel_attributes
         build_housing_attributes
       end
 
       private
+
       def build_housing_attributes
-        total_price     = reservation_attributes.dig(:reservation, :total_price) || 0
-        housing_url     = reservation_attributes.dig(:housing, :url) || url
-        reservation_url = has_reservation_url? ? url : nil
+        total_price = reservation_attributes.dig(:reservation, :total_price)
 
         hotel_attributes.merge(
-          total_price:      total_price,
-          url:              housing_url,
-          reservation_url:  reservation_url
+          total_price: total_price,
+          url:         hotel_url
         )
       end
 
       def has_reservation_url?
-        regex       = /\Ahttps?:\/\/(?<subdomain>www|secure)\.(?<provider>airbnb|booking)\.[a-z]+/
-        match_data  = url.match(regex)
-
-        match_data[:subdomain] == "secure"
+        /\Ahttps?:\/\/secure\.booking\.[a-z]+/ === base_url
       end
 
-      def build_reservation_attributes
-        @reservation_attributes = ::Scrapers::Booking::Reservation.new(url: url).scrape
+      def build_reservation_attributes(reservation_url)
+        @reservation_attributes = ::Scrapers::Booking::Reservation.new(url: reservation_url).scrape
       end
 
-      def build_hotel_attributes(housing_url)
-        @hotel_attributes = ::Scrapers::Booking::Hotel.new(url: housing_url).scrape
+      def build_hotel_attributes
+        @hotel_attributes = ::Scrapers::Booking::Hotel.new(url: hotel_url).scrape
       end
 
       def reservation_attributes

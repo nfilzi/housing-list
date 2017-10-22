@@ -21,11 +21,17 @@ module Scrapers
       private
 
       def build_reservation_attributes
-        data        = extract_reservation_data
-        housing_id  = extract_housing_id
-        housing_url = extract_housing_url
+        data      = extract_reservation_data
+        hotel_id  = extract_hotel_id
+        hotel_url = extract_hotel_url
 
-        return { reservation: data }.merge(housing: { id: housing_id, url: housing_url })
+        return {
+          reservation: data,
+          hotel: {
+            id: hotel_id,
+            url: hotel_url
+          }
+        }
       end
 
       def extract_reservation_data
@@ -33,15 +39,15 @@ module Scrapers
         {
           total_price:        total_price,
           currency_code:      currency_code,
-          rooms_arrangement:  extract_rooms_arrangement,
+          rooms_arrangement:  extract_rooms_arrangement
         }
       end
 
-      def extract_housing_url
-        housing_url_link_selector = '.bp_pricedetails_holder .bp_sidebar_content_block--bookingdetails_summary .bp_sidebar_content_block__link_container--change_selection a'
-        housing_url_link          = browser.find(housing_url_link_selector)
+      def extract_hotel_url
+        hotel_url_link_selector = '.bp_pricedetails_holder .bp_sidebar_content_block--bookingdetails_summary .bp_sidebar_content_block__link_container--change_selection a'
+        hotel_url_link          = browser.find(hotel_url_link_selector)
 
-        return housing_url_link["href"]
+        return hotel_url_link["href"]
       end
 
       def extract_total_price_with_currency_code
@@ -60,7 +66,7 @@ module Scrapers
         return rooms_arrangement_divs.map { |div| div.text }
       end
 
-      def extract_housing_id
+      def extract_hotel_id
         reservation_uri = URI.parse(url)
         query_hash      = Rack::Utils.parse_query(reservation_uri.query)
 

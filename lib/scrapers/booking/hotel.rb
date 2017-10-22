@@ -15,26 +15,26 @@ module Scrapers
         @browser = Capybara.current_session
         browser.visit(url)
 
-        return build_housing_attributes
+        return build_hotel_attributes
       end
 
       private
 
-      def build_housing_attributes
-        data        = extract_housing_data
-        raw_data    = extract_raw_data
-        housing_id  = raw_data.delete(:housing_id)
+      def build_hotel_attributes
+        data     = extract_hotel_data
+        raw_data = extract_raw_data
+        hotel_id = raw_data.delete(:hotel_id)
 
         return {
           title:       data[:title],
           description: data[:description],
-          provider_id: housing_id,
+          provider_id: hotel_id,
           picture_url: data[:picture_url],
           raw_data:    raw_data
         }
       end
 
-      def extract_housing_data
+      def extract_hotel_data
         title_selector  = ".hp__hotel-name"
         title           = browser.find(title_selector).text.strip
 
@@ -57,10 +57,10 @@ module Scrapers
 
         basic_raw_data = JSON.parse(scripts[9]["innerHTML"].gsub("\n", ""))
 
-        housing_id_regexp = /b_hotel_id:\s'(?<housing_id>\d+)'/
-        housing_id = scripts[10]["innerHTML"].match(housing_id_regexp)[:housing_id].to_i
+        hotel_id_regexp = /b_hotel_id:\s'(?<hotel_id>\d+)'/
+        hotel_id = scripts[10]["innerHTML"].match(hotel_id_regexp)[:hotel_id].to_i
 
-        return basic_raw_data.merge(housing_id: housing_id)
+        return basic_raw_data.merge(hotel_id: hotel_id)
       end
 
       def init_capybara
