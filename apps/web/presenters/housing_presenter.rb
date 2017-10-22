@@ -14,6 +14,7 @@ class HousingPresenter
   end
 
   def total_price_per_person(travelers_count)
+    return '---' unless total_price
     (total_price / travelers_count).to_i
   end
 end
