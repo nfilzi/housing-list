@@ -1,27 +1,17 @@
-module Web
-  module Trips
-    module Housings
-      module Authorization
+module Web::Trips
+  module Housings
+    class Authorization
+      private
+      attr_reader :user
 
-        private
+      public
 
-        def load_trip_and_authorize
-          @trip = TripRepository.new.find_with_organizers(params[:trip_id])
-          halt 401 unless @trip && future_trip? && (user_organizer? || user_authorized?)
-        end
+      def initialize(user)
+        @user = user
+      end
 
-        def future_trip?
-          @trip.starting_on >= Date.today
-        end
-
-        def user_organizer?
-          @user_organizer ||= @trip.trip_organizers.any? { |organizer| organizer.organizer_id == current_user.id }
-        end
-
-        def user_authorized?
-          token = session[:invitation_token].to_s
-          return !token.empty? && token == @trip.invitation_token
-        end
+      def create?(trip)
+        Web::Trips::Housings::Authorizations::Create.new(user, @trip).granted?
       end
     end
   end

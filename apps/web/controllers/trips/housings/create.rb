@@ -1,12 +1,10 @@
-require_relative 'authorization'
-
 module Web::Controllers::Trips
   module Housings
     class Create
       include Web::Action
-      include Web::Trips::Housings::Authorization
 
-      before :load_trip_and_authorize
+      before :load_trip
+      before :authorize
 
       expose :trip
 
@@ -20,11 +18,21 @@ module Web::Controllers::Trips
         result = ::Housings::Create.new(current_user, @trip, params).call
 
         if result.successful?
-          session[:invitation_token] = nil
           redirect_to routes.trip_path(@trip.id)
         else
           self.status = 422
         end
+      end
+
+      private
+
+      def load_trip
+        @trip = TripRepository.new.find(params[:trip_id])
+      end
+
+      def authorize
+        authorization = Web::Trips::Housings::Authorization.new(current_user)
+        halt 401 unless authorization.create?(@trip)
       end
     end
   end

@@ -1,9 +1,6 @@
-require_relative 'authorization'
-
 module Web::Controllers::Trips
   class Edit
     include Web::Action
-    include Web::Trips::Authorization
 
     before :load_trip
     before :authorize
@@ -20,7 +17,8 @@ module Web::Controllers::Trips
     end
 
     def authorize
-      halt 404 unless user_organizer?
+      authorization = Web::Trips::Authorization.new(current_user, trip)
+      halt 404 unless authorization.edit?
     end
   end
 end
