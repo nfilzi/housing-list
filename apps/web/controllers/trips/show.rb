@@ -1,14 +1,12 @@
-require_relative 'authorization'
-
 module Web::Controllers::Trips
   class Show
     include Web::Action
     include Web::Users::SkipAuthentication
-    include Web::Trips::Authorization
 
     before :load_trip
     before :authorize
 
+    expose :authorization
     expose :housing_stats
     expose :housings
     expose :trip
@@ -21,6 +19,18 @@ module Web::Controllers::Trips
 
     def load_trip
       @trip = TripRepository.new.find_with_stats(params[:id])
+    end
+
+    def authorize
+      @authorization = Web::Trips::Authorization.new(current_user, trip)
+      return if authorization.show?(params[:token])
+
+      if !user_signed_in? && params[:token].nil?
+        store_current_location
+        redirect_to routes.user_sign_in_path
+      else
+        halt 404
+      end
     end
   end
 end
