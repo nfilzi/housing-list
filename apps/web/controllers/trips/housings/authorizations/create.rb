@@ -2,6 +2,8 @@ module Web::Trips
   module Housings
     module Authorizations
       class Create
+        include Web::Trips::Authorizations::Base
+
         private
         attr_reader :trip, :user
 
@@ -14,20 +16,6 @@ module Web::Trips
 
         def granted?
           trip && future_trip? && user_signed_in? && user_organizer?
-        end
-
-        private
-
-        def future_trip?
-          trip.starting_on >= Date.today
-        end
-
-        def user_organizer?
-          TripOrganizerRepository.new.organizes_trip?(user.id, trip.id)
-        end
-
-        def user_signed_in?
-          !!user
         end
       end
     end
