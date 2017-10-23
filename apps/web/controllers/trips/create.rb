@@ -1,5 +1,3 @@
-require 'securerandom'
-
 module Web::Controllers::Trips
   class Create
     include Web::Action
