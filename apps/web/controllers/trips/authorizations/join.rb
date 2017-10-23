@@ -1,27 +1,25 @@
-module Web::Trips
-  module Authorizations
-    class Join
-      include Base
+module Web::Trips::Authorizations
+  class Join
+    include Base
 
-      private
-      attr_reader :trip, :user
+    private
+    attr_reader :trip, :user
 
-      public
+    public
 
-      def initialize(user, trip)
-        @user = user
-        @trip = trip
-      end
+    def initialize(user, trip)
+      @user = user
+      @trip = trip
+    end
 
-      def granted?
-        visitor? || (user_signed_in? && !user_organizer?)
-      end
+    def granted?
+      visitor? || (user_signed_in? && !user_organizer?)
+    end
 
-      private
+    private
 
-      def visitor?
-        !user
-      end
+    def visitor?
+      !user
     end
   end
 end
