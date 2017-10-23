@@ -11,7 +11,7 @@ module Web::Trips
       end
 
       def create?(trip)
-        Web::Trips::Housings::Authorizations::Create.new(user, @trip).granted?
+        Web::Trips::Housings::Authorizations::Create.new(user, trip).granted?
       end
     end
   end
