@@ -1,35 +1,19 @@
-module Web
-  module Trips
-    module Authorizations
-      class Update
-        private
-        attr_reader :trip, :user
+module Web::Trips::Authorizations
+  class Update
+    include Base
 
-        public
+    private
+    attr_reader :trip, :user
 
-        def initialize(user, trip)
-          @user = user
-          @trip = trip
-        end
+    public
 
-        def granted?
-          future_trip? && user_signed_in? && user_organizer?
-        end
+    def initialize(user, trip)
+      @user = user
+      @trip = trip
+    end
 
-        private
-
-        def future_trip?
-          trip.starting_on >= Date.today
-        end
-
-        def user_organizer?
-          TripOrganizerRepository.new.organizes_trip?(user.id, trip.id)
-        end
-
-        def user_signed_in?
-          !!user
-        end
-      end
+    def granted?
+      future_trip? && user_signed_in? && user_organizer?
     end
   end
 end
