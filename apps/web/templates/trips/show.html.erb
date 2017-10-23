@@ -26,7 +26,15 @@
         </ul>
       </div>
     </div>
-    <% if authorization.housing_creation? %>
+    <% if authorization.join? %>
+      <div class="action-container">
+        <%=
+          form_for :user, routes.join_trip_path(trip.id), method: :patch do
+            submit 'Join the trip 🚀', class: 'btn btn-primary'
+          end
+        %>
+      </div>
+    <% elsif authorization.housing_creation? %>
       <div class="action-container">
         <%=
           link_to routes.new_trip_housing_path(trip.id), class: 'btn btn-primary' do

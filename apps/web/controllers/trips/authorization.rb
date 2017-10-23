@@ -23,6 +23,10 @@ module Web
         Web::Trips::Authorizations::Invite.new(user, trip).granted?
       end
 
+      def join?
+        Web::Trips::Authorizations::Join.new(user, trip).granted?
+      end
+
       def housing_creation?
         Web::Trips::Housings::Authorizations::Create.new(user, trip).granted?
       end

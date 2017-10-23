@@ -24,6 +24,7 @@ module Web
       end
 
       def store_current_location
+        return unless params.env['REQUEST_METHOD'] == 'GET'
         session[:user_return_to] = params.env['REQUEST_PATH']
       end
 
