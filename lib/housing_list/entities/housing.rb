@@ -1,3 +1,3 @@
 class Housing < Hanami::Entity
-  SUPPORTED_PROVIDERS = ['airbnb']
+  SUPPORTED_PROVIDERS = ['airbnb', 'booking']
 end
