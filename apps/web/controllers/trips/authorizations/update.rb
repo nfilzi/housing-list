@@ -13,13 +13,17 @@ module Web
         end
 
         def granted?
-          user_organizer?
+          user_signed_in? && user_organizer?
         end
 
         private
 
         def user_organizer?
           TripOrganizerRepository.new.organizes_trip?(user.id, trip.id)
+        end
+
+        def user_signed_in?
+          !!user
         end
       end
     end

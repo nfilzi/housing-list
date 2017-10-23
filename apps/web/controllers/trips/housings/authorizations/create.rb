@@ -13,7 +13,7 @@ module Web::Trips
         end
 
         def granted?
-          trip && future_trip? && user_organizer?
+          trip && future_trip? && user_signed_in? && user_organizer?
         end
 
         private
@@ -24,6 +24,10 @@ module Web::Trips
 
         def user_organizer?
           TripOrganizerRepository.new.organizes_trip?(user.id, trip.id)
+        end
+
+        def user_signed_in?
+          !!user
         end
       end
     end
