@@ -11,6 +11,7 @@ module Web::Controllers::Trips
         organizer_id: current_user.id
       )
 
+      session[:invitation_token] = nil
       redirect_to routes.trip_path(@trip.id)
     end
 
@@ -22,7 +23,7 @@ module Web::Controllers::Trips
 
     def authorize
       authorization = Web::Trips::Authorization.new(current_user, @trip)
-      halt 401 unless authorization.join?
+      halt 401 unless authorization.join?(session[:invitation_token])
     end
   end
 end

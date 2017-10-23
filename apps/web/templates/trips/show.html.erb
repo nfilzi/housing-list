@@ -26,7 +26,7 @@
         </ul>
       </div>
     </div>
-    <% if authorization.join? %>
+    <% if authorization.join?(invitation_token) %>
       <div class="action-container">
         <%=
           form_for :user, routes.join_trip_path(trip.id), method: :patch do

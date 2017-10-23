@@ -6,10 +6,12 @@ module Web::Controllers::Trips
     before :load_trip
     before :authorize
     before :store_current_location
+    before :store_invitation_token
 
     expose :authorization
     expose :housing_stats
     expose :housings
+    expose :invitation_token
     expose :trip
 
     def call(params)
@@ -32,6 +34,13 @@ module Web::Controllers::Trips
       else
         halt 404
       end
+    end
+
+    def store_invitation_token
+      @invitation_token = params[:token]
+      return unless @invitation_token
+
+      session[:invitation_token] = @invitation_token
     end
   end
 end
