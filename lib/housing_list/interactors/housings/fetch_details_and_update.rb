@@ -14,6 +14,10 @@ module Housings
     end
 
     def call
+      unless Housing::SUPPORTED_PROVIDERS.include?(housing.provider)
+        raise ArgumentError, "#{housing.provider} is not supported as a provider yet!"
+      end
+
       provider_name       = housing.provider.split('_').map(&:capitalize).join
       scraper_class_name  = "Scrapers::#{provider_name}::Housing"
       scraper_class       = Object.const_get(scraper_class_name)
