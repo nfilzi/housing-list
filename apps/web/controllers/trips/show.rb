@@ -5,6 +5,7 @@ module Web::Controllers::Trips
 
     before :load_trip
     before :authorize
+    before :store_current_location
 
     expose :authorization
     expose :housing_stats

@@ -17,20 +17,10 @@ module Housings
 
     def call
       @housing = HousingRepository.new.create(housing_params)
-      set_user_as_organizer
       Housings::FetchDetailsAndUpdateWorker.perform_async(housing.id)
     end
 
     private
-
-    def set_user_as_organizer
-      return if user_organizer?
-      TripOrganizerRepository.organizes_trip?(user.id, trip.id)
-    end
-
-    def user_organizer?
-      trip.trip_organizers.any? { |organizer| organizer.organizer_id == user.id }
-    end
 
     def valid?
       params.valid?
