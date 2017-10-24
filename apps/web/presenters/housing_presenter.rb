@@ -9,7 +9,7 @@ class HousingPresenter
     picture_url || 'housing-picture-placeholder.jpg'
   end
 
-  def proposer_avatar
+  def proposer_avatar_url
     UserPresenter.new(user).avatar_url
   end
 

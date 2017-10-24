@@ -18,8 +18,13 @@ module Web::Controllers::Styleguide
       # Components
       # - Housing card
       @trip = OpenStruct.new(travelers_count: 5)
+      user = OpenStruct.new(
+        first_name: 'Nicolas',
+        last_name: 'Filzi',
+        avatar_uuid: nil
+      )
       @housing ||= OpenStruct.new(
-        user: OpenStruct.new(first_name: 'Nicolas', last_name: 'Filzi'),
+        user: user,
         trip: @trip,
         title: 'Ground floor with garden, calm.',
         description: 'Nice view over the lake, 55 sqm flat with garden.',
