@@ -45,7 +45,7 @@
   }
 }
 
-.booking-container {
+.housing-notice-container {
   display: flex;
   justify-content: center;
 
@@ -56,7 +56,7 @@
   }
 }
 
-.booking-notice {
+.housing-notice {
   display: none;
   margin: 4em 0;
   box-shadow: 1px 1px 3px #BFBFBF;
@@ -70,7 +70,7 @@
     align-items: center;
     padding: 0.5em 1em;
     color: $white;
-    background-color: $booking-color;
+    background-color: $green;
 
     h2 {
       display: inline-block;
@@ -121,5 +121,31 @@
     margin-bottom: 0;
     text-align: center;
     font-size: 0.8em;
+  }
+}
+
+.housing-notice.booking-notice {
+  .title {
+    background-color: $booking-color;
+  }
+}
+
+.housing-notice.not-supported-provider-notice {
+  .title {
+    background-color: $red;
+  }
+
+  .details {
+    padding: 2em 3em;
+  }
+
+  .supported-providers {
+    margin: 2.5em 0;
+    text-align: center;
+  }
+
+  .supported-provider-picture {
+    height: 45px;
+    margin-top: 1em;
   }
 }

@@ -6,9 +6,11 @@ module Web::Controllers::Trips
       before :load_trip
       before :authorize
 
+      expose :supported_providers
       expose :trip
 
       def call(params)
+        @supported_providers = Housing::SUPPORTED_PROVIDERS
       end
 
       private

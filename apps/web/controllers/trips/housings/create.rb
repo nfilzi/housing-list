@@ -6,8 +6,9 @@ module Web::Controllers::Trips
       before :load_trip
       before :authorize
 
-      expose :trip
       expose :error
+      expose :supported_providers
+      expose :trip
 
       params do
         required(:housing).schema do
@@ -21,7 +22,9 @@ module Web::Controllers::Trips
         if result.successful?
           redirect_to routes.trip_path(@trip.id)
         else
-          @error = result.error
+          @error               = result.error
+          @supported_providers = Housing::SUPPORTED_PROVIDERS
+
           self.status = 422
         end
       end

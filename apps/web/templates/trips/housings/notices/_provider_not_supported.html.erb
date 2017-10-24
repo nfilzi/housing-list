@@ -1,0 +1,20 @@
+<div class="housing-notice-container">
+  <div class="housing-notice not-supported-provider-notice">
+    <div class="title">
+      <span class="icon">⚠️</span>
+      <h2>Provider not supported</h2>
+    </div>
+    <div class="details">
+      <p>
+        The provider you selected is not supported (yet).
+      </p>
+      <p>At the moment, we are supporting the following housing providers:</p>
+      <div class="supported-providers">
+        <% supported_providers.each do |supported_provider| %>
+          <%= image("#{supported_provider}.svg", alt: supported_provider, class: "supported-provider-picture") %>
+        <% end %>
+      </div>
+      <p><a href="mailto:hi@housing-list.com?subject=I'd love for a new provider to be supported by you guys at HousingList 😬">Shoot us an email</a> if you'd love for another one to be supported!</p>
+    </div>
+  </div>
+</div>
