@@ -7,6 +7,7 @@ module Web::Controllers::Trips
       before :authorize
 
       expose :trip
+      expose :error
 
       params do
         required(:housing).schema do
@@ -20,6 +21,7 @@ module Web::Controllers::Trips
         if result.successful?
           redirect_to routes.trip_path(@trip.id)
         else
+          @error = result.error
           self.status = 422
         end
       end
