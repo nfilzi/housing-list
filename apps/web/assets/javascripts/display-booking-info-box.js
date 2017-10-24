@@ -5,15 +5,12 @@ function displayBookingInfoBox() {
   var element = this;
 
   setTimeout(function () {
-    submitButton = document.querySelector(".housing-creation .btn")
-    if (submitButton.disabled == true) {
-      submitButton.disabled = false
-    }
     var newHousingUrl = element.value;
+
     var link = document.createElement('a');
     link.setAttribute('href', newHousingUrl);
-    var urlHostname = link.hostname;
 
+    var urlHostname = link.hostname;
     var bookingNotice = document.querySelector(".booking-notice");
 
     if (urlHostname == 'www.booking.com') {

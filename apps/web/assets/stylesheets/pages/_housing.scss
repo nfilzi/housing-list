@@ -1,9 +1,4 @@
 .housing-creation {
-  .btn[disabled] {
-    opacity: 1;
-    background-color: $gray;
-    border-color: $gray;
-  }
   .details-container {
     @media (max-width: $screen-xs-max) {
       width: 100%;
