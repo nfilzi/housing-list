@@ -233,6 +233,7 @@
     }
 
     @media (min-width: $screen-sm-min) {
+      min-width: auto;
       justify-content: space-between;
     }
   }
@@ -244,13 +245,19 @@
     @media (max-width: $screen-xs-max) {
       padding: 1.5em;
 
-      &:first-child {
+      &:not(:last-child) {
         padding-bottom: 0.5em;
       }
     }
 
     li:not(:last-child) {
       margin-bottom: 0.5em;
+    }
+  }
+
+  .overview-housing {
+    @media (min-width: $screen-sm-min) {
+      padding-right: 2em;
     }
   }
 }
