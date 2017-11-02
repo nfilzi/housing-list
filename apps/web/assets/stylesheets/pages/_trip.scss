@@ -153,6 +153,12 @@
       }
     }
 
+    #trip-destination, #trip-ending-on {
+      @media (min-width: $screen-sm-min) {
+        padding-left: 1em;
+      }
+    }
+
     #trip-travelers-count {
       -moz-appearance: textfield;
       width: 6rem;
