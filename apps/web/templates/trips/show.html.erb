@@ -11,11 +11,13 @@
     <h1 class="title">You and your friends are heading to <%= trip.destination %> 🌏 😱</h1>
     <div class="details-container">
       <div class="details">
-        <ul class="list-unstyled overview overview-housing">
-          <li><strong><%= trip.housings_count %></strong> potential housings</li>
-          <li>Between <strong><%= trip.total_price_min_per_pers %>€</strong> and <strong><%= trip.total_price_max_per_pers %>€</strong> per person</li>
-          <li><strong><%= trip.total_price_avg_per_pers %>€</strong> per person on average</li>
-        </ul>
+        <% if trip.has_housings? %>
+          <ul class="list-unstyled overview overview-housing">
+            <li><strong><%= trip.housings_count %></strong> potential housings</li>
+            <li>Between <strong><%= trip.total_price_min_per_pers %>€</strong> and <strong><%= trip.total_price_max_per_pers %>€</strong> per person</li>
+            <li><strong><%= trip.total_price_avg_per_pers %>€</strong> per person on average</li>
+          </ul>
+        <% end %>
         <ul class="list-unstyled overview overview-trip">
           <li>From <strong><%= trip.date(trip.starting_on) %></strong> to <strong><%= trip.date(trip.ending_on) %></strong></li>
           <li>Near <strong><%= trip.destination %></strong></li>
