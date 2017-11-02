@@ -48,8 +48,9 @@ $housing-card-image-width: 230px;
     flex-grow: 1;
 
     @media (max-width: $screen-xs-max) {
+      order: 3;
       width: $housing-card-image-width;
-      margin: 2em 2em 1em 2em;
+      margin: 2em;
     }
 
     @media (min-width: $screen-sm-min) {
@@ -69,6 +70,10 @@ $housing-card-image-width: 230px;
   .picture {
     min-width: $housing-card-image-width; // [ipad] if not present, the div width is smaller than the image it contains
 
+    @media (max-width: $screen-xs-max) {
+      order: 1;
+    }
+
     img {
       object-fit: cover;
       width: $housing-card-image-width;
@@ -82,8 +87,8 @@ $housing-card-image-width: 230px;
     text-align: right;
 
     @media (max-width: $screen-xs-max) {
+      order: 2;
       width: 100%;
-      margin-bottom: 2em;
       text-align: center;
     }
 
