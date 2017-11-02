@@ -2,7 +2,7 @@
   <div class="content">
     <% if authorization.edit? %>
       <%=
-        link_to routes.edit_trip_path(trip.id), class: 'btn btn-default edit-trip-link' do
+        link_to routes.edit_trip_path(trip.id), class: 'btn btn-default btn-sm edit-trip-link' do
           i(class: "fa fa-pencil", 'aria-hidden' => true)
           text 'Edit'
         end
