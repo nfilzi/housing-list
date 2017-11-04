@@ -257,6 +257,11 @@
               <li><button type="button" class="btn btn-warning">Warning</button></li>
               <li><button type="button" class="btn btn-danger">Danger</button></li>
               <li><button type="button" class="btn btn-link">Link</button></li>
+              <li>
+                <a href="#" title="some action" class="btn-circle">
+                  <i class="fa fa-pencil"></i>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -305,8 +310,8 @@
         <div id="housing-card" class="style-guide--subentry">
           <h3>Housing Card</h3>
           <div class="style-guide--housing-card">
-            <%= render partial: 'housings/housing_card_pending', locals: { housing: housing, trip: trip } %>
-            <%= render partial: 'housings/housing_card', locals: { housing: housing, trip: trip } %>
+            <%= render partial: 'housings/housing_card_pending', locals: { housing: housing, trip: trip, authorization: housing_authorization(housing) } %>
+            <%= render partial: 'housings/housing_card', locals: { housing: housing, trip: trip, authorization: housing_authorization(housing) } %>
           </div>
         </div>
       </div>
