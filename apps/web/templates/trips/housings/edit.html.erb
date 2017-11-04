@@ -1,0 +1,40 @@
+<div class="banner housing-edition" style="background-image: url('<%= trip.background_picture_url(version: :banner) %>');">
+  <%=
+    form_for :housing, routes.trip_housing_path(trip.id, housing.id), method: :patch, values: { housing: housing } do
+      div class: 'content' do
+        h1 class: 'title' do
+          text "You and your friends are heading to #{trip.destination} 🌏 😱"
+        end
+
+        div class: 'details-container' do
+          div class: 'details' do
+            unless params.valid?
+              p class: 'error-message' do
+                text 'Please fill in all your housing information'
+              end
+            end
+
+            div class: 'form-group' do
+              label 'Title', for: 'housing-title'
+              text_field :title, placeholder: 'Amazing view of the city', class: 'form-control'
+            end
+
+            div class: 'form-group' do
+              label 'Description', for: 'housing-description'
+              text_area :description, placeholder: 'Nice location with many rooms, perfect for our group.', class: 'form-control'
+            end
+
+            div class: 'form-group' do
+              label 'Total price', for: 'housing-total-price'
+              number_field :total_price, placeholder: 'Total price for the whole group', class: 'form-control'
+            end
+          end
+        end
+      end
+
+      div class: 'action-container' do
+        submit 'Save! 👍', class: 'btn btn-primary'
+      end
+    end
+  %>
+</div>
