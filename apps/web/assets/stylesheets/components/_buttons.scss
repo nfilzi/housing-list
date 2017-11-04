@@ -3,3 +3,19 @@
   font-weight: $header-font-weight;
   font-family: $header-font;
 }
+
+.btn-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  color: $gray;
+  border: 2px solid $gray;
+  border-radius: 50%;
+
+  &:hover {
+    border-color: $link-hover-color;
+  }
+}

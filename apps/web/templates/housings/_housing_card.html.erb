@@ -5,7 +5,7 @@
   <div class="details">
     <div class="description">
       <h2 class="title"><%= housing.title %></h2>
-      <p><%= truncate(housing.description, 200, separator: ' ') %></p>
+      <p><%= truncate(housing.description, 145, separator: ' ') %></p>
       <%= link_to "See on #{housing.provider.capitalize}", housing.url, target: "_blank" %>
     </div>
     <div class="proposer">
@@ -21,5 +21,12 @@
       <i class="fa fa-user" aria-hidden=true></i>
       <%= housing.total_price_per_person(trip.travelers_count) %> €
     </span>
+  </div>
+  <div class="actions">
+    <%=
+      link_to routes.edit_trip_housing_path(trip.id, housing.id), title: 'edit', class: 'btn-circle' do
+        i(class: "fa fa-pencil", 'aria-hidden' => true)
+      end
+    %>
   </div>
 </div>
