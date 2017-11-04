@@ -15,7 +15,13 @@ module Web
             length_with_room_for_omission
           end
 
-        "#{str[0, stop]}#{omission}"
+        truncated_str = "#{str[0, stop]}#{omission}"
+
+        if Hanami::Utils::Escape::SafeString === str
+          raw truncated_str
+        else
+          truncated_str
+        end
       end
     end
   end
