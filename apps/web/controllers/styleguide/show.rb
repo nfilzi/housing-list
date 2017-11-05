@@ -17,13 +17,18 @@ module Web::Controllers::Styleguide
 
       # Components
       # - Housing card
-      @trip = OpenStruct.new(travelers_count: 5)
+      @trip = OpenStruct.new(
+        id: 1,
+        travelers_count: 5,
+        starting_on: Date.today
+      )
       user = OpenStruct.new(
         first_name: 'Nicolas',
         last_name: 'Filzi',
         avatar_uuid: nil
       )
       @housing ||= OpenStruct.new(
+        id: 42,
         user: user,
         trip: @trip,
         title: 'Ground floor with garden, calm.',

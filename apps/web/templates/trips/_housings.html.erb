@@ -1,5 +1,5 @@
 <% housings.each do |housing| %>
-  <%= render partial: "housings/#{housing.card_partial_name}", locals: { housing: housing, trip: trip } %>
+  <%= render partial: "housings/#{housing.card_partial_name}", locals: { housing: housing, trip: trip, authorization: housing_authorization(housing) } %>
 <% end %>
 
 <% if housings.size.odd? %>

@@ -36,8 +36,8 @@ module Web::Controllers::Trips
       end
 
       def authorize
-        authorization = Web::Trips::Housings::Authorization.new(current_user)
-        halt 401 unless authorization.create?(@trip)
+        authorization = Web::Trips::Housings::Authorization.new(current_user, @trip)
+        halt 401 unless authorization.create?
       end
     end
   end

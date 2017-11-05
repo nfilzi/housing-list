@@ -4,6 +4,10 @@ class HousingRepository < Hanami::Repository
     belongs_to :user
   end
 
+  def find_for_trip(id, trip_id)
+    housings.where(trip_id: trip_id, id: id).one
+  end
+
   def find_with_user(id)
     wrap_user.by_pk(id).as(Housing).one
   end

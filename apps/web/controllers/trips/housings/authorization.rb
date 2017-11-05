@@ -2,16 +2,22 @@ module Web::Trips
   module Housings
     class Authorization
       private
-      attr_reader :user
+      attr_reader :housing, :trip, :user
 
       public
 
-      def initialize(user)
-        @user = user
+      def initialize(user, trip, housing=nil)
+        @user    = user
+        @trip    = trip
+        @housing = housing
       end
 
-      def create?(trip)
+      def create?
         Web::Trips::Housings::Authorizations::Create.new(user, trip).granted?
+      end
+
+      def edit?
+        Web::Trips::Housings::Authorizations::Update.new(user, trip, housing).granted?
       end
     end
   end
