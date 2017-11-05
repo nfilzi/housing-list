@@ -19,6 +19,10 @@ module Web::Trips
       def edit?
         Web::Trips::Housings::Authorizations::Update.new(user, trip, housing).granted?
       end
+
+      def dismiss?
+        Web::Trips::Housings::Authorizations::Dismiss.new(user, trip, housing).granted?
+      end
     end
   end
 end

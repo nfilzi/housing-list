@@ -56,8 +56,21 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 housing-cards">
-      <%= render partial: 'housings', locals: { housings: housings, trip: trip } %>
+    <div class="col-xs-12 trip-housing-cards">
+      <%= render partial: 'housings', locals: { housings: active_housings, trip: trip } %>
     </div>
   </div>
+
+  <% unless dismissed_housings.empty? %>
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="trip-housings-dismissed-title">Dismissed housings</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 trip-housing-cards trip-housing-cards--dismissed">
+        <%= render partial: 'housings', locals: { housings: dismissed_housings, trip: trip } %>
+      </div>
+    </div>
+  <% end %>
 </div>

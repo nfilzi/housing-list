@@ -30,5 +30,16 @@
         end
       %>
     <% end %>
+    <% if authorization.dismiss? %>
+      <%=
+        form_for :housing, routes.dismiss_trip_housing_path(trip.id, housing.id), method: :delete, id: "js-housing-dismiss-form-#{housing.id}" do
+          div do
+            link_to '#', title: 'dismiss', class: 'btn-circle js-housing-dismiss-link', 'data-target' => "js-housing-dismiss-form-#{housing.id}" do
+              i(class: "fa fa-times", 'aria-hidden' => true)
+            end
+          end
+        end
+      %>
+    <% end %>
   </div>
 </div>

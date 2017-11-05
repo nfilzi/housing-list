@@ -1,18 +1,5 @@
 $housing-card-image-width: 230px;
 
-.housing-cards {
-  @media (max-width: $screen-xs-max) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 2em;
-  }
-
-  @media (min-width: $screen-sm-min) {
-    margin-top: 4em;
-  }
-}
-
 .housing-card {
   display: flex;
   margin-bottom: 1.5em;
@@ -156,13 +143,13 @@ $housing-card-image-width: 230px;
 }
 
 .housing-card .actions {
+  display: flex;
+  justify-content: flex-end;
+
   @media (max-width: $screen-xs-max) {
     order: 10;
     width: $housing-card-image-width;
     min-height: 2.5em;
-
-    display: flex;
-    justify-content: flex-end;
 
     .btn-circle {
       margin-right: 0.5em;
@@ -175,12 +162,16 @@ $housing-card-image-width: 230px;
     bottom: 0;
     padding-bottom: 1em;
     display: none;
+
+    .btn-circle {
+      margin-left: 0.5em;
+    }
   }
 }
 
 .housing-card:hover .actions {
   @media (min-width: $screen-sm-min) {
-    display: block;
+    display: flex;
   }
 }
 

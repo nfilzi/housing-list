@@ -24,7 +24,11 @@ resources :trips, only: [:index, :show, :new, :create, :edit, :update] do
     patch :join
   end
 
-  resources :housings, only: [:new, :create, :edit, :update]
+  resources :housings, only: [:new, :create, :edit, :update] do
+    member do
+      delete :dismiss
+    end
+  end
 end
 
 resource :styleguide, only: :show
