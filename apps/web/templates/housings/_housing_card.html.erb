@@ -23,10 +23,12 @@
     </span>
   </div>
   <div class="actions">
-    <%=
-      link_to routes.edit_trip_housing_path(trip.id, housing.id), title: 'edit', class: 'btn-circle' do
-        i(class: "fa fa-pencil", 'aria-hidden' => true)
-      end
-    %>
+    <% if authorization.edit? %>
+      <%=
+        link_to routes.edit_trip_housing_path(trip.id, housing.id), title: 'edit', class: 'btn-circle' do
+          i(class: "fa fa-pencil", 'aria-hidden' => true)
+        end
+      %>
+    <% end %>
   </div>
 </div>
