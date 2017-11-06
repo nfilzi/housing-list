@@ -111,6 +111,11 @@ $housing-card-image-width: 230px;
       text-align: left;
     }
 
+    @media (min-width: $screen-md-min) {
+      margin-top: 1em;
+      margin-right: 1em;
+    }
+
     span {
       display: inline-block;
       min-width: 100px;
