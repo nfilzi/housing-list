@@ -13,7 +13,7 @@ module Web::Trips::Authorizations
     end
 
     def granted?
-      (user_signed_in? && user_organizer?) || visitor_authorized?
+      trip && (user_signed_in? && user_organizer?) || visitor_authorized?
     end
 
     private
