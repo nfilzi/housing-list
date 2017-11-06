@@ -6,6 +6,7 @@ module Web::Views::Trips
 
     def housings
       locals[:housings].map { |housing| HousingPresenter.new(housing) }
+    end
 
     def housing_authorization(housing)
       Web::Trips::Housings::Authorization.new(current_user, trip, housing)
