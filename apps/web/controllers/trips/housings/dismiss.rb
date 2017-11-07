@@ -9,6 +9,7 @@ module Web::Controllers::Trips
 
       def call(params)
         HousingRepository.new.update(@housing.id, dismissed: true)
+        redirect_to routes.trip_path(@trip.id)
       end
 
       private

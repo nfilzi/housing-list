@@ -11,8 +11,7 @@
 
       // Get dismiss form and submit it
       var dismissForm = document.getElementById(this.dataset.target);
-      var eventSubmit = new Event('submit');
-      dismissForm.dispatchEvent(eventSubmit);
+      dismissForm.submit();
     });
   });
 })();
