@@ -4,8 +4,12 @@ module Web::Views::Trips
     include Web::Helpers::DateFormatter
     include Web::Helpers::TextFormatter
 
-    def housings
-      locals[:housings].map { |housing| HousingPresenter.new(housing) }
+    def active_housings
+      locals[:active_housings].map { |housing| HousingPresenter.new(housing) }
+    end
+
+    def dismissed_housings
+      locals[:dismissed_housings].map { |housing| HousingPresenter.new(housing) }
     end
 
     def housing_authorization(housing)
@@ -17,7 +21,8 @@ module Web::Views::Trips
     end
 
     def after_js
-      javascript('copy-invitation-link', async: true)
+      raw javascript('copy-invitation-link', async: true) +
+          javascript('dismiss-housing', async: true)
     end
 
     # Meta tags

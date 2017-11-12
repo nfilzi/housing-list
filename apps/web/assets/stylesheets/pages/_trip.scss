@@ -292,3 +292,32 @@
     margin-bottom: 0.3em;
   }
 }
+
+.trip-housing-cards {
+  @media (max-width: $screen-xs-max) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2em;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    margin-top: 4em;
+  }
+}
+
+.trip-housing-cards--dismissed {
+  @media (min-width: $screen-sm-min) {
+    margin-top: 1.5em;
+  }
+}
+
+.trip-housings-dismissed-title {
+  font-size: 23px;
+  margin-bottom: 1em;
+
+  @media (max-width: $screen-xs-max) {
+    text-align: center;
+  }
+}
+

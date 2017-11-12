@@ -10,7 +10,7 @@ class TripWithStats < Hanami::Entity
   def initialize(attributes={})
     travelers_count = attributes[:travelers_count]
 
-    @housings_count  = attributes[:housings_count]
+    @housings_count  = attributes[:housings_count] || 0
     @total_price_avg = (attributes[:total_price_avg] || 0).to_i
     @total_price_min = attributes[:total_price_min] || 0
     @total_price_max = attributes[:total_price_max] || 0

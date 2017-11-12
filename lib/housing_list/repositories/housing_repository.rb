@@ -12,11 +12,19 @@ class HousingRepository < Hanami::Repository
     wrap_user.by_pk(id).as(Housing).one
   end
 
-  def for_trip_sorted_by_most_recent(trip_id)
-    wrap_user.where(trip_id: trip_id).order { created_at.desc }.as(Housing).to_a
+  def active_for_trip_sorted_by_most_recent(trip_id)
+    for_trip_sorted_by_most_recent(trip_id).where(dismissed: false).as(Housing).to_a
+  end
+
+  def dismissed_for_trip_sorted_by_most_recent(trip_id)
+    for_trip_sorted_by_most_recent(trip_id).where(dismissed: true).as(Housing).to_a
   end
 
   private
+
+  def for_trip_sorted_by_most_recent(trip_id)
+    wrap_user.where(trip_id: trip_id).order { created_at.desc }
+  end
 
   def wrap_user
     relations[:housings].wrap(:user)

@@ -10,12 +10,14 @@ module Web::Controllers::Trips
 
     expose :authorization
     expose :housing_stats
-    expose :housings
+    expose :active_housings
+    expose :dismissed_housings
     expose :invitation_token
     expose :trip
 
     def call(params)
-      @housings = HousingRepository.new.for_trip_sorted_by_most_recent(@trip.id)
+      @active_housings    = HousingRepository.new.active_for_trip_sorted_by_most_recent(@trip.id)
+      @dismissed_housings = HousingRepository.new.dismissed_for_trip_sorted_by_most_recent(@trip.id)
     end
 
     private

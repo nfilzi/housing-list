@@ -1,5 +1,5 @@
 module Web::Trips::Housings::Authorizations
-  class Update
+  class Dismiss
     include ::Web::Trips::Authorizations::Base
     include ::Web::Trips::Housings::Authorizations::Base
 
@@ -15,7 +15,7 @@ module Web::Trips::Housings::Authorizations
     end
 
     def granted?
-      trip && future_trip? && housing && housing_active? && user_signed_in? && user_organizer?
+      trip && housing && housing_active? && user_signed_in? && user_organizer?
     end
   end
 end

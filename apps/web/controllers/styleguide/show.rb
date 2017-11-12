@@ -38,7 +38,8 @@ module Web::Controllers::Styleguide
         provider: 'airbnb',
         total_price: 2900,
         created_at: Time.parse('2017-05-30 17:55:00'),
-        updated_at: Time.now
+        updated_at: Time.now,
+        dismissed: false
       )
     end
   end
