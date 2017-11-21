@@ -13,6 +13,11 @@ module Scrapers
       def scrape
         init_capybara
         @browser = Capybara.current_session
+
+        # To get the desktop version for the scraped page, in order to get access
+        # to the flat booking form
+        browser.driver.resize(3072, 2304)
+
         browser.visit(url_with_currency)
 
         return build_housing_attributes
@@ -32,10 +37,8 @@ module Scrapers
       end
 
       def build_housing_attributes
-        sleep 1 # Keeps finding multiple elements with the below selector without this 😱
-        data                  = extract_airbnb_housing_data
-        total_price_selector  = ".book-it__subtotal table tbody tr:last-child"
-        total_price           = browser.find(total_price_selector).text.gsub(/[^\d]/, "").to_i
+        data = extract_airbnb_housing_data
+        total_price = browser.find("#book_it_form").text.match(/Total .(\d+)/)[1].to_i
 
         return {
           title:       data["name"],
@@ -59,6 +62,18 @@ module Scrapers
         end
 
         Capybara.default_driver = :poltergeist
+
+        # To debug with a real browser, if needed
+        # Capybara.register_driver :selenium do |app|
+        #   Capybara::Selenium::Driver.new(app, browser: :chrome)
+        # end
+
+        # Capybara.javascript_driver = :chrome
+
+        # Capybara.configure do |config|
+        #   config.default_max_wait_time = 10 # seconds
+        #   config.default_driver        = :selenium
+        # end
       end
     end
   end
