@@ -16,6 +16,11 @@
   border-radius: 50%;
 
   &:hover {
+    color: $link-hover-color;
     border-color: $link-hover-color;
+  }
+
+  &:focus {
+    outline: none;
   }
 }
