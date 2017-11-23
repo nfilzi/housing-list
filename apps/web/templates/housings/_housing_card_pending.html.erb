@@ -5,7 +5,7 @@
   <div class="details">
     <div class="description">
       <p>We are currently fetching your new housing information!</p>
-      <%= link_to "See on #{housing.provider.capitalize}", housing.url, target: "_blank" %>
+      <%= link_to "See on #{housing.provider.capitalize}", housing.url, target: "_blank", rel: "noopener" %>
     </div>
     <div class="proposer">
       <img src="<%= housing.proposer_avatar_url %>" alt="<%= housing.user.first_name %>" class=" proposer-picture">
