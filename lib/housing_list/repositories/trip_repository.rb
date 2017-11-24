@@ -39,7 +39,8 @@ class TripRepository < Hanami::Repository
       where(Sequel.qualify(:trips, :id) =>  id).
       first
 
-    return TripWithStats.new(attributes)
+    return unless attributes
+    TripWithStats.new(attributes)
   end
 
   def count
