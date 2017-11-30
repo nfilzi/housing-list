@@ -49,7 +49,7 @@
     </div>
 
     <div class="home-supported-providers">
-      <h4>At the moment, we are supporting <%= supported_providers.count %> housing providers</h3>
+      <h4>At the moment, we are supporting <%= supported_providers.count %> housing providers</h4>
       <% supported_providers.each do |supported_provider| %>
         <%= image("#{supported_provider}.svg", class: "supported-provider-picture") %>
       <% end %>

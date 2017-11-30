@@ -6,7 +6,6 @@ gem 'rake'
 gem 'hanami',       '~> 1.1'
 gem 'hanami-model', '~> 1.1'
 
-
 gem 'bcrypt', '~> 3.1.11' # authentication
 gem 'pg'
 
