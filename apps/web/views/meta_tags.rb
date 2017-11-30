@@ -5,7 +5,7 @@ module Web::Views
     end
 
     def meta_tag_image
-      asset_url('meta-banner.jpg')
+      escape_url asset_url('meta-banner.jpg')
     end
 
     def meta_tag_page_title
@@ -25,7 +25,7 @@ module Web::Views
     end
 
     def meta_tag_url
-      params.env['REQUEST_URI']
+      escape_url params.env['REQUEST_URI']
     end
 
     private
