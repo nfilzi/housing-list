@@ -41,8 +41,8 @@ module Scrapers
         total_price = browser.find("#book_it_form").text.match(/Total .(\d+)/)[1].to_i
 
         return {
-          title:       data["name"],
-          description: data["description"],
+          title:       data["sectioned_description"]["name"],
+          description: data["sectioned_description"]["description"],
           total_price: total_price,
           provider_id: data["id"],
           picture_url: data["photos"].first["large"],
