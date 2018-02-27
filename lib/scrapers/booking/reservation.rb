@@ -44,7 +44,7 @@ module Scrapers
       end
 
       def extract_hotel_url
-        hotel_url_link_selector = '.bp_pricedetails_holder .bp_sidebar_content_block--bookingdetails_summary .bp_sidebar_content_block__link_container--change_selection a'
+        hotel_url_link_selector = '.bp_modify_selection__link--from_hotel'
         hotel_url_link          = browser.find(hotel_url_link_selector)
 
         return hotel_url_link["href"]
