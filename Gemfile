@@ -26,15 +26,15 @@ gem 'sass'
 # monitoring
 gem 'bugsnag'
 
-# debugging scrapers
-# gem 'selenium-webdriver'
-# gem 'chromedriver-helper'
-
 group :development do
   # Code reloading
   # See: http://hanamirb.org/guides/projects/code-reloading
   gem 'shotgun'
   gem 'pry-byebug'
+
+  # debugging scrapers
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
 group :test, :development do

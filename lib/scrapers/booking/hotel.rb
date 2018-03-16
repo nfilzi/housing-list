@@ -41,9 +41,9 @@ module Scrapers
         description_selector  = ".hp-description .hp_desc_main_content #summary p"
         description           = browser.all(description_selector).map(&:text).map(&:strip).join("\n").strip
 
-        pictures_selector = ".bh-photo-grid .active-image"
+        pictures_selector = ".hp-gallery .slick-track img"
         pictures_links    = browser.all(pictures_selector)
-        picture_url       = pictures_links.first["href"]
+        picture_url       = pictures_links.first["src"]
 
         {
           title:       title,

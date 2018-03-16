@@ -52,7 +52,7 @@ module Scrapers
 
       def extract_airbnb_housing_data
         raw_data = browser.all("body script", visible: false)[5].text(:all)
-        JSON.parse(raw_data[4..-4])["bootstrapData"]["reduxData"]["marketplacePdp"]["listingInfo"]["listing"]
+        JSON.parse(raw_data[4..-4])["bootstrapData"]["reduxData"]["homePDP"]["listingInfo"]["listing"]
       end
 
       def init_capybara
