@@ -64,12 +64,21 @@ module Scrapers
       end
 
       def extract_raw_data
+        basic_raw_data  = {}
+        hotel_id        = nil
+        hotel_id_regexp = /b_hotel_id:\s'(?<hotel_id>\d+)'/
+
         scripts = browser.all("head script", visible: false)
 
-        basic_raw_data = JSON.parse(scripts[9]["innerHTML"].gsub("\n", ""))
+        scripts.each do |script|
+          raw_script = script["innerHTML"]
 
-        hotel_id_regexp = /b_hotel_id:\s'(?<hotel_id>\d+)'/
-        hotel_id = scripts[10]["innerHTML"].match(hotel_id_regexp)[:hotel_id].to_i
+          if basic_raw_data.empty? && raw_script.include?("priceRange")
+            basic_raw_data = JSON.parse(raw_script.gsub("\n", ""))
+          elsif hotel_id.nil? && raw_script =~ hotel_id_regexp
+            hotel_id = raw_script.match(hotel_id_regexp)[:hotel_id].to_i
+          end
+        end
 
         return basic_raw_data.merge(hotel_id: hotel_id)
       end
