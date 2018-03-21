@@ -10,8 +10,10 @@ function pictureUploadPreview() {
 
   var reader = new FileReader();
   reader.onloadend = function(){
+    displayPreviewTargetElement.classList.add('picture-upload-preview');
     displayPreviewTargetElement.style.backgroundImage = "url(" + reader.result + ")";
   }
+
   if (file) {
     reader.readAsDataURL(file);
   }
