@@ -11,10 +11,7 @@ module Scrapers
       end
 
       def scrape
-        driver = :poltergeist # or :selenium
-
-        init_capybara(driver: driver)
-        init_browser(driver: driver)
+        init_scraping_engine!(driver: :poltergeist) # or :selenium
 
         browser.visit(url_with_currency)
 
@@ -53,7 +50,7 @@ module Scrapers
         JSON.parse(raw_data[4..-4])["bootstrapData"]["reduxData"]["homePDP"]["listingInfo"]["listing"]
       end
 
-      def init_browser(driver:)
+      def init_browser(driver)
         @browser = Capybara.current_session
 
         # To get the desktop version for the scraped page, in order to get access
@@ -65,7 +62,7 @@ module Scrapers
         end
       end
 
-      def init_capybara(driver:)
+      def init_capybara(driver)
         driver == :poltergeist ? init_capybara_with_poltergeist : init_capybara_with_selenium
       end
 
@@ -91,6 +88,11 @@ module Scrapers
           config.default_max_wait_time = 10 # seconds
           config.default_driver        = :selenium
         end
+      end
+
+      def init_scraping_engine!(driver:)
+        init_capybara(driver)
+        init_browser(driver)
       end
     end
   end
