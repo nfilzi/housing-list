@@ -5,7 +5,7 @@
       form_for :profile, routes.profile_path, method: :patch, values: { profile: profile }, enctype: 'multipart/form-data', class: 'human-form' do
         div class: 'details' do
           div class: 'avatar-container' do
-            div class: 'avatar js-profile-avatar-preview', 'style' => "background-image: url('#{profile.avatar_url}');" do
+            div class: 'avatar js-profile-avatar-preview', style: "background-image: url('#{profile.avatar_url}');" do
               div class: 'avatar-picture-upload-overlay' do
                 label "avatar-picture", id: "avatar-picture-label" do
                   i(class: "fa fa-picture-o", 'aria-hidden' => true)
