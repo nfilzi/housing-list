@@ -3,10 +3,10 @@ require 'open-uri'
 require 'uri'
 
 class RandomPicture
-  LANDSCAPE_ORIENTATIONS = [5, 6, 7, 8]
-
   MIN_WIDTH  = 2800
   MIN_HEIGHT = 1000
+
+  MIME_TYPES = %w(image/png image/jpeg)
 
   private
   attr_reader :destination, :license
@@ -41,7 +41,7 @@ class RandomPicture
       cmtitle:   "Category:#{license}",
       generator: 'images',
       prop:      'imageinfo',
-      iiprop:    'url|size|dimensions|mime|metadata',
+      iiprop:    'url|size|dimensions|mime',
       gimlimit:  '5',
       redirects: '1'
     }
@@ -61,17 +61,14 @@ class RandomPicture
 
     image = images.find do |image|
       image_details = image['imageinfo'].first
-      orientation   = image_details['metadata'].find { |metadata| metadata['name'] == 'Orientation' }
       width         = image_details['width']
       height        = image_details['height']
+      mime_type     = image_details['mime']
 
       # RULES:
-      # - NO orientation specified
-      # - OR landscape orientation
-      # - OR min width and min height respected
-      orientation.nil? ||
-        LANDSCAPE_ORIENTATIONS.include?(orientation['value']) ||
-        (width >= MIN_WIDTH && height >= MIN_HEIGHT)
+      # - acceptable mime type
+      # - min width and min height respected
+      MIME_TYPES.include?(mime_type) && (width >= MIN_WIDTH && height >= MIN_HEIGHT)
     end
 
     return {} unless image
