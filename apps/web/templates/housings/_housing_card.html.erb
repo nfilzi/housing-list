@@ -9,7 +9,7 @@
       <%= link_to "See on #{housing.provider.capitalize}", housing.url, target: "_blank", rel: "noopener" %>
     </div>
     <div class="proposer">
-      <img src="<%= housing.proposer_avatar_url %>" alt="<%= housing.user.first_name %>" class=" proposer-picture">
+      <img src="<%= housing.proposer_avatar_url %>" alt="<%= housing.user.first_name %>" class=" proposer-picture" width=60>
       <div class="proposer-details">
         <span class='proposer-name'><%= housing.user.first_name %></span>
         <span class='proposal-date'>on <%= format_date(housing.created_at.to_date) %></span>
