@@ -1,0 +1,5 @@
+.picture-upload-preview {
+  // Used when background pic dynamically changed based on new background pic
+  // file provided by user: picture-upload-preview.js
+  transition: background 1s ease-in-out;
+}
