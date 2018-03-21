@@ -11,12 +11,10 @@ module Scrapers
       end
 
       def scrape
-        init_capybara
-        @browser = Capybara.current_session
+        driver = :poltergeist # or :selenium
 
-        # To get the desktop version for the scraped page, in order to get access
-        # to the flat booking form
-        browser.driver.resize(3072, 2304)
+        init_capybara(driver: driver)
+        init_browser(driver: driver)
 
         browser.visit(url_with_currency)
 
@@ -55,25 +53,44 @@ module Scrapers
         JSON.parse(raw_data[4..-4])["bootstrapData"]["reduxData"]["homePDP"]["listingInfo"]["listing"]
       end
 
-      def init_capybara
+      def init_browser(driver:)
+        @browser = Capybara.current_session
+
+        # To get the desktop version for the scraped page, in order to get access
+        # to the flat booking form
+        if driver == :poltergeist
+          browser.driver.resize(3072, 2304)
+        else
+          browser.driver.resize_window_to(browser.driver.current_window_handle, 3072, 2304)
+        end
+      end
+
+      def init_capybara(driver:)
+        driver == :poltergeist ? init_capybara_with_poltergeist : init_capybara_with_selenium
+      end
+
+      def init_capybara_with_poltergeist
         require 'capybara/poltergeist'
+
         Capybara.register_driver :poltergeist do |app|
           Capybara::Poltergeist::Driver.new(app, phantomjs: Phantomjs.path, js_errors: false)
         end
 
         Capybara.default_driver = :poltergeist
+      end
 
+      def init_capybara_with_selenium
         # To debug with a real browser, if needed
-        # Capybara.register_driver :selenium do |app|
-        #   Capybara::Selenium::Driver.new(app, browser: :chrome)
-        # end
+        Capybara.register_driver :selenium do |app|
+          Capybara::Selenium::Driver.new(app, browser: :chrome)
+        end
 
-        # Capybara.javascript_driver = :chrome
+        Capybara.javascript_driver = :chrome
 
-        # Capybara.configure do |config|
-        #   config.default_max_wait_time = 10 # seconds
-        #   config.default_driver        = :selenium
-        # end
+        Capybara.configure do |config|
+          config.default_max_wait_time = 10 # seconds
+          config.default_driver        = :selenium
+        end
       end
     end
   end
