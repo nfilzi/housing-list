@@ -22,7 +22,7 @@ module Web
       end
 
       def sign_in_and_redirect(user)
-        user_return_to           = session[:user_return_to] || routes.root_path
+        user_return_to           = session[:user_return_to] || routes.trips_path
         session[:user_id]        = user.id
         session[:user_return_to] = nil
 
