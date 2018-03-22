@@ -1,7 +1,7 @@
 require "hanami/interactor"
 
 module Trips
-  class FetchRandomPicture
+  class SetRandomPicture
     include Hanami::Interactor
 
     private

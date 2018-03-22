@@ -18,7 +18,7 @@ module Trips
 
     def call
       @trip = TripRepository.new.create_with_organizer(trip_params)
-      Trips::FetchRandomPicture.new(trip).call
+      Trips::SetRandomPicture.new(trip).call
     end
 
     private
