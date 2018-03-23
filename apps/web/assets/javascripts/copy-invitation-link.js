@@ -4,7 +4,10 @@
 
   // click event
   var element = document.querySelector('.copy-invitation-link');
-  element.addEventListener('click', copyInvitationLink, true);
+
+  if (element) {
+    element.addEventListener('click', copyInvitationLink, true);
+  }
 
   // event handler
   function copyInvitationLink(event) {
