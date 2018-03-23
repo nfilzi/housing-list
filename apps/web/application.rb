@@ -256,6 +256,7 @@ module Web
         object-src 'none';
         plugin-types application/pdf;
         child-src 'self';
+        worker-src 'self';
         media-src 'self'
       }
 
