@@ -5,7 +5,6 @@ class TripPresenter
   include Web::Helpers::DateFormatter
 
   def background_picture_url(version:)
-    # TODO: Find a stock picture based on trip location?
     return asset_path('lake-geneva.jpg') unless picture_uuid
 
     size_operations = {
