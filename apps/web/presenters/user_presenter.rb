@@ -1,21 +1,17 @@
 class UserPresenter
   include Hanami::Presenter
   include Web::Assets::Helpers
+  include Web::Helpers::UploadcareFile
 
   def avatar_url(version: :default)
-    return asset_path('avatar.jpg') unless avatar_uuid
-
     size_operations = {
-      default:  "scale_crop/300x300/center"
+      default: 'scale_crop/300x300/center'
     }
 
-    operations = [
-      size_operations[version],
-      "quality/lighter",
-      "progressive/yes",
-      "autorotate/yes",
-    ]
-
-    return "https://ucarecdn.com/#{avatar_uuid}/-/#{operations.join("/-/")}/"
+    return uploadcare_url(
+      avatar_uuid,
+      default: 'avatar.jpg',
+      size_operation: size_operations[version]
+    )
   end
 end

@@ -3,24 +3,20 @@ class TripPresenter
   include Hanami::Helpers::EscapeHelper
   include Web::Assets::Helpers
   include Web::Helpers::DateFormatter
+  include Web::Helpers::UploadcareFile
 
   def background_picture_url(version:)
-    return asset_path('lake-geneva.jpg') unless picture_uuid
-
     size_operations = {
-      thumbnail: "resize/400x",
-      banner: "preview",
-      meta: "crop/1200x630/center"
+      thumbnail: 'resize/400x',
+      banner: 'preview',
+      meta: 'crop/1200x630/center'
     }
 
-    operations = [
-      size_operations[version],
-      "quality/lighter",
-      "progressive/yes",
-      "autorotate/yes",
-    ]
-
-    return "https://ucarecdn.com/#{picture_uuid}/-/#{operations.join("/-/")}/"
+    return uploadcare_url(
+      picture_uuid,
+      default: 'lake-geneva.jpg',
+      size_operation: size_operations[version]
+    )
   end
 
   def days_before_beginning
