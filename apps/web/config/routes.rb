@@ -2,7 +2,7 @@ require 'sidekiq/web'
 
 mount Sidekiq::Web, at: '/sidekiq'
 
-root to: 'home#show'
+root to: 'static/home#show'
 
 namespace :users do
   get    'sign_in',  to: 'users/session#new',     as: :user_sign_in
