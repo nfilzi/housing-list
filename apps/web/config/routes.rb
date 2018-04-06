@@ -32,3 +32,6 @@ resources :trips, only: [:index, :show, :new, :create, :edit, :update] do
 end
 
 resource :styleguide, only: :show
+
+# Static pages
+resource :about, only: :show, controller: 'static/about'

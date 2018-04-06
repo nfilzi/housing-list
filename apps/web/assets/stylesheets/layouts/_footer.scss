@@ -1,17 +1,19 @@
 .footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 1.5em;
   background-color: $brand-primary;
   color: $white;
+
+  a {
+    color: $white;
+    &:hover {
+      color: $white;
+    }
+  }
+
   p {
     margin-bottom: 0px;
-    a {
-      color: $white;
-      &:hover {
-        color: $white;
-      }
-    }
   }
 }
