@@ -1,13 +1,21 @@
 .footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: flex-start;
   padding: 1.5em;
   background-color: $brand-primary;
   color: $white;
 
+  @media (min-width: $screen-sm-min) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   a {
     color: $white;
+
     &:hover {
       color: $white;
     }
@@ -15,5 +23,11 @@
 
   p {
     margin-bottom: 0px;
+  }
+
+  .footer-about-link {
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: 1em;
+    }
   }
 }
