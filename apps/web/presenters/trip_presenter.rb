@@ -66,7 +66,7 @@ class TripPresenter
         if has_housings?
           "Only <strong>#{days_before_beginning} days left</strong> to find some place to stay at!"
         else
-          "<span class='icon'>👆</span> Let's create <strong>your first housing!</strong>"
+          "<span class='icon'>👆</span> Let's add <strong>your first housing!</strong>"
         end
       when :ongoing
         "Time to <strong>enjoy</strong> this trip!"
