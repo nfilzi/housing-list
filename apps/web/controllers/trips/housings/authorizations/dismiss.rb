@@ -15,7 +15,7 @@ module Web::Trips::Housings::Authorizations
     end
 
     def granted?
-      trip && housing && housing_active? && user_signed_in? && user_organizer?
+      trip && future_trip? && housing && housing_active? && user_signed_in? && user_organizer?
     end
   end
 end
