@@ -60,19 +60,6 @@
     @media (max-width: $screen-xs-max) {
       width: 100%;
     }
-
-    @media (min-width: $screen-sm-min) {
-      &:after {
-        content:"";
-        position: absolute;
-        z-index: 1;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        border-left: 1px solid $white;
-        transform: translate(-50%);
-      }
-    }
   }
 
   .details {
