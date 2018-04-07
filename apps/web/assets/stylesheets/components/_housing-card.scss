@@ -3,17 +3,19 @@ $housing-card-image-width: 230px;
 .housing-card {
   display: flex;
   margin-bottom: 1.5em;
+  position: relative;
 
   @media (max-width: $screen-xs-max) {
     flex-direction: column;
     align-items: center;
-    min-width: 295px;
+    min-width: $housing-card-image-width;
     margin-bottom: 3em;
+    margin-right: 1em;
+    margin-left: 1em;
   }
 
   @media (min-width: $screen-sm-min) {
     flex-wrap: wrap;
-    position: relative;
 
     &:hover {
       background-color: $gray-lighter;
@@ -45,7 +47,6 @@ $housing-card-image-width: 230px;
     padding: 1em 0;
 
     @media (max-width: $screen-xs-max) {
-      order: 3;
       width: $housing-card-image-width;
       margin-top: 1em;
     }
@@ -62,40 +63,25 @@ $housing-card-image-width: 230px;
 
   .description {
     margin-bottom: 1em;
-  }
 
-  .picture {
-    min-width: $housing-card-image-width; // [ipad] if not present, the div width is smaller than the image it contains
-
-    @media (max-width: $screen-xs-max) {
-      order: 1;
-    }
-
-    img {
-      object-fit: cover;
-      width: $housing-card-image-width;
-      height: $housing-card-image-width;
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      p {
+        max-height: ($base-height * 2em);
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
     }
   }
 
-  .price {
+  .like {
     align-self: flex-start;
     min-width: 170px;
     text-align: right;
 
-    @media (max-width: $screen-xs-max) {
-      order: 2;
-      width: 100%;
-      text-align: center;
-    }
-
-    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @media (max-width: $screen-sm-max) {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: $housing-card-image-width;
-      margin-left: 0;
-      text-align: left;
+      top: 0.5em;
+      right: 1em;
     }
 
     @media (min-width: $screen-md-min) {
@@ -106,18 +92,45 @@ $housing-card-image-width: 230px;
     span {
       display: inline-block;
       min-width: 100px;
+      text-align: right;
+      color: $raspberry;
+
+      display: none; // TODO: remove when implementing likes!
+    }
+  }
+
+  .picture {
+    min-width: $housing-card-image-width; // [ipad] if not present, the div width is smaller than the image it contains
+
+    img {
+      object-fit: cover;
+      width: $housing-card-image-width;
+      height: $housing-card-image-width;
+    }
+  }
+
+  .price {
+    @media (max-width: $screen-xs-max) {
+      width: 100%;
+      text-align: center;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: $housing-card-image-width;
+      margin-left: 0;
+      text-align: left;
+    }
+
+    span {
+      display: inline-block;
       padding: 0.5em 1em;
       text-align: center;
       color: $white;
       background-color: $blue;
-
-      @media (max-width: $screen-xs-max) {
-        width: $housing-card-image-width;
-      }
-
-      @media (max-width: $screen-sm-max) {
-        width: $housing-card-image-width;
-      }
+      width: $housing-card-image-width;
     }
   }
 
@@ -147,7 +160,6 @@ $housing-card-image-width: 230px;
   justify-content: flex-end;
 
   @media (max-width: $screen-xs-max) {
-    order: 10;
     width: $housing-card-image-width;
     min-height: 2.5em;
 
@@ -186,6 +198,12 @@ $housing-card-image-width: 230px;
     color: $gray;
 
     a {
+      color: $gray;
+    }
+  }
+
+  .like {
+    span {
       color: $gray;
     }
   }
