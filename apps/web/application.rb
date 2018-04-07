@@ -92,9 +92,6 @@ module Web
       # Configure Rack middleware for this application
       #
       # middleware.use Rack::Protection
-      # middleware.use Bugsnag::Rack # FIXME: Try to enable bugsnag here instead
-                                     #        of from within config.ru
-                                     #        Let's wait for Hanami 1.2
 
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, defaults to :html
