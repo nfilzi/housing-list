@@ -310,8 +310,8 @@
         <div id="housing-card" class="style-guide--subentry">
           <h3>Housing Card</h3>
           <div class="style-guide--housing-card">
-            <%= render partial: 'housings/housing_card_pending', locals: { housing: housing, trip: trip, authorization: housing_authorization(housing) } %>
             <%= render partial: 'housings/housing_card', locals: { housing: housing, trip: trip, authorization: housing_authorization(housing) } %>
+            <%= render partial: 'housings/housing_card_pending', locals: { housing: housing_pending, trip: trip, authorization: housing_authorization(housing_pending) } %>
           </div>
         </div>
       </div>
