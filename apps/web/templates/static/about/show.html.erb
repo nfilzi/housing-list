@@ -1,0 +1,93 @@
+<div class="about-page">
+  <div class="about-section about-the-project">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+          <h1 class="about-title">Why this project?</h1>
+          <p>
+            It comes from a simple observation: when we travel with friends and need to settle down on the perfect housing for all of us, it's a pain.
+          </p>
+          <p>
+            We personnaly experienced it, sharing links from Airbnb and Booking housings all over the place, in Facebook, in Slack, whatever.
+            We had no overview of all possibilities, no rationnalized way of comparing them, in terms of pricing per person for instance, among other points.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-section about-creators">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+          <h2 class="about-title">Why us?</h2>
+          <p>
+            We frequently organize
+            <%= link_to 'remote working / retreat sessions', 'http://nomadrides.com/' %>.
+            <br/>
+            We had the feeling we could fix this pain. And as developers and good product lovers, we could not let this go.
+          </p>
+          <div class="creators">
+            <div class="creator">
+              <a href="http://cecilitse.org/" target="_blank" rel="noopener">
+                <%= image 'cecile.jpg', alt: "Cecile's avatar", width: 300, class: "creator-avatar" %>
+              </a>
+              <div class="creator-details">
+                <a href="http://cecilitse.org/" target="_blank" rel="noopener" class="creator-link">
+                  <h3 class="creator-name">Cécile Veneziani 😸</h3>
+                </a>
+                <p class="creator-description">Rails turned Hanami developer</p>
+              </div>
+            </div>
+            <div class="creator">
+              <a href="https://twitter.com/n_filzi" target="_blank" rel="noopener">
+                <%= image 'nicolas.jpg', alt: "Nicolas's avatar", width: 300, class: "creator-avatar" %>
+              </a>
+              <div class="creator-details">
+                <a href="https://twitter.com/n_filzi" target="_blank" rel="noopener" class="creator-link">
+                  <h3 class="creator-name">🤓 Nicolas Filzi</h3>
+                </a>
+                <p class="creator-description">Code &amp; ingredients tinkerer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-section about-credits">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="about-title">Credits</h2>
+          <div class="about-credits-list">
+            <div class="about-credit">
+              <h3 class="credit-title">Assets</h3>
+              <p>This globe is released under the <%= link_to 'Apache license', 'http://www.apache.org/licenses/', target: "_blank", rel: "noopener" %>.</p>
+              <div class="credits-globe">
+                <%= image 'globe.svg' %>
+              </div>
+            </div>
+            <div class="about-credit">
+              <h3 class="credit-title">Trip pictures</h3>
+              <p>
+                We use pictures from <%= link_to 'Wikimedia Commons', 'https://commons.wikimedia.org/', target: "_blank", rel: "noopener" %> to provide a default trip picture.
+              </p>
+              <p>
+                They are all released under the <%= link_to 'Creative Commons ShareAlike', 'https://creativecommons.org/licenses/by-sa/4.0/', target: "_blank", rel: "noopener" %> license.
+              </p>
+              <p>
+                You can find them <%= link_to 'all here', 'https://commons.wikimedia.org/wiki/Category:CC-SA-1.0', target: "_blank", rel: "noopener" %>.
+              </p>
+            </div>
+            <div class="about-credit">
+              <h3 class="credit-title">Source code</h3>
+              <p>The source code of this website is released under the <%= link_to 'GPL v3', 'https://www.gnu.org/licenses/gpl.html', target: "_blank", rel: "noopener" %> licence.</p>
+              <p>You can find it on <%= link_to 'GitHub', 'https://github.com/nfilzi/housing-list/' %>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: "layouts/footer" %>

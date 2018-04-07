@@ -1,3 +1,9 @@
 <footer class="footer">
-  <p>Made with ❤️, 🍵 and <%= link_to "Hanami 🌸", "http://hanamirb.org" %>  by <%= link_to "@cecilitse", "https://twitter.com/cecilitse", target: "_blank", rel: "noopener" %> and <%= link_to "@nfilzi", "https://twitter.com/n_filzi", target: "_blank", rel: "noopener" %></p>
+  <p>
+    Made with ❤️, 🍵
+    and <%= link_to "Hanami", "http://hanamirb.org", class: 'link-sm-underline' %> 🌸
+    by <%= link_to "@cecilitse", "https://twitter.com/cecilitse", class: 'link-sm-underline', target: "_blank", rel: "noopener" %>
+    and <%= link_to "@nfilzi", "https://twitter.com/n_filzi", class: 'link-sm-underline', target: "_blank", rel: "noopener" %>
+  </p>
+  <%= link_to 'About the project', routes.about_path, class: "link-sm-underline footer-about-link" %>
 </footer>

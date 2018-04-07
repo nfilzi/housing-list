@@ -6,4 +6,11 @@ a:not(.btn) {
     border-bottom-width: 1px;
     border-bottom-style: solid;
   }
+
+  &.link-sm-underline {
+    @media (max-width: $screen-sm-max) {
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+    }
+  }
 }

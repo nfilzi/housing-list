@@ -1,0 +1,100 @@
+.about-page {
+  .about-section {
+    margin-bottom: 5em;
+  }
+
+  .about-title {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  .about-the-project {
+    margin-top: 3em;
+  }
+
+  // ----------------------------------------
+
+  .about-credits {
+    .about-credits-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .about-credit {
+      max-width: 300px;
+      margin: 0 1em;
+
+      .credit-title {
+        font-size: 20px;
+        text-align: center;
+      }
+    }
+
+    .credits-globe {
+      margin-top: 1.5em;
+      text-align: center;
+
+      img {
+        height: 90px;
+      }
+    }
+  }
+
+  // ----------------------------------------
+
+  .about-creators {
+    padding-top: 1.5em;
+    padding-bottom: 3.5em;
+    background-color: $gray-lighter;
+  }
+
+  .creators {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5em;
+
+    @media (min-width: $screen-sm-min) {
+      flex-direction: row;
+    }
+  }
+
+  .creator {
+    margin: 0 0.5em;
+
+    &:not(:last-child) {
+      @media (max-width: $screen-xs-max) {
+        margin-bottom: 1.5em;
+      }
+    }
+
+    .creator-avatar,
+    .creator-details {
+      box-shadow: 2px 2px 12px $gray-light;
+    }
+    .creator-details {
+      width: 300px;
+      margin-top: 8px;
+      padding: 1em;
+      text-align: center;
+      background-color: $white;
+
+      .creator-link {
+        color: $black;
+      }
+
+      .creator-name {
+        margin-top: 0;
+        font-size: $base-size;
+        font-family: $base-font;
+      }
+
+      .creator-description {
+        margin-bottom: 0;
+        font-size: 14px;
+      }
+    }
+  }
+}

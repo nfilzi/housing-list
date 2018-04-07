@@ -5,7 +5,7 @@
   <div class="details">
     <div class="description">
       <h2 class="title"><%= housing.title %></h2>
-      <p><%= truncate(housing.description, 145, separator: ' ') %></p>
+      <p><%= truncate(housing.description, 135, separator: ' ') %></p>
       <%= link_to "See on #{housing.provider.capitalize}", housing.url, target: "_blank", rel: "noopener" %>
     </div>
     <div class="proposer">
