@@ -2,7 +2,14 @@
   <div class="picture">
     <%= image housing.picture %>
   </div>
+  <div class="price">
+    <span>
+      <i class="fa fa-user" aria-hidden=true></i>
+      --- €
+    </span>
+  </div>
   <div class="details">
+    <h2 class="title"><%= housing.title %></h2>
     <div class="description">
       <p>We are currently fetching your new housing information!</p>
       <%= link_to "See on #{housing.provider.capitalize}", housing.url, target: "_blank", rel: "noopener" %>
@@ -15,10 +22,10 @@
       </div>
     </div>
   </div>
-  <div class="price">
+  <div class="like">
     <span>
-      <i class="fa fa-user" aria-hidden=true></i>
-      --- €
+      0
+      <i class="fa fa-heart-o" aria-hidden=true></i>
     </span>
   </div>
   <div class="actions">

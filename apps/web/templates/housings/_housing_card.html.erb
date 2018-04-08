@@ -2,6 +2,12 @@
   <div class="picture">
     <%= image housing.picture %>
   </div>
+  <div class="price">
+    <span>
+      <i class="fa fa-user" aria-hidden=true></i>
+      <%= housing.total_price_per_person(trip.travelers_count) %> €
+    </span>
+  </div>
   <div class="details">
     <div class="description">
       <h2 class="title"><%= housing.title %></h2>
@@ -16,10 +22,10 @@
       </div>
     </div>
   </div>
-  <div class="price">
+  <div class="like">
     <span>
-      <i class="fa fa-user" aria-hidden=true></i>
-      <%= housing.total_price_per_person(trip.travelers_count) %> €
+      0
+      <i class="fa fa-heart-o" aria-hidden=true></i>
     </span>
   </div>
   <div class="actions">
