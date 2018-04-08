@@ -5,7 +5,8 @@ class UserPresenter
 
   def avatar_url(version: :default)
     size_operations = {
-      default: 'scale_crop/300x300/center'
+      default:   'scale_crop/300x300/center',
+      thumbnail: 'scale_crop/100x100/center'
     }
 
     return uploadcare_url(

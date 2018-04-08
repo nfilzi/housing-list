@@ -38,6 +38,11 @@ a.navbar-brand {
   }
 }
 
+.navbar .avatar {
+  max-width: 33px;
+  max-height: 33px;
+}
+
 .navbar .dropdown-menu > li > a:hover,
 .navbar .dropdown-menu > li > a:focus {
   border-bottom-style: none;
@@ -110,7 +115,10 @@ a.navbar-brand {
 .navbar-default .navbar-nav > li > a.navbar-cta {
   color: $white;
   font-weight: $header-font-weight;
-  padding: 0.5em 1.5em;
+  line-height: 1;
+  padding: 0.5em 1em;
+  padding-bottom: 0.6em;
+  letter-spacing: -0.5px;
 
   @media (max-width: $screen-xs-max) {
     background-color: transparent;
