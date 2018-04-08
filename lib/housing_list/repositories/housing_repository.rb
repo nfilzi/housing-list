@@ -1,5 +1,6 @@
 class HousingRepository < Hanami::Repository
   associations do
+    has_many :likes
     belongs_to :trip
     belongs_to :user
   end
@@ -13,17 +14,36 @@ class HousingRepository < Hanami::Repository
   end
 
   def active_for_trip_sorted_by_most_recent(trip_id)
-    for_trip_sorted_by_most_recent(trip_id).where(dismissed: false).as(Housing).to_a
+    for_trip_sorted_by_most_recent(trip_id).where(dismissed: false).
+      to_a.lazy.map { |attributes| HousingWithLikesCount.new(attributes) }
   end
 
   def dismissed_for_trip_sorted_by_most_recent(trip_id)
-    for_trip_sorted_by_most_recent(trip_id).where(dismissed: true).as(Housing).to_a
+    for_trip_sorted_by_most_recent(trip_id).where(dismissed: true).
+      to_a.lazy.map { |attributes| HousingWithLikesCount.new(attributes) }
   end
 
   private
 
   def for_trip_sorted_by_most_recent(trip_id)
-    wrap_user.where(trip_id: trip_id).order { created_at.desc }
+    likes_stats = relations[:likes].select {
+        [
+          :housing_id,
+          int::count(Sequel.qualify(:likes, :housing_id)).as(:likes_count),
+        ]
+      }.
+      group(:housing_id).
+      order(:housing_id)
+
+    wrap_user.
+      dataset.
+      select_append(:likes_count).
+      join_table(:left, likes_stats.dataset, housing_id: Sequel.qualify(:housings, :id)).
+      where(trip_id: trip_id).
+      order(
+        Sequel.desc(:likes_count, nulls: :last),
+        Sequel.desc(Sequel.qualify(:housings, :created_at))
+      )
   end
 
   def wrap_user

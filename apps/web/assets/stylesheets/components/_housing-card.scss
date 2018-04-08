@@ -73,7 +73,7 @@ $housing-card-image-width: 230px;
     }
   }
 
-  .like {
+  .like-action {
     align-self: flex-start;
     min-width: 170px;
     text-align: right;
@@ -89,13 +89,17 @@ $housing-card-image-width: 230px;
       margin-right: 1em;
     }
 
-    span {
-      display: inline-block;
-      min-width: 100px;
-      text-align: right;
-      color: $raspberry;
+    label {
+      cursor:         pointer;
+      display:        inline-block;
+      padding-left:   0.9em;
+      text-align:     right;
+      color:          $raspberry;
 
-      display: none; // TODO: remove when implementing likes!
+      @media (max-width: $screen-xs-max) {
+        background-color: white;
+        padding: 0.2em 0.8em;
+      }
     }
   }
 
@@ -202,9 +206,10 @@ $housing-card-image-width: 230px;
     }
   }
 
-  .like {
-    span {
-      color: $gray;
+  .like-action {
+     label {
+      color:  $gray;
+      cursor: default;
     }
   }
 

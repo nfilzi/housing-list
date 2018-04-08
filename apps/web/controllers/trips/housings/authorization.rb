@@ -23,6 +23,14 @@ module Web::Trips
       def dismiss?
         Web::Trips::Housings::Authorizations::Dismiss.new(user, trip, housing).granted?
       end
+
+      def like?
+        Web::Trips::Housings::Likes::Authorizations::Create.new(user, trip, housing).granted?
+      end
+
+      def unlike?
+        Web::Trips::Housings::Likes::Authorizations::Destroy.new(user, trip, housing).granted?
+      end
     end
   end
 end
