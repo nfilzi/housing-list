@@ -60,7 +60,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="887" y="254" name="housings">
+<table x="863" y="250" name="housings">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -133,7 +133,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="475" y="121" name="trip_organizers">
+<table x="453" y="121" name="trip_organizers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -144,6 +144,22 @@
 <row name="organizer_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="617.5555572509766" y="420" name="likes">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="housing_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="housings" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>

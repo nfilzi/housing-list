@@ -28,6 +28,8 @@ resources :trips, only: [:index, :show, :new, :create, :edit, :update] do
     member do
       delete :dismiss
     end
+
+    resource :likes, only: [:create, :destroy]
   end
 end
 

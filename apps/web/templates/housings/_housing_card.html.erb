@@ -22,12 +22,33 @@
       </div>
     </div>
   </div>
-  <div class="like">
-    <span>
-      0
-      <i class="fa fa-heart-o" aria-hidden=true></i>
-    </span>
-  </div>
+
+  <% if authorization.like? %>
+    <%=
+      form_for :like, routes.trip_housing_like_path(trip.id, housing.id) do
+        div(class: 'like-action') do
+          label("submit-#{housing.id}") do
+            text(housing.likes_count)
+            i(class: "fa fa-heart-o", 'aria-hidden' => true)
+          end
+        end
+        submit(class: 'hidden', id: "like-submit-#{housing.id}")
+      end
+    %>
+  <% elsif authorization.unlike? %>
+    <%=
+      form_for :like, routes.trip_housing_like_path(trip.id, housing.id), method: :delete do
+        div(class: 'like-action') do
+          label("submit-#{housing.id}") do
+            text(housing.likes_count)
+            i(class: "fa fa-heart", 'aria-hidden' => true)
+          end
+        end
+        submit(class: 'hidden', id: "like-submit-#{housing.id}")
+      end
+    %>
+  <% end %>
+
   <div class="actions">
     <% if authorization.edit? %>
       <%=
