@@ -16,8 +16,8 @@ module Web::Controllers::Trips
     expose :trip
 
     def call(params)
-      @active_housings    = HousingRepository.new.active_for_trip_sorted_by_most_recent(@trip.id)
-      @dismissed_housings = HousingRepository.new.dismissed_for_trip_sorted_by_most_recent(@trip.id)
+      @active_housings    = HousingRepository.new.active_for_trip_sorted_by_most_liked_and_recent(@trip.id)
+      @dismissed_housings = HousingRepository.new.dismissed_for_trip_sorted_by_most_liked_and_recent(@trip.id)
     end
 
     private

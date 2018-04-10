@@ -1,8 +1,9 @@
 class HousingRepository < Hanami::Repository
   associations do
-    has_many :likes
     belongs_to :trip
     belongs_to :user
+
+    has_many   :likes
   end
 
   def find_for_trip(id, trip_id)
@@ -13,19 +14,19 @@ class HousingRepository < Hanami::Repository
     wrap_user.by_pk(id).as(Housing).one
   end
 
-  def active_for_trip_sorted_by_most_recent(trip_id)
-    for_trip_sorted_by_most_recent(trip_id).where(dismissed: false).
+  def active_for_trip_sorted_by_most_liked_and_recent(trip_id)
+    for_trip_sorted_by_most_liked_and_recent(trip_id).where(dismissed: false).
       to_a.lazy.map { |attributes| HousingWithLikesCount.new(attributes) }
   end
 
-  def dismissed_for_trip_sorted_by_most_recent(trip_id)
-    for_trip_sorted_by_most_recent(trip_id).where(dismissed: true).
+  def dismissed_for_trip_sorted_by_most_liked_and_recent(trip_id)
+    for_trip_sorted_by_most_liked_and_recent(trip_id).where(dismissed: true).
       to_a.lazy.map { |attributes| HousingWithLikesCount.new(attributes) }
   end
 
   private
 
-  def for_trip_sorted_by_most_recent(trip_id)
+  def for_trip_sorted_by_most_liked_and_recent(trip_id)
     likes_stats = relations[:likes].select {
         [
           :housing_id,
