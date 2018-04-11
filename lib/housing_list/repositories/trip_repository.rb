@@ -26,7 +26,7 @@ class TripRepository < Hanami::Repository
         order { ending_on.desc }
     end
 
-    return all_trips.to_a.lazy.map { |attributes| TripWithStats.new(attributes) }
+    return all_trips.to_a.map { |attributes| TripWithStats.new(attributes) }
   end
 
   def create_with_organizer(data)

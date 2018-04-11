@@ -16,12 +16,12 @@ class HousingRepository < Hanami::Repository
 
   def active_for_trip_sorted_by_most_liked_and_recent(trip_id)
     for_trip_sorted_by_most_liked_and_recent(trip_id).where(dismissed: false).
-      to_a.lazy.map { |attributes| HousingWithLikesCount.new(attributes) }
+      to_a.map { |attributes| HousingWithLikesCount.new(attributes) }
   end
 
   def dismissed_for_trip_sorted_by_most_liked_and_recent(trip_id)
     for_trip_sorted_by_most_liked_and_recent(trip_id).where(dismissed: true).
-      to_a.lazy.map { |attributes| HousingWithLikesCount.new(attributes) }
+      to_a.map { |attributes| HousingWithLikesCount.new(attributes) }
   end
 
   private
