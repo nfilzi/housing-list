@@ -1,15 +1,33 @@
 <div class="trip-invitation">
-  <%=
-    form_for :trip_invitation, '#', method: :get do
-      div do
-        text_field :link, value: routes.trip_by_token_url(trip.id, trip.invitation_token), readonly: '', id: 'trip-invitation-link'
+  <noscript>
+    <style>
+      .trip-invitation-incentive,
+      .trip-invitation-details {
+        display: none;
+      }
+    </style>
+
+    <p>
+      Share the following link to <strong>get more friends onboard</strong> 👇<br/>
+      <%= routes.trip_by_token_url(trip.id, trip.invitation_token) %>
+    </p>
+  </noscript>
+
+  <%= link_to 'Get more friends onboard!', '#', class: 'trip-invitation-incentive' %>
+
+  <div class="trip-invitation-details">
+    <%=
+      form_for :trip_invitation, '#', method: :get do
+        div do
+          text_field :link, value: routes.trip_by_token_url(trip.id, trip.invitation_token), readonly: '', id: 'trip-invitation-link'
+        end
+        div do
+          button 'Copy to invite friends', 'data-copytarget' => '#trip-invitation-link', class: 'btn btn-link copy-invitation-link'
+        end
       end
-      div do
-        button 'Copy to invite friends', 'data-copytarget' => '#trip-invitation-link', class: 'btn btn-link copy-invitation-link'
-      end
-    end
-  %>
-  <span class="trip-invitation-notice">
-    <%# used by js %>
-  </span>
+    %>
+    <span class="trip-invitation-notice">
+      <%# used by js %>
+    </span>
+  </div>
 </div>

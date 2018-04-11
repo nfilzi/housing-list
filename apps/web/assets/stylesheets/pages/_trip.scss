@@ -196,7 +196,10 @@
 
 .trip-invitation {
   text-align: center;
-  padding-top: 1em;
+
+  .trip-invitation-details {
+    display: none;
+  }
 
   #trip-invitation-link {
     text-align: center;
