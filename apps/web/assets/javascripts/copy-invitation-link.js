@@ -1,12 +1,24 @@
 (function() {
-
   'use strict';
 
-  // click event
-  var element = document.querySelector('.copy-invitation-link');
+  var tripInvitation = document.querySelector('.trip-invitation');
 
-  if (element) {
-    element.addEventListener('click', copyInvitationLink, true);
+  if (tripInvitation) {
+    var invitationIncentive = document.querySelector('.trip-invitation-incentive');
+    invitationIncentive.addEventListener('click', openInvitationDetails);
+
+    var invitationLink = document.querySelector('.copy-invitation-link');
+    invitationLink.addEventListener('click', copyInvitationLink, true);
+  }
+
+  function openInvitationDetails(event) {
+    event.preventDefault();
+
+    var invitationIncentive = event.currentTarget;
+    var invitationDetails   = document.querySelector('.trip-invitation-details');
+
+    invitationIncentive.style.display = 'none';
+    invitationDetails.style.display   = 'block';
   }
 
   // event handler
