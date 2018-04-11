@@ -35,6 +35,15 @@ class TripPresenter
     housings_count >= 1
   end
 
+  def search_url(provider:)
+    unless Housing::SUPPORTED_PROVIDERS.include?(provider)
+      raise ArgumentError, "#{provider} is not supported as a provider yet!"
+    end
+
+    parameters = to_h.slice(:destination, :travelers_count, :starting_on, :ending_on)
+    Providers::SearchURL.generate(provider, parameters)
+  end
+
   # statuses
 
   def future?
