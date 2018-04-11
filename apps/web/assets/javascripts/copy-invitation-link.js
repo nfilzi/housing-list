@@ -14,10 +14,11 @@
   function openInvitationDetails(event) {
     event.preventDefault();
 
-    var tripInvitationDetails = document.querySelector('.trip-invitation-details');
+    var invitationIncentive = event.currentTarget;
+    var invitationDetails   = document.querySelector('.trip-invitation-details');
 
-    event.currentTarget.style.display   = 'none';
-    tripInvitationDetails.style.display = 'block';
+    invitationIncentive.style.display = 'none';
+    invitationDetails.style.display   = 'block';
   }
 
   // event handler
