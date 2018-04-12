@@ -14,15 +14,23 @@ module Providers
         def scrape
           init_scraping_engine!(driver: :poltergeist) # or :selenium
 
-          browser.visit(url_with_currency)
+          browser.visit(localized_url)
 
           return build_housing_attributes
         end
 
         private
 
-        def url_with_currency
-          url + "&currency=#{find_currency}"
+        def localized_url
+          uri = URI.parse(url)
+
+          hostname = 'www.airbnb.com'
+          query    = uri.query || ''
+          params   = URI.decode_www_form(query).to_h
+
+          params['currency'] = find_currency
+
+          return "https://#{hostname}#{uri.path}?#{URI.encode_www_form(params)}"
         end
 
         def find_currency
