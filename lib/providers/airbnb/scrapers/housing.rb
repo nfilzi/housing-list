@@ -3,26 +3,38 @@ module Providers
     module Scrapers
       class Housing
         private
-        attr_reader :url, :browser
+        attr_reader :check_in, :check_out, :url, :browser
 
         public
 
-        def initialize(url:)
-          @url = url
+        def initialize(url:, check_in:, check_out:)
+          @url       = url
+          @check_in  = check_in
+          @check_out = check_out
         end
 
         def scrape
           init_scraping_engine!(driver: :poltergeist) # or :selenium
 
-          browser.visit(url_with_currency)
+          browser.visit(sanitized_url)
 
           return build_housing_attributes
         end
 
         private
 
-        def url_with_currency
-          url + "&currency=#{find_currency}"
+        def sanitized_url
+          uri = URI.parse(url)
+
+          hostname = 'www.airbnb.com'
+          query    = uri.query || ''
+          params   = URI.decode_www_form(query).to_h
+
+          params['currency']    = find_currency
+          params['check_in']  ||= check_in.strftime('%Y-%m-%d')
+          params['check_out'] ||= check_out.strftime('%Y-%m-%d')
+
+          return "https://#{hostname}#{uri.path}?#{URI.encode_www_form(params)}"
         end
 
         def find_currency
