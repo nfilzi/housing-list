@@ -7,9 +7,8 @@ module Providers
 
         public
 
-        def initialize(url:, check_in:, check_out:)
+        def initialize(url:)
           @base_url = url
-          # check in / out are not used for now
         end
 
         def scrape
