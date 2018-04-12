@@ -43,10 +43,12 @@ module Providers
         def build_housing_attributes
           data = extract_airbnb_housing_data
           total_price = browser.find("#book_it_form").text.match(/Total .(\d+)/)[1].to_i
+          cleaned_up_title       = CGI.unescapeHTML(data["sectioned_description"]["name"])
+          cleaned_up_description = CGI.unescapeHTML(data["sectioned_description"]["description"])
 
           return {
-            title:       data["sectioned_description"]["name"],
-            description: data["sectioned_description"]["description"],
+            title:       cleaned_up_title,
+            description: cleaned_up_description,
             total_price: total_price,
             provider_id: data["id"],
             picture_url: data["photos"].first["large"],
