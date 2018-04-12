@@ -28,6 +28,7 @@ module Housings
 
     def housing_params
       params[:housing].merge(
+        url:      patched_url,
         trip_id:  trip.id,
         user_id:  user.id,
         provider: provider
@@ -46,6 +47,18 @@ module Housings
 
     def provider_supported?
       Housing::SUPPORTED_PROVIDERS.include?(provider)
+    end
+
+    def patched_url
+      uri    = URI.parse(params.dig(:housing, :url))
+      query  = uri.query || ''
+      params = URI.decode_www_form(query).to_h
+
+      params['check_in']  ||= trip.starting_on.strftime('%Y-%m-%d')
+      params['check_out'] ||= trip.ending_on.strftime('%Y-%m-%d')
+      params['adults']    ||= trip.travelers_count
+
+      return "https://#{uri.hostname}#{uri.path}?#{URI.encode_www_form(params)}"
     end
 
     def valid_params?
