@@ -19,7 +19,7 @@ module Housings
       end
 
       provider_name       = housing.provider.split('_').map(&:capitalize).join
-      scraper_class_name  = "Scrapers::#{provider_name}::Housing"
+      scraper_class_name  = "Providers::#{provider_name}::Scrapers::Housing"
       scraper_class       = Object.const_get(scraper_class_name)
       housing_attributes  = scraper_class.new(url: housing.url).scrape
 
