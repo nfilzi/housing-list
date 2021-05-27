@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.6.5'
+ruby '2.6.6'
 
 gem 'rake'
 gem 'hanami',       '~> 1.1.1'
