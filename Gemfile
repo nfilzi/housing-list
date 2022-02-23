@@ -3,8 +3,9 @@ source 'https://rubygems.org'
 ruby '2.7.5'
 
 gem 'rake'
-gem 'hanami',       '~> 1.1.1'
+gem 'hanami',       '~> 1.3.4'
 gem 'hanami-model', '~> 1.1'
+gem 'bigdecimal',   '~> 1.4'
 
 gem 'bcrypt', '~> 3.1.11' # authentication
 gem 'pg'
@@ -22,6 +23,7 @@ gem 'uploadcare-ruby'
 
 # assets
 gem 'sass'
+gem 'sassc'
 
 # monitoring
 gem 'bugsnag'
