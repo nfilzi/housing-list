@@ -147,7 +147,7 @@ GEM
       byebug (~> 9.1)
       pry (~> 0.10)
     public_suffix (3.0.1)
-    rack (2.2.3)
+    rack (2.2.6.2)
     rack-protection (2.0.1)
       rack
     rack-test (0.7.0)
